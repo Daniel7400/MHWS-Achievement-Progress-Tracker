@@ -1,7 +1,8 @@
 # Achievement Progress Tracker
 Monster Hunter Wilds Mod - Track and display your progress on certain achievements that either aren't shown anywhere or are not easily accessible.
 
-![image](https://github.com/Daniel7400/MHR-Achievement-Progress-Tracker/assets/8680338/c65eb382-e356-4155-9e2c-79e9d4c5f48c)
+![image](https://github.com/user-attachments/assets/ed4d2765-6f00-41fe-a5be-446bce354027)
+
 
 The following achievements are being tracked:
 - A True Hunter Is Never Satisfied
@@ -41,7 +42,7 @@ The following achievements are being tracked:
 1. Install [REFramework](https://www.nexusmods.com/monsterhunterwilds/mods/93).
 2. Install [REFramework Direct2D](https://www.nexusmods.com/monsterhunterwilds/mods/142).
 3. Download this mod from [Nexus Mods](https://www.nexusmods.com/monsterhunterwilds/mods/721)
-4. Extract the contents of the mod (**OR** use the [Fluffy Mod Manager](https://www.nexusmods.com/site/mods/818), my recommenedation) and place it in the `.../MonsterHunterWilds` folder. Refer to the [FAQ](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/wiki/FAQ#3-what-files-are-included-with-the-mod--where-are-the-files-for-this-mod) to verify the files are in the right place.
+4. I recommend using the [Fluffy Mod Manager](https://www.nexusmods.com/site/mods/818) to install this mod. If you choose to install manually you will have to extract the `reframework` folder (inside the `Achievement Progress Hunter` folder) into your Wilds install directory which should be something like: `...﻿/MonsterHunterWilds`. Refer to the [FAQ](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/wiki/FAQ#3-what-files-are-included-with-the-mod--where-are-the-files-for-this-mod) to verify the files are in the right place.
 
 ### Credits
 [Daniel7400](https://github.com/Daniel7400) - Creator and maintainer of the [mod](https://www.nexusmods.com/monsterhunterwilds/mods/721).
