@@ -3,7 +3,7 @@ log.info("[achievement_progress_tracker.lua] loaded")
 -- Check if the d2d table is NOT found.
 if not d2d then
     -- If yes, then throw an error letting the user know that d2d is required for this mod.
-    error("ERROR: REFramework Direct2D (reframework-d2d) is required for this mod to function. Please install it and try again.")
+    error("\n\nERROR: REFramework Direct2D (reframework-d2d) is required for this mod to function. Please install it and try again.\n\n")
 end
 
 --- IMPORTS
