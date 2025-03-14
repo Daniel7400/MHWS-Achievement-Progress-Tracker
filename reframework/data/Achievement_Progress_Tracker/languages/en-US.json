@@ -1,0 +1,136 @@
+{
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [],
+	"associated_in_game_language_option": 1,
+	"ui": {
+		"button": {
+			"reset_config": "Reset Config",
+			"top_left": "Top Left",
+            "top_right": "Top Right",
+            "middle": "Middle",
+            "bottom_left": "Bottom Left",
+            "bottom_right": "Bottom Right"
+		},
+		"checkbox": {
+			"enabled": "Enabled",
+			"render_horizontally": "Render Trackers Horizontally",
+			"show_completed_achievements": "Show Completed Achievements"
+		},
+		"color_picker": {
+			"box_background": "Box Background",
+			"tracker_background": "Achievement Tracker Background",
+			"progress_bar_background": "Progress Bar Background",
+			"progress_bar": "Progress Bar",
+			"progress_bar_complete": "Completed Progress Bar",
+			"tracker_name_text": "Achievement Tracker Name Text",
+			"tracker_description_text": "Achievement Tracker Description Text",
+			"progress_text": "Progress Bar Text",
+			"progress_complete_text": "Completed Progress Bar Text"
+		},
+		"combo_box": {
+			"size": "Size"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Small",
+				"medium": "Medium",
+				"large": "Large"
+			}
+		},
+		"header": {
+			"color": "Color",
+			"display": "Display",
+			"language": "Language",
+			"settings": "Settings",
+			"tracking": "Tracking",
+			"missing": "Missing for: %s"
+		},
+		"misc": {
+			"current": "Current",
+			"select_achievements": "Select achievements to track"
+		},
+		"selector": {
+			"alignment": "Alignment"
+		},
+		"slider": {
+			"adjust_position": "Adjust Position"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + Left Click to input manually",
+			"uncheck_achievement": "Uncheck to hide a specific achievement tracker"
+		}
+	},
+	"tracker": {
+		"completed": "Completed!"
+	},
+	"modal": {
+		"header": "Congratulations",
+		"message": "You have completed all of the achievements this mod tracks!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "A True Hunter Is Never Satisfied",
+			"description": "Completed 50 quests."
+		},
+		"hunters_united_forever": {
+			"name": "Hunters United Forever",
+			"description": "Completed 100 quests via multiplayer."
+		},
+		"someone_worth_following": {
+			"name": "Someone Worth Following",
+			"description": "Completed 100 quests with your Palico deployed."
+		},
+		"capture_pro": {
+			"name": "Capture Pro",
+			"description": "Captured 50 monsters."
+		},
+		"monster_slayer": {
+			"name": "Monster Slayer",
+			"description": "Hunted 100 large monsters."
+		},
+		"seasoned_hunter": {
+			"name": "Seasoned Hunter",
+			"description": "Hunted 50 tempered monsters."
+		},
+		"top_of_the_food_chain": {
+			"name": "Top of the Food Chain",
+			"description": "Hunted 50 apex predators."
+		},
+		"east_to_west": {
+			"name": "East to West, A Hunter Never Rests",
+			"description": "Completed 30 different side missions."
+		},
+		"a_fish_ionado": {
+			"name": "A-fish-ionado",
+			"description": "Reeled in 30 whoppers while fishing."
+		},
+		"campmaster": {
+			"name": "Campmaster",
+			"description": "Established Pop-up Camps in 10 places."
+		},
+		"bourgeois_hunter": {
+			"name": "Bourgeois Hunter",
+			"description": "Possessed 1,000,000 zenny."
+		},
+		"gossip_hunter": {
+			"name": "Gossip Hunter",
+			"description": "Viewed 30 different Hunter Profiles."
+		},
+		"impregnable_defense": {
+			"name": "Impregnable Defense",
+			"description": "Forged five different pieces of armor with Rarity 7 or higher."
+		},
+		"power_is_everything": {
+			"name": "Power Is Everything",
+			"description": "Forged five different weapons (NON ARTIAN) with Rarity 7 or higher."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Explorer of the Eastlands",
+			"description": "Obtained 10 different special items of Rarity 6."
+		},
+		"monster_phd": {
+			"name": "Monster Ph.D.",
+			"description": "Hunted many different large monsters."
+		}
+	}
+}

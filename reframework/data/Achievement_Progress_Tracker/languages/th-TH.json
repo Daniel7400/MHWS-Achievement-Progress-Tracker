@@ -1,0 +1,138 @@
+{
+	"font": "NotoSansThai-Bold.otf",
+	"unicode_glyph_ranges": [
+		"0x0E00", "0x0E7F"
+	],
+	"associated_in_game_language_option": 26,
+	"ui": {
+		"button": {
+			"reset_config": "รีเซ็ตการกำหนดค่า",
+			"top_left": "บนซ้าย",
+            "top_right": "ขวาบน",
+            "middle": "กลาง",
+            "bottom_left": "ล่างซ้าย",
+            "bottom_right": "ล่างขวา"
+		},
+		"checkbox": {
+			"enabled": "เปิดใช้งานแล้ว",
+			"render_horizontally": "เรนเดอร์ตัวติดตามในแนวนอน",
+			"show_completed_achievements": "แสดงความสำเร็จที่เสร็จสมบูรณ์"
+		},
+		"color_picker": {
+			"box_background": "พื้นหลังกล่อง",
+			"tracker_background": "พื้นหลังตัวติดตามความสำเร็จ",
+			"progress_bar_background": "พื้นหลังแถบความคืบหน้า",
+			"progress_bar": "แถบความคืบหน้า",
+			"progress_bar_complete": "แถบความคืบหน้าเสร็จสมบูรณ์",
+			"tracker_name_text": "ข้อความชื่อตัวติดตามความสำเร็จ",
+			"tracker_description_text": "ข้อความคำอธิบายตัวติดตามความสำเร็จ",
+			"progress_text": "ข้อความแถบความคืบหน้า",
+			"progress_complete_text": "ข้อความแถบความคืบหน้าเสร็จสมบูรณ์"
+		},
+		"combo_box": {
+			"size": "ขนาด"
+		},
+		"dropdown": {
+			"size": {
+				"small": "เล็ก",
+				"medium": "ปานกลาง",
+				"large": "ใหญ่"
+			}
+		},
+		"header": {
+			"color": "สี",
+			"display": "แสดง",
+			"language": "ภาษา",
+			"settings": "การตั้งค่า",
+			"tracking": "การติดตาม",
+			"missing": "หายไปสําหรับ %s"
+		},
+		"misc": {
+			"current": "ปัจจุบัน",
+			"select_achievements": "เลือกความสำเร็จที่จะติดตาม"
+		},
+		"selector": {
+			"alignment": "การจัดตำแหน่ง"
+		},
+		"slider": {
+			"adjust_position": "ปรับตำแหน่ง"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + คลิกซ้ายเพื่อป้อนข้อมูลด้วยตนเอง",
+			"uncheck_achievement": "ยกเลิกการเลือกเพื่อซ่อนตัวติดตามความสำเร็จเฉพาะ"
+		}
+	},
+	"tracker": {
+		"completed": "สมบูรณ์!"
+	},
+	"modal": {
+		"header": "ยินดีด้วย",
+		"message": "คุณได้บรรลุความสำเร็จทั้งหมดตามแทร็กม็อดนี้แล้ว!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "นักล่าตัวจริงไม่เคยพอใจ",
+			"description": "ทําภารกิจสําเร็จ 50 ภารกิจ"
+		},
+		"hunters_united_forever": {
+			"name": "ฮันเตอร์ ยูไนเต็ด ตลอดไป",
+			"description": "ทําภารกิจสําเร็จ 100 ภารกิจผ่านผู้เล่นหลายคน"
+		},
+		"someone_worth_following": {
+			"name": "คนที่ควรค่าแก่การติดตาม",
+			"description": "ทําภารกิจสําเร็จ 100 ภารกิจโดยใช้งาน Palico ของคุณ"
+		},
+		"capture_pro": {
+			"name": "จับภาพมืออาชีพ",
+			"description": "จับมอนสเตอร์ได้ 50 ตัว"
+		},
+		"monster_slayer": {
+			"name": "นักฆ่าสัตว์ประหลาด",
+			"description": "ล่าสัตว์ประหลาดขนาดใหญ่ 100 ตัว"
+		},
+		"seasoned_hunter": {
+			"name": "นักล่าผู้ช่ําชอง",
+			"description": "ล่าสัตว์ประหลาดอารมณ์ 50 ตัว"
+		},
+		"top_of_the_food_chain": {
+			"name": "ด้านบนสุดของห่วงโซ่อาหาร",
+			"description": "ล่านักล่าระดับสูงสุด 50 ตัว"
+		},
+		"east_to_west": {
+			"name": "ตะวันออกสู่ตะวันตก นักล่าไม่เคยหยุดพัก",
+			"description": "ทําภารกิจรองที่แตกต่างกัน 30 ภารกิจสําเร็จ"
+		},
+		"a_fish_ionado": {
+			"name": "ปลาไอโอนาโด",
+			"description": "จับปลาตัวใหญ่ 30 ตัวขณะตกปลา"
+		},
+		"campmaster": {
+			"name": "หัวหน้าค่าย",
+			"description": "ก่อตั้งค่ายป๊อปอัปใน 10 แห่ง"
+		},
+		"bourgeois_hunter": {
+			"name": "นักล่าชนชั้นกลาง",
+			"description": "ครอบครอง 1,000,000 zenny"
+		},
+		"gossip_hunter": {
+			"name": "นักล่าซุบซิบ",
+			"description": "ดูโปรไฟล์ฮันเตอร์ที่แตกต่างกัน 30 รายการ"
+		},
+		"impregnable_defense": {
+			"name": "การป้องกันที่ไร้ที่ติ",
+			"description": "ปลอมชุดเกราะที่แตกต่างกันห้าชิ้นที่มีความหายาก 7 หรือสูงกว่า"
+		},
+		"power_is_everything": {
+			"name": "พลังคือทุกสิ่ง",
+			"description": "หลอมอาวุธที่แตกต่างกันห้าชนิด (ไม่ใช่อาร์เทียม) ที่มีความหายาก 7 หรือสูงกว่า"
+		},
+		"explorer_of_the_eastlands": {
+			"name": "นักสํารวจแห่งอีสต์แลนด์",
+			"description": "ได้รับไอเท็มพิเศษที่แตกต่างกัน 10 รายการของความหายาก 6"
+		},
+		"monster_phd": {
+			"name": "สัตว์ประหลาด ปริญญาเอก",
+			"description": "ล่าสัตว์ประหลาดขนาดใหญ่มากมาย"
+		}
+	}
+}

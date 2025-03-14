@@ -1,0 +1,136 @@
+{
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [],
+	"associated_in_game_language_option": 32,
+	"ui": {
+		"button": {
+			"reset_config": "Restablecer configuración",
+			"top_left": "Arriba a la izquierda",
+            "top_right": "Parte superior derecha",
+            "middle": "Medio",
+            "bottom_left": "Abajo a la izquierda",
+            "bottom_right": "Abajo a la derecha"
+		},
+		"checkbox": {
+			"enabled": "Activado",
+			"render_horizontally": "Renderizar rastreadores horizontalmente",
+			"show_completed_achievements": "Mostrar logros completados"
+		},
+		"color_picker": {
+			"box_background": "Fondo de caja",
+			"tracker_background": "Antecedentes del seguimiento de logros",
+			"progress_bar_background": "Fondo de la barra de progreso",
+			"progress_bar": "Barra de progreso",
+			"progress_bar_complete": "Barra de progreso completada",
+			"tracker_name_text": "Texto del nombre del rastreador de logros",
+			"tracker_description_text": "Texto de descripción del rastreador de logros",
+			"progress_text": "Texto de la barra de progreso",
+			"progress_complete_text": "Texto de la barra de progreso completado"
+		},
+		"combo_box": {
+			"size": "Tamaño"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Pequeño",
+				"medium": "Medio",
+				"large": "Grande"
+			}
+		},
+		"header": {
+			"color": "Color",
+			"display": "Mostrar",
+			"language": "Idioma",
+			"settings": "Ajustes",
+			"tracking": "Seguimiento",
+			"missing": "Falta por: %s"
+		},
+		"misc": {
+			"current": "Actual",
+			"select_achievements": "Seleccione logros para realizar un seguimiento"
+		},
+		"selector": {
+			"alignment": "Alineación"
+		},
+		"slider": {
+			"adjust_position": "Ajustar posición"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + clic izquierdo para ingresar manualmente",
+			"uncheck_achievement": "Desmarque para ocultar un rastreador de logros específico"
+		}
+	},
+	"tracker": {
+		"completed": "¡Terminado!"
+	},
+	"modal": {
+		"header": "Felicidades",
+		"message": "¡Has completado todos los logros que rastrea este mod!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "Un cazador de verdad nunca está satisfecho",
+			"description": "Completaste 50 misiones."
+		},
+		"hunters_united_forever": {
+			"name": "Cazadores unidos para siempre",
+			"description": "Completaste 100 misiones en multijugador."
+		},
+		"someone_worth_following": {
+			"name": "Alguien a quien seguir",
+			"description": "Completaste 100 misiones con tu camarada."
+		},
+		"capture_pro": {
+			"name": "Experto en capturas",
+			"description": "Capturaste 50 monstruos."
+		},
+		"monster_slayer": {
+			"name": "Exterminio de monstruos",
+			"description": "Cazaste 100 monstruos grandes."
+		},
+		"seasoned_hunter": {
+			"name": "Cazador experto",
+			"description": "Cazaste 50 monstruos curtidos."
+		},
+		"top_of_the_food_chain": {
+			"name": "En la cima de la cadena alimenticia",
+			"description": "Cazaste 50 depredadores."
+		},
+		"east_to_west": {
+			"name": "Vaya donde vaya, un cazador nunca descansa",
+			"description": "Completaste 30 misiones secundarias diferentes."
+		},
+		"a_fish_ionado": {
+			"name": "Pecipiante",
+			"description": "Pescaste 30 peces gigantescos."
+		},
+		"campmaster": {
+			"name": "Acampada experta",
+			"description": "Levantaste campamentos temporales en 10 sitios."
+		},
+		"bourgeois_hunter": {
+			"name": "Cazador de millones",
+			"description": "Tuviste en posesión 1 000 000 de zenis."
+		},
+		"gossip_hunter": {
+			"name": "Cazador de chismes",
+			"description": "Viste 30 perfiles de cazador diferentes."
+		},
+		"impregnable_defense": {
+			"name": "Defensa impenetrable",
+			"description": "Forjaste cinco piezas de armadura diferentes de rarezas 7 o más altas."
+		},
+		"power_is_everything": {
+			"name": "El poder lo es todo",
+			"description": "Forjaste cinco armas diferentes (no artianas) de rarezas 7 o más altas."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Explorador de las Tierras Orientales",
+			"description": "Obtuviste 10 objetos especiales diferentes de rareza 6."
+		},
+		"monster_phd": {
+			"name": "Doctorado en monstruos",
+			"description": "Cazaste diferentes monstruos grandes."
+		}
+	}
+}

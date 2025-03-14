@@ -1,0 +1,136 @@
+{
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [],
+	"associated_in_game_language_option": 28,
+	"ui": {
+		"button": {
+			"reset_config": "Đặt lại cấu hình",
+			"top_left": "Trên cùng bên trái",
+            "top_right": "Trên cùng bên phải",
+            "middle": "Ở giữa",
+            "bottom_left": "Dưới cùng bên trái",
+            "bottom_right": "Góc phải ở phía dưới"
+		},
+		"checkbox": {
+			"enabled": "Đã bật",
+			"render_horizontally": "Hiển thị trình theo dõi theo chiều ngang",
+			"show_completed_achievements": "Hiển thị thành tích đã hoàn thành"
+		},
+		"color_picker": {
+			"box_background": "Hộp Nền",
+			"tracker_background": "Nền theo dõi thành tích",
+			"progress_bar_background": "Nền thanh tiến trình",
+			"progress_bar": "Thanh tiến trình",
+			"progress_bar_complete": "Thanh tiến trình đã hoàn thành",
+			"tracker_name_text": "Văn bản tên người theo dõi thành tích",
+			"tracker_description_text": "Văn bản mô tả theo dõi thành tích",
+			"progress_text": "Văn bản trên thanh tiến trình",
+			"progress_complete_text": "Văn bản thanh tiến trình đã hoàn thành"
+		},
+		"combo_box": {
+			"size": "Kích cỡ"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Bé nhỏ",
+				"medium": "Trung bình",
+				"large": "Lớn"
+			}
+		},
+		"header": {
+			"color": "Màu sắc",
+			"display": "Trưng bày",
+			"language": "Ngôn ngữ",
+			"settings": "Cài đặt",
+			"tracking": "Theo dõi",
+			"missing": "Thiếu cho %s"
+		},
+		"misc": {
+			"current": "Hiện hành",
+			"select_achievements": "Chọn thành tích để theo dõi"
+		},
+		"selector": {
+			"alignment": "Căn chỉnh"
+		},
+		"slider": {
+			"adjust_position": "Điều chỉnh vị trí"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + Nhấp chuột trái để nhập thủ công",
+			"uncheck_achievement": "Bỏ chọn để ẩn trình theo dõi thành tích cụ thể"
+		}
+	},
+	"tracker": {
+		"completed": "Hoàn thành!"
+	},
+	"modal": {
+		"header": "Chúc mừng",
+		"message": "Bạn đã hoàn thành tất cả các thành tích mà bản mod này theo dõi!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "Một thợ săn thực sự không bao giờ hài lòng",
+			"description": "Hoàn thành 50 nhiệm vụ."
+		},
+		"hunters_united_forever": {
+			"name": "Thợ săn đoàn kết mãi mãi",
+			"description": "Hoàn thành 100 nhiệm vụ thông qua nhiều người chơi."
+		},
+		"someone_worth_following": {
+			"name": "Một người đáng để theo dõi",
+			"description": "Hoàn thành 100 nhiệm vụ với Palico của bạn được triển khai."
+		},
+		"capture_pro": {
+			"name": "Chụp chuyên nghiệp",
+			"description": "Bắt được 50 quái vật."
+		},
+		"monster_slayer": {
+			"name": "Kẻ giết quái vật",
+			"description": "Săn được 100 con quái vật lớn."
+		},
+		"seasoned_hunter": {
+			"name": "Thợ săn dày dạn kinh nghiệm",
+			"description": "Săn được 50 quái vật nóng nảy."
+		},
+		"top_of_the_food_chain": {
+			"name": "Đứng đầu chuỗi thức ăn",
+			"description": "Săn lùng 50 kẻ săn mồi đỉnh cao."
+		},
+		"east_to_west": {
+			"name": "Đông sang Tây, một thợ săn không bao giờ nghỉ ngơi",
+			"description": "Hoàn thành 30 nhiệm vụ phụ khác nhau."
+		},
+		"a_fish_ionado": {
+			"name": "A-cá-ionado",
+			"description": "Quay 30 con trong khi câu cá."
+		},
+		"campmaster": {
+			"name": "Trại trưởng",
+			"description": "Thành lập Trại Pop-up tại 10 nơi."
+		},
+		"bourgeois_hunter": {
+			"name": "Thợ săn tư sản",
+			"description": "Sở hữu 1.000.000 zenny."
+		},
+		"gossip_hunter": {
+			"name": "Thợ săn tin đồn",
+			"description": "Đã xem 30 Hồ sơ thợ săn khác nhau."
+		},
+		"impregnable_defense": {
+			"name": "Phòng thủ bất khả xâm phạm",
+			"description": "Rèn năm bộ giáp khác nhau với độ hiếm 7 trở lên."
+		},
+		"power_is_everything": {
+			"name": "Sức mạnh là tất cả",
+			"description": "Rèn năm vũ khí khác nhau (không phải thủ công) với Độ hiếm 7 trở lên."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Nhà thám hiểm của vùng đất phía Đông",
+			"description": "Nhận được 10 vật phẩm đặc biệt khác nhau của Độ hiếm 6."
+		},
+		"monster_phd": {
+			"name": "Tiến sĩ quái vật",
+			"description": "Săn lùng nhiều quái vật lớn khác nhau."
+		}
+	}
+}

@@ -1,0 +1,136 @@
+{
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [],
+	"associated_in_game_language_option": 4,
+	"ui": {
+		"button": {
+			"reset_config": "Zurück zu originale Konfiguration",
+			"top_left": "Oben links",
+            "top_right": "Oben rechts",
+            "middle": "Mitte",
+            "bottom_left": "Unten links",
+            "bottom_right": "Unten rechts"
+		},
+		"checkbox": {
+			"enabled": "Ermöglicht",
+			"render_horizontally": "Horizontales Rendern von Trackern",
+			"show_completed_achievements": "Abgeschlossene Erfolge anzeigen"
+		},
+		"color_picker": {
+			"box_background": "Box Hintergrund",
+			"tracker_background": "Hintergrund zur Erfolgstracker",
+			"progress_bar_background": "Hintergrund des Fortschrittsbalkens",
+			"progress_bar": "Fortschrittsanzeige",
+			"progress_bar_complete": "Abgeschlossener Fortschrittsbalken",
+			"tracker_name_text": "Namenstext des Erfolgstracker",
+			"tracker_description_text": "Beschreibungstext des Erfolgstracker",
+			"progress_text": "Fortschrittsbalkentext",
+			"progress_complete_text": "Abgeschlossener Fortschrittsbalkentext"
+		},
+		"combo_box": {
+			"size": "Größe"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Klein",
+				"medium": "Mittel",
+				"large": "Groß"
+			}
+		},
+		"header": {
+			"color": "Farbe",
+			"display": "Anzeige",
+			"language": "Sprache",
+			"settings": "Einstellungen",
+			"tracking": "Verfolgung",
+			"missing": "Fehlt für: %s"
+		},
+		"misc": {
+			"current": "Aktuell",
+			"select_achievements": "Wählen Sie Erfolge zum Verfolgen aus"
+		},
+		"selector": {
+			"alignment": "Ausrichtung"
+		},
+		"slider": {
+			"adjust_position": "Position anpassen"
+		},
+		"tooltip": {
+			"manual_input": "STRG + Links Klick zur manuellen Eingabe",
+			"uncheck_achievement": "Deaktivieren Sie das Kontrollkästchen, um einen bestimmten Erfolgstracker auszublenden."
+		}
+	},
+	"tracker": {
+		"completed": "Vollendet!"
+	},
+	"modal": {
+		"header": "Glückwunsch",
+		"message": "Sie haben alle Erfolge erreicht, die dieser Mod verfolgt!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "Jagdfieber",
+			"description": "Schließe 50 Quests ab."
+		},
+		"hunters_united_forever": {
+			"name": "Ewige Jagdgemeinschaft",
+			"description": "Schließe 100 Mehrspieler-Quests ab."
+		},
+		"someone_worth_following": {
+			"name": "Palico im Einsatz",
+			"description": "Schließe 100 Quests gemeinsam mit deinem Palico ab."
+		},
+		"capture_pro": {
+			"name": "Privatzoo",
+			"description": "Fange 50 Monster."
+		},
+		"monster_slayer": {
+			"name": "Monsterschreck",
+			"description": "Erjage 100 große Monster."
+		},
+		"seasoned_hunter": {
+			"name": "Abgehärtet",
+			"description": "Erjage 50 Gehärtete Monster."
+		},
+		"top_of_the_food_chain": {
+			"name": "Spitze der Nahrungskette",
+			"description": "Erjage 50 Apex-Räuber."
+		},
+		"east_to_west": {
+			"name": "Immer was zu tun",
+			"description": "Schließe 30 verschiedene Nebenmissionen ab."
+		},
+		"a_fish_ionado": {
+			"name": "Überfischung",
+			"description": "Angle 30 Dicke Brocken."
+		},
+		"campmaster": {
+			"name": "Mein Erstlager, mein Zweitlager...",
+			"description": "Errichte an zehn Plätzen ein Feldlager."
+		},
+		"bourgeois_hunter": {
+			"name": "Sparfuchs",
+			"description": "Horte ein Vermögen von 1.000.000 Zenny."
+		},
+		"gossip_hunter": {
+			"name": "Headhunter",
+			"description": "Sieh dir 30 Jägerprofile an."
+		},
+		"impregnable_defense": {
+			"name": "Undurchdringliche Verteidigung",
+			"description": "Schmiede fünf verschiedene Rüstungsteile der Seltenheit 7 oder darüber."
+		},
+		"power_is_everything": {
+			"name": "Machthunger",
+			"description": "Schmiede fünf verschiedene (nicht artianische) Waffen der Seltenheit 7 oder darüber."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Entdeckung der Ostlande",
+			"description": "Erhalte zehn verschiedene besondere Objekte der Seltenheit 6."
+		},
+		"monster_phd": {
+			"name": "Doktor der Monsterologie",
+			"description": "Erjage viele verschiedene große Monster."
+		}
+	}
+}

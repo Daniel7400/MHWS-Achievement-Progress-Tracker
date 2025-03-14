@@ -1,0 +1,136 @@
+{
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [],
+	"associated_in_game_language_option": 10,
+	"ui": {
+		"button": {
+			"reset_config": "Redefinir configuração",
+			"top_left": "Canto superior esquerdo",
+            "top_right": "Canto superior direito",
+            "middle": "Meio",
+            "bottom_left": "Inferior esquerdo",
+            "bottom_right": "Canto inferior direito"
+		},
+		"checkbox": {
+			"enabled": "Habilitado",
+			"render_horizontally": "Renderizar rastreadores horizontalmente",
+			"show_completed_achievements": "Mostrar conquistas concluídas"
+		},
+		"color_picker": {
+			"box_background": "Fundo da caixa",
+			"tracker_background": "Plano de fundo do rastreador de conquistas",
+			"progress_bar_background": "Fundo da barra de progresso",
+			"progress_bar": "Barra de progresso",
+			"progress_bar_complete": "Barra de progresso concluída",
+			"tracker_name_text": "Texto do nome do rastreador de conquistas",
+			"tracker_description_text": "Texto de descrição do rastreador de conquistas",
+			"progress_text": "Texto da barra de progresso",
+			"progress_complete_text": "Texto da barra de progresso concluído"
+		},
+		"combo_box": {
+			"size": "Tamanho"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Pequeno",
+				"medium": "Médio",
+				"large": "Grande"
+			}
+		},
+		"header": {
+			"color": "Cor",
+			"display": "Mostrar",
+			"language": "Linguagem",
+			"settings": "Configurações",
+			"tracking": "Monitorando",
+			"missing": "Faltando para: %s"
+		},
+		"misc": {
+			"current": "Atual",
+			"select_achievements": "Selecione conquistas para acompanhar"
+		},
+		"selector": {
+			"alignment": "Alinhamento"
+		},
+		"slider": {
+			"adjust_position": "Ajustar posição"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + clique esquerdo para inserir manualmente",
+			"uncheck_achievement": "Desmarque para ocultar um rastreador de conquistas específico"
+		}
+	},
+	"tracker": {
+		"completed": "Concluído!"
+	},
+	"modal": {
+		"header": "Parabéns",
+		"message": "Você completou todas as conquistas que este mod rastreia!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "Caçadores Sempre Querem Mais",
+			"description": "Concluiu 50 missões."
+		},
+		"hunters_united_forever": {
+			"name": "Caçadores Unidos para Sempre",
+			"description": "Concluiu 100 missões via multijogador."
+		},
+		"someone_worth_following": {
+			"name": "Uma Centena de Miauventuras",
+			"description": "Concluiu 100 missões com seu Amigato."
+		},
+		"capture_pro": {
+			"name": "Profissional da Captura",
+			"description": "Capturou 50 monstros."
+		},
+		"monster_slayer": {
+			"name": "Matador de Monstros",
+			"description": "Caçou 100 monstros grandes."
+		},
+		"seasoned_hunter": {
+			"name": "Experiente na Caçada",
+			"description": "Caçou 50 monstros aguerridos."
+		},
+		"top_of_the_food_chain": {
+			"name": "Topo da Cadeia Alimentar",
+			"description": "Caçou 50 predadores máximos."
+		},
+		"east_to_west": {
+			"name": "Caçadores Avançam e Não Descansam",
+			"description": "Concluiu 30 campanhas secundárias diferentes."
+		},
+		"a_fish_ionado": {
+			"name": "A-peixo-nado",
+			"description": "Puxou 30 grandalhões enquanto pescava."
+		},
+		"campmaster": {
+			"name": "Mestre do Acampamento",
+			"description": "Colocou Instatendas em 10 lugares."
+		},
+		"bourgeois_hunter": {
+			"name": "Caçador Burguês",
+			"description": "Obteve 1.000.000 zenny."
+		},
+		"gossip_hunter": {
+			"name": "O C de Caçador é de Curiosidade",
+			"description": "Visualizou 30 Perfis de Caçador diferentes."
+		},
+		"impregnable_defense": {
+			"name": "Defesa Impenetrável",
+			"description": "Forjou cinco peças de armadura diferentes de Raridade 7 ou maior."
+		},
+		"power_is_everything": {
+			"name": "O Poder é Tudo",
+			"description": "Forjou cinco armas diferentes (não artian) de Raridade 7 ou maior."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Explorador das Terras do Leste",
+			"description": "Obteve 10 itens especiais diferentes de Raridade 6."
+		},
+		"monster_phd": {
+			"name": "PhD em Monstros",
+			"description": "Caçou vários monstros grandes diferentes."
+		}
+	}
+}

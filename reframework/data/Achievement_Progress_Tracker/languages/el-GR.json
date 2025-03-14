@@ -1,0 +1,139 @@
+{
+	"font": "NotoSans-Bold.otf",
+	"unicode_glyph_ranges": [
+		"0x0370", "0x03FF",
+		"0x1F00", "0x1FFF"
+	],
+	"associated_in_game_language_option": 24,
+	"ui": {
+		"button": {
+			"reset_config": "Επαναφορά διαμόρφωσης",
+			"top_left": "Πάνω αριστερά",
+            "top_right": "Επάνω δεξιά",
+            "middle": "Μέση",
+            "bottom_left": "Κάτω αριστερά",
+            "bottom_right": "Κάτω δεξιά"
+		},
+		"checkbox": {
+			"enabled": "Ενεργοποιήθηκε",
+			"render_horizontally": "Εμφάνιση ιχνηλατών οριζόντια",
+			"show_completed_achievements": "Εμφάνιση Ολοκληρωμένων Επιτευγμάτων"
+		},
+		"color_picker": {
+			"box_background": "Φόντο κουτιού",
+			"tracker_background": "Φόντο παρακολούθησης επιτεύγματος",
+			"progress_bar_background": "Φόντο γραμμής προόδου",
+			"progress_bar": "Γραμμή προόδου",
+			"progress_bar_complete": "Ολοκληρωμένη γραμμή προόδου",
+			"tracker_name_text": "Κείμενο ονόματος παρακολούθησης επιτεύγματος",
+			"tracker_description_text": "Κείμενο περιγραφής παρακολούθησης επιτεύγματος",
+			"progress_text": "Κείμενο γραμμής προόδου",
+			"progress_complete_text": "Ολοκληρωμένο κείμενο γραμμής προόδου"
+		},
+		"combo_box": {
+			"size": "Μέγεθος"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Μικρό",
+				"medium": "Μεσαίο",
+				"large": "Μεγάλο"
+			}
+		},
+		"header": {
+			"color": "Χρώμα",
+			"display": "Απεικόνιση",
+			"language": "Γλώσσα",
+			"settings": "Ρυθμίσεις",
+			"tracking": "Παρακολούθηση",
+			"missing": "Λείπει για %s"
+		},
+		"misc": {
+			"current": "Ρεύμα",
+			"select_achievements": "Επιλέξτε επιτεύγματα για παρακολούθηση"
+		},
+		"selector": {
+			"alignment": "Ευθυγραμμία"
+		},
+		"slider": {
+			"adjust_position": "Προσαρμογή Θέσης"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + Αριστερό κλικ για μη αυτόματη εισαγωγή",
+			"uncheck_achievement": "Καταργήστε την επιλογή για απόκρυψη ενός συγκεκριμένου προγράμματος παρακολούθησης επιτευγμάτων"
+		}
+	},
+	"tracker": {
+		"completed": "Ολοκληρώθηκε το!"
+	},
+	"modal": {
+		"header": "Συγχαρητήρια",
+		"message": "Έχετε ολοκληρώσει όλα τα επιτεύγματα που παρακολουθεί αυτό το mod!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "Ένας αληθινός κυνηγός δεν είναι ποτέ ικανοποιημένος",
+			"description": "Ολοκλήρωσε 50 αποστολές."
+		},
+		"hunters_united_forever": {
+			"name": "Κυνηγοί Ενωμένοι για Πάντα",
+			"description": "Ολοκλήρωσε 100 αποστολές μέσω πολλαπλών παικτών."
+		},
+		"someone_worth_following": {
+			"name": "Κάποιος που αξίζει να ακολουθήσετε",
+			"description": "Ολοκληρώσατε 100 αποστολές με τον Palico σας ανεπτυγμένο."
+		},
+		"capture_pro": {
+			"name": "Επαγγελματική λήψη",
+			"description": "Αιχμαλωτίσατε 50 τέρατα."
+		},
+		"monster_slayer": {
+			"name": "Φονιάς τεράτων",
+			"description": "Κυνήγησε 100 μεγάλα τέρατα."
+		},
+		"seasoned_hunter": {
+			"name": "Έμπειρος κυνηγός",
+			"description": "Κυνήγησε 50 μετριασμένα τέρατα."
+		},
+		"top_of_the_food_chain": {
+			"name": "Κορυφή της τροφικής αλυσίδας",
+			"description": "Κυνήγησε 50 κορυφαίους θηρευτές."
+		},
+		"east_to_west": {
+			"name": "Από την Ανατολή στη Δύση, Ένας κυνηγός δεν αναπαύεται ποτέ",
+			"description": "Ολοκληρώστε 30 διαφορετικές δευτερεύουσες αποστολές."
+		},
+		"a_fish_ionado": {
+			"name": "A-fish-ionado",
+			"description": "Πήρε 30 μεγάλα ψάρια ενώ ψάρευε."
+		},
+		"campmaster": {
+			"name": "Κατασκηνωτής",
+			"description": "Ίδρυσε άμεσα στρατόπεδα σε 10 μέρη."
+		},
+		"bourgeois_hunter": {
+			"name": "Μπουρζουά κυνηγός",
+			"description": "Κατείχε 1.000.000 zenny."
+		},
+		"gossip_hunter": {
+			"name": "Κυνηγός κουτσομπολιών",
+			"description": "Προβολή 30 διαφορετικών προφίλ κυνηγών."
+		},
+		"impregnable_defense": {
+			"name": "Αδιαπέραστη άμυνα",
+			"description": "Σφυρηλάτησε πέντε διαφορετικά κομμάτια πανοπλίας με σπανιότητα 7 ή υψηλότερη."
+		},
+		"power_is_everything": {
+			"name": "Η δύναμη είναι το παν",
+			"description": "Σφυρηλάτησε πέντε διαφορετικά όπλα (μη αρτιανά) με σπανιότητα 7 ή υψηλότερη."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Εξερευνητής των Ανατολικών Χωρών",
+			"description": "Αποκτήσατε 10 διαφορετικά ειδικά αντικείμενα σπανιότητας 6."
+		},
+		"monster_phd": {
+			"name": "Διδακτορικό δίπλωμα τεράτων.",
+			"description": "Κυνήγησε πολλά διαφορετικά μεγάλα τέρατα."
+		}
+	}
+}

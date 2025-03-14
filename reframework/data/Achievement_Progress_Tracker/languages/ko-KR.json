@@ -1,0 +1,139 @@
+{
+	"font": "NotoSansKR-Bold.otf",
+	"unicode_glyph_ranges": [
+		"0x3131", "0x3163",
+        "0xAC00", "0xD7A3"
+	],
+	"associated_in_game_language_option": 11,
+	"ui": {
+		"button": {
+			"reset_config": "구성 재설정",
+			"top_left": "왼쪽 위",
+            "top_right": "맨 위 오른쪽",
+            "middle": "가운데",
+            "bottom_left": "왼쪽 하단",
+            "bottom_right": "오른쪽 하단"
+		},
+		"checkbox": {
+			"enabled": "활성화됨",
+			"render_horizontally": "트래커 가로 렌더링",
+			"show_completed_achievements": "완료된 업적 표시"
+		},
+		"color_picker": {
+			"box_background": "상자 배경",
+			"tracker_background": "성과 추적기 배경",
+			"progress_bar_background": "진행률 표시줄 배경",
+			"progress_bar": "진행 표시 줄",
+			"progress_bar_complete": "완료된 진행률 표시줄",
+			"tracker_name_text": "성과 추적기 이름 텍스트",
+			"tracker_description_text": "성과 추적기 설명 텍스트",
+			"progress_text": "진행 표시줄 텍스트",
+			"progress_complete_text": "완료된 진행률 표시줄 텍스트"
+		},
+		"combo_box": {
+			"size": "크기"
+		},
+		"dropdown": {
+			"size": {
+				"small": "작은",
+				"medium": "중간",
+				"large": "크기가 큰"
+			}
+		},
+		"header": {
+			"color": "색상",
+			"display": "표시하다",
+			"language": "언어",
+			"settings": "설정",
+			"tracking": "추적",
+			"missing": "누락된 항목: %s"
+		},
+		"misc": {
+			"current": "현재의",
+			"select_achievements": "추적할 성과 선택"
+		},
+		"selector": {
+			"alignment": "조정"
+		},
+		"slider": {
+			"adjust_position": "위치 조정"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + 마우스 왼쪽 버튼을 클릭하여 수동으로 입력하세요.",
+			"uncheck_achievement": "특정 업적 추적기를 숨기려면 선택을 취소하세요."
+		}
+	},
+	"tracker": {
+		"completed": "완전한!"
+	},
+	"modal": {
+		"header": "축하해요",
+		"message": "이 모드가 추적하는 모든 업적을 완료했습니다!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "헌터 라이프는 멈추지 않아!",
+			"description": "퀘스트를 50번 클리어한 증표"
+		},
+		"hunters_united_forever": {
+			"name": "언제까지나 동료와 함께",
+			"description": "멀티플레이로 퀘스트를 100번 클리어한 증표"
+		},
+		"someone_worth_following": {
+			"name": "너와 함께라면 어디까지나",
+			"description": "동반자를 출격시킨 퀘스트를 100번 클리어한 증표"
+		},
+		"capture_pro": {
+			"name": "생포의 프로",
+			"description": "몬스터를 50마리 포획한 증표"
+		},
+		"monster_slayer": {
+			"name": "몬스터 슬레이어",
+			"description": "대형 몬스터를 100마리 사냥한 증표"
+		},
+		"seasoned_hunter": {
+			"name": "역전의 헌터",
+			"description": "역전의 개체를 50마리 사냥한 증표"
+		},
+		"top_of_the_food_chain": {
+			"name": "생태계의 정점",
+			"description": "생태계의 정점에 선 대형 몬스터를 50마리 사냥한 증표"
+		},
+		"east_to_west": {
+			"name": "동분서주하는 사냥꾼",
+			"description": "사이드 미션'을 30종류 클리어한 증표"
+		},
+		"a_fish_ionado": {
+			"name": "대물 낚시에 매료되어",
+			"description": "대물 낚시에 매료되어"
+		},
+		"campmaster": {
+			"name": "캠프 마스터",
+			"description": "간이 캠프를 10군데에 설치한 증표"
+		},
+		"bourgeois_hunter": {
+			"name": "부르주아 헌터",
+			"description": "100만 제니를 소지한 증표"
+		},
+		"gossip_hunter": {
+			"name": "신경 쓰이는 헌터",
+			"description": "헌터 프로필을 30명 이상 확인한 증표"
+		},
+		"impregnable_defense": {
+			"name": "철벽의 헌터",
+			"description": "희귀도 7 이상인 방어구를 5종류 생산한 증표"
+		},
+		"power_is_everything": {
+			"name": "힘이야말로 모든 것",
+			"description": "희귀도 7 이상인 파생 무기를 (아르티안 제외) 5종류 생산한 증표"
+		},
+		"explorer_of_the_eastlands": {
+			"name": "동쪽 땅 탐험가",
+			"description": "희귀도 6인 특산품을 10종류 입수한 증표"
+		},
+		"monster_phd": {
+			"name": "몬스터 박사",
+			"description": "대형 몬스터를 많이 사냥한 증표"
+		}
+	}
+}

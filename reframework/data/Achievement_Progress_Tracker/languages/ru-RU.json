@@ -1,0 +1,140 @@
+{
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [
+		"0x0400", "0x052F",
+		"0x2DE0", "0x2DFF",
+		"0xA640", "0xA69F"
+	],
+	"associated_in_game_language_option": 6,
+	"ui": {
+		"button": {
+			"reset_config": "Сбросить конфигурацию",
+			"top_left": "Верхний левый",
+            "top_right": "В правом верхнем углу",
+            "middle": "Середина",
+            "bottom_left": "Внизу слева",
+            "bottom_right": "Внизу справа"
+		},
+		"checkbox": {
+			"enabled": "Включено",
+			"render_horizontally": "Горизонтальное отображение трекеров",
+			"show_completed_achievements": "Показать выполненные достижения"
+		},
+		"color_picker": {
+			"box_background": "Фон коробки",
+			"tracker_background": "Фон трекера достижений",
+			"progress_bar_background": "Фон индикатора выполнения",
+			"progress_bar": "Индикатор",
+			"progress_bar_complete": "Завершенный индикатор выполнения",
+			"tracker_name_text": "Текст названия трекера достижений",
+			"tracker_description_text": "Текст описания трекера достижений",
+			"progress_text": "Текст индикатора выполнения",
+			"progress_complete_text": "Завершенный текст индикатора выполнения"
+		},
+		"combo_box": {
+			"size": "Размер"
+		},
+		"dropdown": {
+			"size": {
+				"small": "Маленький",
+				"medium": "Середина",
+				"large": "Большой"
+			}
+		},
+		"header": {
+			"color": "Цвет",
+			"display": "Отображать",
+			"language": "Язык",
+			"settings": "Настройки",
+			"tracking": "Отслеживание",
+			"missing": "Отсутствует для: %s"
+		},
+		"misc": {
+			"current": "Текущий",
+			"select_achievements": "Выберите достижения для отслеживания"
+		},
+		"selector": {
+			"alignment": "Выравнивание"
+		},
+		"slider": {
+			"adjust_position": "Отрегулировать положение"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + щелчок левой кнопкой мыши для ввода вручную.",
+			"uncheck_achievement": "Снимите флажок, чтобы скрыть определенный трекер достижений."
+		}
+	},
+	"tracker": {
+		"completed": "Завершенный!"
+	},
+	"modal": {
+		"header": "Поздравления",
+		"message": "Вы выполнили все достижения, которые отслеживает этот мод!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "Настоящему охотнику всегда мало",
+			"description": "Выполнить 50 поручений."
+		},
+		"hunters_united_forever": {
+			"name": "Неразлучные охотники",
+			"description": "Выполнить 100 поручений в режиме многопользовательской игры."
+		},
+		"someone_worth_following": {
+			"name": "Достойный лидер",
+			"description": "Выполнить 100 заданий в компании палико."
+		},
+		"capture_pro": {
+			"name": "Мастер ловли",
+			"description": "Поймать 50 монстров."
+		},
+		"monster_slayer": {
+			"name": "Гроза монстров",
+			"description": "Победить 100 крупных монстров."
+		},
+		"seasoned_hunter": {
+			"name": "Закалённый охотник",
+			"description": "Победить 50 закалённых монстров."
+		},
+		"top_of_the_food_chain": {
+			"name": "Вершина пищевой цепи",
+			"description": "Победить 50 высших хищников."
+		},
+		"east_to_west": {
+			"name": "Охотник всегда при деле",
+			"description": "Завершить 30 разных дополнительных заданий."
+		},
+		"a_fish_ionado": {
+			"name": "Рыболов-любитель",
+			"description": "Поймать на рыбалке 30 голиафов."
+		},
+		"campmaster": {
+			"name": "Мастер кемпинга",
+			"description": "Разбить 10 временных лагерей."
+		},
+		"bourgeois_hunter": {
+			"name": "Охотник-толстосум",
+			"description": "Накопить 1 000 000 зени."
+		},
+		"gossip_hunter": {
+			"name": "Охотник за сплетнями",
+			"description": "Посмотреть профили 30 охотников."
+		},
+		"impregnable_defense": {
+			"name": "Неприступная защита",
+			"description": "Изготовить пять разных доспехов не ниже 7-й редкости."
+		},
+		"power_is_everything": {
+			"name": "Сила решает всё",
+			"description": "Изготовить пять разных единиц оружия (не артианского) не ниже 7-й редкости."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Исследователь Восточных земель",
+			"description": "Получить 10 разных особых предметов 6-й редкости."
+		},
+		"monster_phd": {
+			"name": "Доктор монстрологии",
+			"description": "Победить множество различных крупных монстров."
+		}
+	}
+}
