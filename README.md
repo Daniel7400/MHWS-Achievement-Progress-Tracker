@@ -1,7 +1,8 @@
 # Achievement Progress Tracker
 Monster Hunter Wilds Mod - Track and display your progress on certain achievements that either aren't shown anywhere or are not easily accessible.
 
-![image](https://github.com/Daniel7400/MHR-Achievement-Progress-Tracker/assets/8680338/c65eb382-e356-4155-9e2c-79e9d4c5f48c)
+![image](https://github.com/user-attachments/assets/ed4d2765-6f00-41fe-a5be-446bce354027)
+
 
 The following achievements are being tracked:
 - A True Hunter Is Never Satisfied
