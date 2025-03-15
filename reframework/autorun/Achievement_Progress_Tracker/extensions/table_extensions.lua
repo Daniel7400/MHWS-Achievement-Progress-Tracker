@@ -107,7 +107,7 @@ function table.matched_merge(...)
             assert(type(table_to_merge) == "table", string.format("Provided parameter in position %i must be a table.", i))
 
             -- Check if the table to merge has the current key from the schema table.
-            if table_to_merge[key] then
+            if table_to_merge[key] ~= nil then
                 -- If yes, then set the value to set as the value of the current table to merge using the current key.
                 value_to_set = table_to_merge[key]
             end
