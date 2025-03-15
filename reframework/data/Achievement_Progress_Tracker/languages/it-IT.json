@@ -1,0 +1,136 @@
+{
+    "font": "NotoSansSC-Bold.otf",
+    "unicode_glyph_ranges": [],
+    "associated_in_game_language_option": 3,
+    "ui": {
+        "button": {
+            "reset_config": "Reimposta la configurazione",
+            "top_left": "In Alto a Sinistra",
+            "top_right": "In Alto a Destra",
+            "middle": "Al Centro",
+            "bottom_left": "In Basso a Sinistra",
+            "bottom_right": "In Basso a Destra"
+        },
+        "checkbox": {
+            "enabled": "Abilitato",
+            "render_horizontally": "Visualizza i Tracker in Orizzontale",
+            "show_completed_achievements": "Mostra gli Achievement Completati"
+        },
+        "color_picker": {
+            "box_background": "Sfondo del Riquadro",
+            "tracker_background": "Sfondo del Tracker degli Achievement",
+            "progress_bar_background": "Sfondo della Barra di Progresso",
+            "progress_bar": "Barra di Progresso",
+            "progress_bar_complete": "Barra di Progresso Completata",
+            "tracker_name_text": "Nome del Tracker degli Achievement",
+            "tracker_description_text": "Descrizione del Tracker degli Achievement",
+            "progress_text": "Testo della Barra di Progresso",
+            "progress_complete_text": "Testo della Barra di Progresso Completata"
+        },
+        "combo_box": {
+            "size": "Dimensione"
+        },
+        "dropdown": {
+            "size": {
+                "small": "Piccola",
+                "medium": "Media",
+                "large": "Grande"
+            }
+        },
+        "header": {
+            "color": "Colore",
+            "display": "Visualizzazione",
+            "language": "Lingua",
+            "settings": "Impostazioni",
+            "tracking": "Monitoraggio",
+            "missing": "%s Mancante:"
+        },
+        "misc": {
+            "current": "Attuale",
+            "select_achievements": "Seleziona gli Achievement da monitorare"
+        },
+        "selector": {
+            "alignment": "Allineamento"
+        },
+        "slider": {
+            "adjust_position": "Regola Posizione"
+        },
+        "tooltip": {
+            "manual_input": "CTRL + Click Sinistro per inserire manualmente",
+            "uncheck_achievement": "Deseleziona per nascondere un tracker specifico"
+        }
+    },
+    "tracker": {
+        "completed": "Completato!"
+    },
+    "modal": {
+        "header": "Congratulazioni",
+        "message": "Hai completato tutti i traguardi monitorati da questa mod!"
+    },
+    "achievement": {
+        "a_true_hunter": {
+            "name": "Un vero cacciatore non si accontenta",
+            "description": "Completa 50 missioni."
+        },
+        "hunters_united_forever": {
+            "name": "Squadrone di caccia",
+            "description": "Completa 100 missioni in modalità multigiocatore."
+        },
+        "someone_worth_following": {
+            "name": "L'unione fa la forza",
+            "description": "Completa 100 missioni insieme al tuo compagno Felyne."
+        },
+        "capture_pro": {
+            "name": "Acciuffamostri",
+            "description": "Cattura 50 mostri."
+        },
+        "monster_slayer": {
+            "name": "Gran talento",
+            "description": "Caccia 100 mostri grandi."
+        },
+        "seasoned_hunter": {
+            "name": "Cacciatore esperto",
+            "description": "Caccia 50 mostri temprati."
+        },
+        "top_of_the_food_chain": {
+            "name": "L'apice della natura",
+            "description": "Caccia 50 superpredatori."
+        },
+        "east_to_west": {
+            "name": "Chi dorme non piglia mostri",
+            "description": "Completa 30 incarichi secondari."
+        },
+        "a_fish_ionado": {
+            "name": "Pescatore mastodontico",
+            "description": "Pesca 30 pesci-mastodonte."
+        },
+        "campmaster": {
+            "name": "Maestria negli accampamenti",
+            "description": "Monta degli accampamenti mobili in 10 posti."
+        },
+        "bourgeois_hunter": {
+            "name": "Caccia ricca",
+            "description": "Accumula 1.000.000 di zenny senza spenderli."
+        },
+        "gossip_hunter": {
+            "name": "Conosco i miei cacciatori",
+            "description": "Visualizza 30 profili cacciatore diversi."
+        },
+        "impregnable_defense": {
+            "name": "Difesa impenetrabile",
+            "description": "Forgia cinque parti di armatura diversi di rarità 7 o superiore."
+        },
+        "power_is_everything": {
+            "name": "Il potere è tutto",
+            "description": "Forgia cinque armi diverse (NON ARTIAN) di rarità 7 o superiore."
+        },
+        "explorer_of_the_eastlands": {
+            "name": "Esploratore delle Terre orientali",
+            "description": "Ottieni 10 oggetti speciali diversi di rarità 6."
+        },
+        "monster_phd": {
+            "name": "Laurea in mostrologia",
+            "description": "Caccia molti mostri grandi diversi."
+        }
+    }
+}

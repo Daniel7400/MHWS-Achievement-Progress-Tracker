@@ -798,6 +798,13 @@ local function update_tracker_language(achievement_tracker)
     achievement_tracker.name = language_manager.language.current.achievement[achievement_tracker.key].name
     achievement_tracker.description = language_manager.language.current.achievement[achievement_tracker.key].description
 
+    -- Check if the provided achievement tracker is enabled AND NOT complete AND has collection params defined AND has missing.
+    if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
+        and #achievement_tracker.collection_params.missing > 0 then
+        -- If yes, then update the tracker so it calls its additional processing function and update the missing entries text.
+        tracking_manager.update_tracker(achievement_tracker)
+    end
+
     -- Check if the provided achievement tracker should be displayed.
     if achievement_tracker:should_display() then
         -- If yes, then call the update values function on the draw manager.

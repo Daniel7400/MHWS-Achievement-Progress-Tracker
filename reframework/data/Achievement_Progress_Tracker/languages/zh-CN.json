@@ -1,140 +1,140 @@
 {
-	"font": "NotoSansSC-Bold.otf",
-	"unicode_glyph_ranges": [
-		"0x3000", "0x30FF",
+    "font": "NotoSansSC-Bold.otf",
+    "unicode_glyph_ranges": [
+        "0x3000", "0x30FF",
         "0x31F0", "0x31FF",
-		"0x4E00", "0x9FAF"
-	],
-	"associated_in_game_language_option": 13,
-	"ui": {
-		"button": {
-			"reset_config": "重置配置",
-			"top_left": "左上方",
-            "top_right": "右上",
+        "0x4E00", "0x9FAF"
+    ],
+    "associated_in_game_language_option": 13,
+    "ui": {
+        "button": {
+            "reset_config": "重置设置",
+            "top_left": "左上方",
+            "top_right": "右上方",
             "middle": "中间",
             "bottom_left": "左下方",
-            "bottom_right": "右下角"
-		},
-		"checkbox": {
-			"enabled": "启用",
-			"render_horizontally": "水平渲染跟踪器",
-			"show_completed_achievements": "显示已完成的成就"
-		},
-		"color_picker": {
-			"box_background": "盒子背景",
-			"tracker_background": "成就追踪器背景",
-			"progress_bar_background": "进度条背景",
-			"progress_bar": "进度条",
-			"progress_bar_complete": "已完成进度条",
-			"tracker_name_text": "成就追踪器名称文本",
-			"tracker_description_text": "成就追踪器描述文本",
-			"progress_text": "进度条文本",
-			"progress_complete_text": "已完成进度条文本"
-		},
-		"combo_box": {
-			"size": "尺寸"
-		},
-		"dropdown": {
-			"size": {
-				"small": "小的",
-				"medium": "中等的",
-				"large": "大的"
-			}
-		},
-		"header": {
-			"color": "颜色",
-			"display": "展示",
-			"language": "语言",
-			"settings": "设置",
-			"tracking": "追踪",
-			"missing": "缺少：%s"
-		},
-		"misc": {
-			"current": "当前的",
-			"select_achievements": "选择要追踪的成就"
-		},
-		"selector": {
-			"alignment": "结盟"
-		},
-		"slider": {
-			"adjust_position": "调整位置"
-		},
-		"tooltip": {
-			"manual_input": "CTRL + 左键单击手动输入",
-			"uncheck_achievement": "取消选中以隐藏特定成就追踪器"
-		}
-	},
-	"tracker": {
-		"completed": "完全的！"
-	},
-	"modal": {
-		"header": "恭喜",
-		"message": "您已完成此模型追踪的所有成就！"
-	},
-	"achievement": {
-		"a_true_hunter": {
-			"name": "猎人生活永无止境",
-			"description": "完成50次任务的证明"
-		},
-		"hunters_united_forever": {
-			"name": "同伴总相随",
-			"description": "以多人游戏完成100次任务的证明"
-		},
-		"someone_worth_following": {
-			"name": "形影不离",
-			"description": "在随从出击状态下完成100次任务的证明"
-		},
-		"capture_pro": {
-			"name": "活捉的专家",
-			"description": "捕获50头怪物的证明"
-		},
-		"monster_slayer": {
-			"name": "怪物克星",
-			"description": "狩猎100头大型怪物的证明"
-		},
-		"seasoned_hunter": {
-			"name": "身经百战的猎人",
-			"description": "狩猎50头历战个体的证明"
-		},
-		"top_of_the_food_chain": {
-			"name": "生态系统的顶点",
-			"description": "狩猎50头君临生态系统顶点的大型怪物的证明"
-		},
-		"east_to_west": {
-			"name": "东奔西走",
-			"description": "完成30项次要使命的证明"
-		},
-		"a_fish_ionado": {
-			"name": "钟情大鱼",
-			"description": "钓起30条大鱼的证明"
-		},
-		"campmaster": {
-			"name": "扎营大师",
-			"description": "完成10处简易营地搭建的证明"
-		},
-		"bourgeois_hunter": {
-			"name": "富裕猎人",
-			"description": "持有100万金钱的证明"
-		},
-		"gossip_hunter": {
-			"name": "好奇的猎人",
-			"description": "查看至少30人的猎人资料的证明"
-		},
-		"impregnable_defense": {
-			"name": "铁壁猎人",
-			"description": "生产5种稀有度7或以上防具的证明"
-		},
-		"power_is_everything": {
-			"name": "力量就是一切",
-			"description": "生产5种稀有度7或以上衍生武器(非阿蒂安)的证明"
-		},
-		"explorer_of_the_eastlands": {
-			"name": "东部探险家",
-			"description": "获得10种稀有度6特产的证明"
-		},
-		"monster_phd": {
-			"name": "怪物博士",
-			"description": "狩猎许多大型怪物的证明"
-		}
-	}
+            "bottom_right": "右下方"
+        },
+        "checkbox": {
+            "enabled": "启用",
+            "render_horizontally": "横向显示跟踪器",
+            "show_completed_achievements": "显示已完成的成就"
+        },
+        "color_picker": {
+            "box_background": "追踪器边框",
+            "tracker_background": "追踪器背景",
+            "progress_bar_background": "进度条背景",
+            "progress_bar": "进度条",
+            "progress_bar_complete": "已完成进度条",
+            "tracker_name_text": "成就名称文本",
+            "tracker_description_text": "成就描述文本",
+            "progress_text": "进度条文本",
+            "progress_complete_text": "已完成进度条文本"
+        },
+        "combo_box": {
+            "size": "尺寸"
+        },
+        "dropdown": {
+            "size": {
+                "small": "小型",
+                "medium": "中型",
+                "large": "大型"
+            }
+        },
+        "header": {
+            "color": "颜色",
+            "display": "显示",
+            "language": "语言",
+            "settings": "设置",
+            "tracking": "追踪",
+            "missing": "未获得：%s"
+        },
+        "misc": {
+            "current": "当前的",
+            "select_achievements": "选择要追踪的成就"
+        },
+        "selector": {
+            "alignment": "显示方位"
+        },
+        "slider": {
+            "adjust_position": "调整位置"
+        },
+        "tooltip": {
+            "manual_input": "CTRL + 左键单击手动输入",
+            "uncheck_achievement": "取消选中以隐藏特定成就追踪器"
+        }
+    },
+    "tracker": {
+        "completed": "完成！"
+    },
+    "modal": {
+        "header": "恭喜",
+        "message": "您已完成追踪的所有成就！"
+    },
+    "achievement": {
+        "a_true_hunter": {
+            "name": "猎人生活永无止境",
+            "description": "完成50次任务的证明"
+        },
+        "hunters_united_forever": {
+            "name": "同伴总相随",
+            "description": "以多人游戏完成100次任务的证明"
+        },
+        "someone_worth_following": {
+            "name": "形影不离",
+            "description": "在随从出击状态下完成100次任务的证明"
+        },
+        "capture_pro": {
+            "name": "活捉的专家",
+            "description": "捕获50头怪物的证明"
+        },
+        "monster_slayer": {
+            "name": "怪物克星",
+            "description": "狩猎100头大型怪物的证明"
+        },
+        "seasoned_hunter": {
+            "name": "身经百战的猎人",
+            "description": "狩猎50头历战个体的证明"
+        },
+        "top_of_the_food_chain": {
+            "name": "生态系统的顶点",
+            "description": "狩猎50头君临生态系统顶点的大型怪物的证明"
+        },
+        "east_to_west": {
+            "name": "东奔西走",
+            "description": "完成30项次要使命的证明"
+        },
+        "a_fish_ionado": {
+            "name": "钟情大鱼",
+            "description": "钓起30条大鱼的证明"
+        },
+        "campmaster": {
+            "name": "扎营大师",
+            "description": "完成10处简易营地搭建的证明"
+        },
+        "bourgeois_hunter": {
+            "name": "富裕猎人",
+            "description": "持有100万金钱的证明"
+        },
+        "gossip_hunter": {
+            "name": "好奇的猎人",
+            "description": "查看至少30人的猎人资料的证明"
+        },
+        "impregnable_defense": {
+            "name": "铁壁猎人",
+            "description": "生产5种稀有度7或以上防具的证明"
+        },
+        "power_is_everything": {
+            "name": "力量就是一切",
+            "description": "生产5种稀有度7或以上衍生武器(非机械)的证明"
+        },
+        "explorer_of_the_eastlands": {
+            "name": "东部探险家",
+            "description": "获得10种稀有度6特产的证明"
+        },
+        "monster_phd": {
+            "name": "怪物博士",
+            "description": "狩猎许多大型怪物的证明"
+        }
+    }
 }
