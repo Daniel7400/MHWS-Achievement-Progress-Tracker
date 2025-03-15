@@ -6,26 +6,26 @@
 		"button": {
 			"reset_config": "Réinitialiser la configuration",
 			"top_left": "En haut à gauche",
-            "top_right": "En haut à droite",
-            "middle": "Milieu",
-            "bottom_left": "En bas à gauche",
-            "bottom_right": "En bas à droite"
+			"top_right": "En haut à droite",
+			"middle": "Centré",
+			"bottom_left": "En bas à gauche",
+			"bottom_right": "En bas à droite"
 		},
 		"checkbox": {
 			"enabled": "Activé",
-			"render_horizontally": "Rendre les trackers horizontalement",
-			"show_completed_achievements": "Afficher les réalisations terminées"
+			"render_horizontally": "Afficher les suivis horizontalement",
+			"show_completed_achievements": "Afficher les distinctions obtenues"
 		},
 		"color_picker": {
-			"box_background": "Fond de boîte",
-			"tracker_background": "Fond de suivi des réalisations",
-			"progress_bar_background": "Fond de barre de progression",
-			"progress_bar": "Barre de progression",
-			"progress_bar_complete": "Barre de progression terminée",
-			"tracker_name_text": "Texte du nom du suivi des réalisations",
-			"tracker_description_text": "Texte de description du suivi des réalisations",
-			"progress_text": "Texte de la barre de progression",
-			"progress_complete_text": "Texte de la barre de progression terminé"
+			"box_background": "Couleur du fond de la fenêtre",
+			"tracker_background": "Couleur du fond des distinctions suivies",
+			"progress_bar_background": "Couleur du fond de la barre de progression",
+			"progress_bar": "Couleur de la barre de progression",
+			"progress_bar_complete": "Couleur de la barre de progression complétée",
+			"tracker_name_text": "Couleur du nom des distinctions suivies",
+			"tracker_description_text": "Couleur des descriptions des distinctions suivies",
+			"progress_text": "Couleur du texte de la barre de progression",
+			"progress_complete_text": "Couleur du texte de la barre de progression une fois complétée"
 		},
 		"combo_box": {
 			"size": "Taille"
@@ -33,7 +33,7 @@
 		"dropdown": {
 			"size": {
 				"small": "Petite",
-				"medium": "Moyen",
+				"medium": "Moyenne",
 				"large": "Grande"
 			}
 		},
@@ -42,12 +42,12 @@
 			"display": "Afficher",
 			"language": "Langue",
 			"settings": "Paramètres",
-			"tracking": "Suivie",
+			"tracking": "Distinctions à suivre",
 			"missing": "Manquant pour: %s"
 		},
 		"misc": {
 			"current": "Actuel",
-			"select_achievements": "Sélectionnez les réalisations à suivre"
+			"select_achievements": "Sélectionnez les distinctions à suivre"
 		},
 		"selector": {
 			"alignment": "Alignement"
@@ -57,15 +57,15 @@
 		},
 		"tooltip": {
 			"manual_input": "CTRL + clic gauche pour saisir manuellement",
-			"uncheck_achievement": "Décochez pour masquer un tracker de réussite spécifique"
+			"uncheck_achievement": "Décochez pour masquer le suivi de cette distinction"
 		}
 	},
 	"tracker": {
-		"completed": "Complété!"
+		"completed": "Obtenue!"
 	},
 	"modal": {
-		"header": "Toutes nos félicitations",
-		"message": "Vous avez terminé toutes les réalisations de ce mod!"
+		"header": "Félicitations",
+		"message": "Vous avez obtenu toutes les distinctions suivies par ce mod!"
 	},
 	"achievement": {
 		"a_true_hunter": {
