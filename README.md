@@ -47,3 +47,4 @@ The following achievements are being tracked:
 ### Credits
 - [Daniel7400](https://github.com/Daniel7400) - Creator and maintainer of the [mod](https://www.nexusmods.com/monsterhunterwilds/mods/721).
 - [Jakiller21](https://next.nexusmods.com/profile/Jakiller21) - French translation.
+- [Krude](https://github.com/Krude) - German translation.
