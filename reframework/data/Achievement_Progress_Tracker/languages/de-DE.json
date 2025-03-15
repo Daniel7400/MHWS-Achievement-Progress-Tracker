@@ -4,7 +4,7 @@
 	"associated_in_game_language_option": 4,
 	"ui": {
 		"button": {
-			"reset_config": "Zurück zu originale Konfiguration",
+			"reset_config": "Zurücksetzen",
 			"top_left": "Oben links",
             "top_right": "Oben rechts",
             "middle": "Mitte",
@@ -12,20 +12,20 @@
             "bottom_right": "Unten rechts"
 		},
 		"checkbox": {
-			"enabled": "Ermöglicht",
-			"render_horizontally": "Horizontales Rendern von Trackern",
+			"enabled": "Aktiviert",
+			"render_horizontally": "Horizontale Tracker-Darstellung",
 			"show_completed_achievements": "Abgeschlossene Erfolge anzeigen"
 		},
 		"color_picker": {
-			"box_background": "Box Hintergrund",
-			"tracker_background": "Hintergrund zur Erfolgstracker",
+			"box_background": "Hintergrund der Box",
+			"tracker_background": "Hintergrund des Erfolgstracker",
 			"progress_bar_background": "Hintergrund des Fortschrittsbalkens",
-			"progress_bar": "Fortschrittsanzeige",
+			"progress_bar": "Fortschrittsbalken",
 			"progress_bar_complete": "Abgeschlossener Fortschrittsbalken",
-			"tracker_name_text": "Namenstext des Erfolgstracker",
-			"tracker_description_text": "Beschreibungstext des Erfolgstracker",
-			"progress_text": "Fortschrittsbalkentext",
-			"progress_complete_text": "Abgeschlossener Fortschrittsbalkentext"
+			"tracker_name_text": "Namenstext des Erfolgs",
+			"tracker_description_text": "Beschreibungstext des Erfolgs",
+			"progress_text": "Text im Fortschrittsbalken",
+			"progress_complete_text": "Text im abgeschlossenen Fortschrittsbalken"
 		},
 		"combo_box": {
 			"size": "Größe"
@@ -42,12 +42,12 @@
 			"display": "Anzeige",
 			"language": "Sprache",
 			"settings": "Einstellungen",
-			"tracking": "Verfolgung",
+			"tracking": "Tracker",
 			"missing": "Fehlt für: %s"
 		},
 		"misc": {
 			"current": "Aktuell",
-			"select_achievements": "Wählen Sie Erfolge zum Verfolgen aus"
+			"select_achievements": "Zu verfolgende Erfolge"
 		},
 		"selector": {
 			"alignment": "Ausrichtung"
@@ -56,16 +56,16 @@
 			"adjust_position": "Position anpassen"
 		},
 		"tooltip": {
-			"manual_input": "STRG + Links Klick zur manuellen Eingabe",
-			"uncheck_achievement": "Deaktivieren Sie das Kontrollkästchen, um einen bestimmten Erfolgstracker auszublenden."
+			"manual_input": "STRG + Linksklick zur manuellen Eingabe",
+			"uncheck_achievement": "Häkchen entfernen, um einen bestimmten Erfolgstracker auszublenden."
 		}
 	},
 	"tracker": {
-		"completed": "Vollendet!"
+		"completed": "Fertig!"
 	},
 	"modal": {
 		"header": "Glückwunsch",
-		"message": "Sie haben alle Erfolge erreicht, die dieser Mod verfolgt!"
+		"message": "Du hast alle Erfolge erreicht, die dieser Mod verfolgt!"
 	},
 	"achievement": {
 		"a_true_hunter": {
