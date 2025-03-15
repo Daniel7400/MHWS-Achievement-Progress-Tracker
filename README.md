@@ -45,5 +45,5 @@ The following achievements are being tracked:
 4. I recommend using the [Fluffy Mod Manager](https://www.nexusmods.com/site/mods/818) to install this mod. If you want to install manually please refer to the following instructions: [How do I manually install the mod?](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/wiki/FAQ#2-how-do-i-manually-install-the-mod)
 
 ### Credits
-[Daniel7400](https://github.com/Daniel7400) - Creator and maintainer of the [mod](https://www.nexusmods.com/monsterhunterwilds/mods/721).
-[Jakiller21](https://next.nexusmods.com/profile/Jakiller21) - French translation.
+- [Daniel7400](https://github.com/Daniel7400) - Creator and maintainer of the [mod](https://www.nexusmods.com/monsterhunterwilds/mods/721).
+- [Jakiller21](https://next.nexusmods.com/profile/Jakiller21) - French translation.
