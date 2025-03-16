@@ -50,3 +50,4 @@ The following achievements are being tracked:
 - [Krude](https://github.com/Krude) - German translation.
 - [Smantella](https://www.nexusmods.com/users/66169141) - Italian translation.
 - [lvxuanwu123](https://www.nexusmods.com/users/12784843) - Simplified Chinese translation.
+- [PKTrainer](https://next.nexusmods.com/profile/PKTrainer) - Spanish translation.

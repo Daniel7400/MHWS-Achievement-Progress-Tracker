@@ -1,0 +1,136 @@
+{
+    "font": "NotoSansSC-Bold.otf",
+    "unicode_glyph_ranges": [],
+    "associated_in_game_language_option": 5,
+    "ui": {
+        "button": {
+            "reset_config": "Configuración predeterminada",
+            "top_left": "Arriba izquierda",
+            "top_right": "Arriba derecha",
+            "middle": "Centro",
+            "bottom_left": "Abajo izquierda",
+            "bottom_right": "Abajo derecha"
+        },
+        "checkbox": {
+            "enabled": "Activado",
+            "render_horizontally": "Renderizar horizontalmente",
+            "show_completed_achievements": "Mostrar logros completados"
+        },
+        "color_picker": {
+            "box_background": "Fondo de caja",
+            "tracker_background": "Fondo del seguimiento",
+            "progress_bar_background": "Fondo de la barra de progreso",
+            "progress_bar": "Barra de progreso",
+            "progress_bar_complete": "Barra de progreso completada",
+            "tracker_name_text": "Nombre de los logros",
+            "tracker_description_text": "Descripción de los logros",
+            "progress_text": "Texto de la barra de progreso",
+            "progress_complete_text": "Texto de la barra de progreso completada"
+        },
+        "combo_box": {
+            "size": "Tamaño"
+        },
+        "dropdown": {
+            "size": {
+                "small": "Pequeño",
+                "medium": "Mediano",
+                "large": "Grande"
+            }
+        },
+        "header": {
+            "color": "Color",
+            "display": "Visualización",
+            "language": "Idioma",
+            "settings": "Opciones",
+            "tracking": "Seguimiento",
+            "missing": "Falta: %s"
+        },
+        "misc": {
+            "current": "Actual",
+            "select_achievements": "Selecciona logros para seguir"
+        },
+        "selector": {
+            "alignment": "Alineación"
+        },
+        "slider": {
+            "adjust_position": "Ajustar posición"
+        },
+        "tooltip": {
+            "manual_input": "CTRL + Click Izq para ajustar manualmente",
+            "uncheck_achievement": "Desmarca para ocultar un logro concreto"
+        }
+    },
+    "tracker": {
+        "completed": "¡Completado!"
+    },
+    "modal": {
+        "header": "Felicidades",
+        "message": "¡Has completado todos los logros que este mod sigue!"
+    },
+    "achievement": {
+        "a_true_hunter": {
+            "name": "Un cazador de verdad nunca está satisfecho",
+            "description": "Has completado 50 misiones."
+        },
+        "hunters_united_forever": {
+            "name": "Amigos para siempre",
+            "description": "Has completado 100 misiones en multijugador."
+        },
+        "someone_worth_following": {
+            "name": "Alguien a quien seguir",
+            "description": "Has completado 100 misiones con tu camarada Felyne."
+        },
+        "capture_pro": {
+            "name": "Capturador infalible",
+            "description": "Has capturado a 50 monstruos."
+        },
+        "monster_slayer": {
+            "name": "Azote de las bestias",
+            "description": "Has cazado 100 monstruos grandes."
+        },
+        "seasoned_hunter": {
+            "name": "Cazador experto",
+            "description": "Has cazado 50 monstruos curtidos."
+        },
+        "top_of_the_food_chain": {
+            "name": "Cumbre de la cadena alimenticia",
+            "description": "Has cazado 50 superdepredadores."
+        },
+        "east_to_west": {
+            "name": "Vaya donde vaya, un cazador nunca falla",
+            "description": "Has completado 30 tareas secundarias diferentes."
+        },
+        "a_fish_ionado": {
+            "name": "Pezipiante",
+            "description": "Has pescado 30 pescadones."
+        },
+        "campmaster": {
+            "name": "Acampada experta",
+            "description": "Has levantado campamentos temporales en 10 sitios."
+        },
+        "bourgeois_hunter": {
+            "name": "Cazador millonario",
+            "description": "Has tenido 1 000 000 de zenis."
+        },
+        "gossip_hunter": {
+            "name": "A la caza del salseo",
+            "description": "Has visto 30 perfiles de cazador diferentes."
+        },
+        "impregnable_defense": {
+            "name": "Defensa impenetrable",
+            "description": "Has forjado cinco piezas de armadura diferentes de rareza 7 o superior."
+        },
+        "power_is_everything": {
+            "name": "Yo tengo el poder",
+            "description": "Has forjado cinco armas (no artianas) diferentes de rareza 7 o superior."
+        },
+        "explorer_of_the_eastlands": {
+            "name": "Explorador de las tierras del este",
+            "description": "Has obtenido 10 objetos especiales diferentes de rareza 6."
+        },
+        "monster_phd": {
+            "name": "Doctorado en monstruos",
+            "description": "Has cazado muchos monstruos grandes."
+        }
+    }
+}
