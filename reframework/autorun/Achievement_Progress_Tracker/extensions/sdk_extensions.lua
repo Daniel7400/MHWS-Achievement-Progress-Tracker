@@ -408,6 +408,7 @@ function sdk.get_pseudo_bitset_value(pseudo_bitset, enum_type_name, id_as_key)
         pseudo_bitset = true,
         value = pseudo_bitset
     }
+    -- TODO: Make this into a custom class?
 
     -- Add the get field colon function that will be called in the get bitset value function.
     function bitset_wrapper:get_field(field_name)

@@ -1,139 +1,139 @@
 {
-	"font": "NotoSansSC-Bold.otf",
-	"unicode_glyph_ranges": [
-		"0x3000", "0x30FF",
+    "font": "NotoSansSC-Bold.otf",
+    "unicode_glyph_ranges": [
+        "0x3000", "0x30FF",
         "0x31F0", "0x31FF"
-	],
-	"associated_in_game_language_option": 0,
-	"ui": {
-		"button": {
-			"reset_config": "設定をリセット",
-			"top_left": "左上",
+    ],
+    "associated_in_game_language_option": 0,
+    "ui": {
+        "button": {
+            "reset_config": "設定をリセット",
+            "top_left": "左上",
             "top_right": "右上",
-            "middle": "真ん中",
+            "middle": "中央",
             "bottom_left": "左下",
             "bottom_right": "右下"
-		},
-		"checkbox": {
-			"enabled": "有効",
-			"render_horizontally": "トラッカーを水平にレンダリングする",
-			"show_completed_achievements": "完了した実績を表示"
-		},
-		"color_picker": {
-			"box_background": "ボックスの背景",
-			"tracker_background": "達成トラッカーの背景",
-			"progress_bar_background": "進捗バーの背景",
-			"progress_bar": "プログレスバー",
-			"progress_bar_complete": "完了した進捗状況バー",
-			"tracker_name_text": "達成トラッカー名テキスト",
-			"tracker_description_text": "達成トラッカーの説明テキスト",
-			"progress_text": "達成トラッカーの説明テキスト",
-			"progress_complete_text": "完了した進捗状況バーのテキスト"
-		},
-		"combo_box": {
-			"size": "サイズ"
-		},
-		"dropdown": {
-			"size": {
-				"small": "小さい",
-				"medium": "中くらい",
-				"large": "大きい"
-			}
-		},
-		"header": {
-			"color": "色",
-			"display": "画面",
-			"language": "言語",
-			"settings": "設定",
-			"tracking": "追跡",
-			"missing": "欠けているもの:%s"
-		},
-		"misc": {
-			"current": "現在",
-			"select_achievements": "追跡する成果を選択"
-		},
-		"selector": {
-			"alignment": "アライメント"
-		},
-		"slider": {
-			"adjust_position": "位置を調整する"
-		},
-		"tooltip": {
-			"manual_input": "CTRL + 左クリックして手動で入力します",
-			"uncheck_achievement": "特定の達成トラッカーを非表示にするにはチェックを外します"
-		}
-	},
-	"tracker": {
-		"completed": "完了しました！"
-	},
-	"modal": {
-		"header": "おめでとう",
-		"message": "この MOD が追跡するすべての成果を達成しました。"
-	},
-	"achievement": {
-		"a_true_hunter": {
-			"name": "ハンターライフはとまらない！",
-			"description": "クエストを50回クリアした証"
-		},
-		"hunters_united_forever": {
-			"name": "仲間と共に、いつまでも",
-			"description": "マルチプレイでクエストを100回クリアした証"
-		},
-		"someone_worth_following": {
-			"name": "キミとならどこまでも",
-			"description": "オトモを出撃させてクエストを100回クリアした証"
-		},
-		"capture_pro": {
-			"name": "生け捕りのプロ",
-			"description": "モンスターを50頭捕獲した証"
-		},
-		"monster_slayer": {
-			"name": "モンスタースレイヤー",
-			"description": "大型モンスターを100頭狩猟した証"
-		},
-		"seasoned_hunter": {
-			"name": "歴戦のハンター",
-			"description": "歴戦の個体を50頭狩猟した証"
-		},
-		"top_of_the_food_chain": {
-			"name": "生態系の頂点",
-			"description": "生態系の頂点に立つ大型モンスターを50頭狩猟した証"
-		},
-		"east_to_west": {
-			"name": "東奔西走の狩人",
-			"description": "「サイドミッション」を30種クリアした証"
-		},
-		"a_fish_ionado": {
-			"name": "大物釣りに魅せられて",
-			"description": "大物を30匹釣り上げた証"
-		},
-		"campmaster": {
-			"name": "キャンプマスター",
-			"description": "簡易キャンプを10か所に設営した証"
-		},
-		"bourgeois_hunter": {
-			"name": "ブルジョワハンター",
-			"description": "100万ゼニーを所持した証"
-		},
-		"gossip_hunter": {
-			"name": "気になるハンター",
-			"description": "ハンタープロフィールを30人以上確認した証"
-		},
-		"impregnable_defense": {
-			"name": "鉄壁のハンター",
-			"description": "レア度7以上の防具を5種類生産した証"
-		},
-		"power_is_everything": {
-			"name": "力こそすべて",
-			"description": "レア度7以上の派生武器を5種(非アルティアン)類生産した証"
-		},
-		"explorer_of_the_eastlands": {
-			"name": "東の地の探検家",
-			"description": "レア度6の特産品を10種類入手した証"
-		},
-		"monster_phd": {
-			"name": "モンスター博士",
-			"description": "多くの大型モンスターを狩猟した証"
-		}
-	}
+        },
+        "checkbox": {
+            "enabled": "有効",
+            "render_horizontally": "トラッカーを水平に表示する",
+            "show_completed_achievements": "達成した実績を表示"
+        },
+        "color_picker": {
+            "box_background": "枠の色",
+            "tracker_background": "トラッカーの背景色",
+            "progress_bar_background": "進捗バーの背景色",
+            "progress_bar": "進捗バーの色",
+            "progress_bar_complete": "完了済み進捗バーの色",
+            "tracker_name_text": "実績名の文字色",
+            "tracker_description_text": "実績の詳細の文字色",
+            "progress_text": "達成状況の文字色",
+            "progress_complete_text": "｢達成しました！｣の文字色"
+        },
+        "combo_box": {
+            "size": "サイズ"
+        },
+        "dropdown": {
+            "size": {
+                "small": "小",
+                "medium": "中",
+                "large": "大"
+            }
+        },
+        "header": {
+            "color": "色",
+            "display": "表示",
+            "language": "言語",
+            "settings": "設定",
+            "tracking": "トラッカー",
+            "missing": "足りないもの:%s"
+        },
+        "misc": {
+            "current": "現在",
+            "select_achievements": "表示する実績を選択"
+        },
+        "selector": {
+            "alignment": "表示位置"
+        },
+        "slider": {
+            "adjust_position": "位置の調整"
+        },
+        "tooltip": {
+            "manual_input": "CTRL + 左クリックして手動で入力します",
+            "uncheck_achievement": "特定のトラッカーを非表示にするにはチェックを外します"
+        }
+    },
+    "tracker": {
+        "completed": "達成しました！"
+    },
+    "modal": {
+        "header": "おめでとう",
+        "message": "この MOD がサポートするすべての実績を達成しました。"
+    },
+    "achievement": {
+        "a_true_hunter": {
+            "name": "ハンターライフはとまらない！",
+            "description": "クエストを50回クリアした証"
+        },
+        "hunters_united_forever": {
+            "name": "仲間と共に、いつまでも",
+            "description": "マルチプレイでクエストを100回クリアした証"
+        },
+        "someone_worth_following": {
+            "name": "キミとならどこまでも",
+            "description": "オトモを出撃させてクエストを100回クリアした証"
+        },
+        "capture_pro": {
+            "name": "生け捕りのプロ",
+            "description": "モンスターを50頭捕獲した証"
+        },
+        "monster_slayer": {
+            "name": "モンスタースレイヤー",
+            "description": "大型モンスターを100頭狩猟した証"
+        },
+        "seasoned_hunter": {
+            "name": "歴戦のハンター",
+            "description": "歴戦の個体を50頭狩猟した証"
+        },
+        "top_of_the_food_chain": {
+            "name": "生態系の頂点",
+            "description": "生態系の頂点に立つ大型モンスターを50頭狩猟した証"
+        },
+        "east_to_west": {
+            "name": "東奔西走の狩人",
+            "description": "「サイドミッション」を30種クリアした証"
+        },
+        "a_fish_ionado": {
+            "name": "大物釣りに魅せられて",
+            "description": "大物を30匹釣り上げた証"
+        },
+        "campmaster": {
+            "name": "キャンプマスター",
+            "description": "簡易キャンプを10か所に設営した証"
+        },
+        "bourgeois_hunter": {
+            "name": "ブルジョワハンター",
+            "description": "100万ゼニーを所持した証"
+        },
+        "gossip_hunter": {
+            "name": "気になるハンター",
+            "description": "ハンタープロフィールを30人以上確認した証"
+        },
+        "impregnable_defense": {
+            "name": "鉄壁のハンター",
+            "description": "レア度7以上の防具を5種類生産した証"
+        },
+        "power_is_everything": {
+            "name": "力こそすべて",
+            "description": "レア度7以上の派生武器を5種類(アーティア以外)生産した証"
+        },
+        "explorer_of_the_eastlands": {
+            "name": "東の地の探検家",
+            "description": "レア度6の特産品を10種類入手した証"
+        },
+        "monster_phd": {
+            "name": "モンスター博士",
+            "description": "多くの大型モンスターを狩猟した証"
+        }
+    }
 }

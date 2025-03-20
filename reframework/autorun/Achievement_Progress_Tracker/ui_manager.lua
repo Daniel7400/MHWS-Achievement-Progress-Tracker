@@ -298,6 +298,14 @@ function ui_manager.init_module()
                         changed = changed or tracker_changed
                         config_changed = config_changed or changed
 
+                        -- Check if the newly drawn text is being hovered over (since that is when we want to display the tooltip).
+                        if imgui.is_item_hovered() then
+                            -- If yes, then set the tooltip text as the description of the current achievement tracker and display it while the item stays hovered.
+                            imgui.set_tooltip(achievement_tracker.description)
+                            imgui.begin_tooltip()
+                            imgui.end_tooltip()
+                        end
+
                         -- Create a new tree node to list any missing entries the current tracker may have. This is done by checking if the current achievement tracker
                         -- is enabled AND NOT complete AND has collection params defined AND has missing.
                         if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
