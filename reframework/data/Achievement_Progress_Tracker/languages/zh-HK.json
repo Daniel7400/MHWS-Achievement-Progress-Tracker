@@ -1,0 +1,140 @@
+{
+    "font": "NotoSansSC-Bold.otf",
+    "unicode_glyph_ranges": [
+        "0x3000", "0x30FF",
+        "0x31F0", "0x31FF",
+        "0x4E00", "0x9FAF"
+    ],
+    "associated_in_game_language_option": 11,
+    "ui": {
+        "button": {
+            "reset_config": "重設設定",
+            "top_left": "左上方",
+            "top_right": "右上方",
+            "middle": "中間",
+            "bottom_left": "左下方",
+            "bottom_right": "右下方"
+        },
+        "checkbox": {
+            "enabled": "啟用",
+            "render_horizontally": "橫向顯示追蹤器",
+            "show_completed_achievements": "顯示已完成的成就"
+        },
+        "color_picker": {
+            "box_background": "追蹤器邊框",
+            "tracker_background": "追蹤器背景",
+            "progress_bar_background": "進度條背景",
+            "progress_bar": "進度條",
+            "progress_bar_complete": "已完成進度條",
+            "tracker_name_text": "成就名稱文本",
+            "tracker_description_text": "成就描述文本",
+            "progress_text": "進度條文本",
+            "progress_complete_text": "已完成進度條文本"
+        },
+        "combo_box": {
+            "size": "尺寸"
+        },
+        "dropdown": {
+            "size": {
+                "small": "小型",
+                "medium": "中型",
+                "large": "大型"
+            }
+        },
+        "header": {
+            "color": "顏色",
+            "display": "顯示",
+            "language": "語言",
+            "settings": "設定",
+            "tracking": "追蹤",
+            "missing": "未獲得：%s"
+        },
+        "misc": {
+            "current": "當前的",
+            "select_achievements": "選擇要追蹤的成就"
+        },
+        "selector": {
+            "alignment": "顯示方位"
+        },
+        "slider": {
+            "adjust_position": "調整位置"
+        },
+        "tooltip": {
+            "manual_input": "CTRL + 左鍵單擊手動輸入",
+            "uncheck_achievement": "取消選中以隱藏特定成就追蹤器"
+        }
+    },
+    "tracker": {
+        "completed": "完成！"
+    },
+    "modal": {
+        "header": "恭喜",
+        "message": "您已完成追蹤的所有成就！"
+    },
+    "achievement": {
+        "a_true_hunter": {
+            "name": "獵人生活永無止境！",
+            "description": "完成50次任務的證明"
+        },
+        "hunters_united_forever": {
+            "name": "永遠和夥伴在一起",
+            "description": "以多人遊玩完成100次任務的證明"
+        },
+        "someone_worth_following": {
+            "name": "伴你走天涯",
+            "description": "在隨從出擊的狀態下完成100次任務的證明"
+        },
+        "capture_pro": {
+            "name": "活捉的專家",
+            "description": "捕獲50頭魔物的證明"
+        },
+        "monster_slayer": {
+            "name": "魔物剋星",
+            "description": "狩獵100頭大型魔物的證明"
+        },
+        "seasoned_hunter": {
+            "name": "身經百戰的獵人",
+            "description": "狩獵50頭歷戰個體的證明"
+        },
+        "top_of_the_food_chain": {
+            "name": "生態系頂點",
+            "description": "狩獵50頭君臨生態系頂點的大型魔物的證明"
+        },
+        "east_to_west": {
+            "name": "東奔西走的獵人",
+            "description": "完成30個次要使命的證明"
+        },
+        "a_fish_ionado": {
+            "name": "為釣大魚著迷",
+            "description": "釣起30隻大魚的證明"
+        },
+        "campmaster": {
+            "name": "營地大師",
+            "description": "在10個地方設置簡易營地的證明"
+        },
+        "bourgeois_hunter": {
+            "name": "中產階級獵人",
+            "description": "持有100萬Zeny的證明"
+        },
+        "gossip_hunter": {
+            "name": "好奇的獵人",
+            "description": "確認至少30人的獵人簡介的證明"
+        },
+        "impregnable_defense": {
+            "name": "鐵壁獵人",
+            "description": "生產5種稀有度7或以上防具的證明"
+        },
+        "power_is_everything": {
+            "name": "力量就是一切",
+            "description": "生產5種稀有度7或以上的衍生(非機械)武器的證明"
+        },
+        "explorer_of_the_eastlands": {
+            "name": "東部地區的探險家",
+            "description": "獲得10種稀有度6特產品的證明"
+        },
+        "monster_phd": {
+            "name": "魔物博士",
+            "description": "狩獵許多大型魔物的證明"
+        }
+    }
+}
