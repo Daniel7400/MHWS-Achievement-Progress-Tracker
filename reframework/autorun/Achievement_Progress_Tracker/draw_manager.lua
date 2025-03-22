@@ -225,8 +225,10 @@ function draw_manager.init_module()
                     progress_bar_height,
                     padding = get_draw_params(screen_w, screen_h)
                 
-                -- Draw the background box to the screen.
-                d2d.fill_rect(x, y, width, height, config_manager.config.current.display.color.box_background)
+                -- If enabled, draw the background box to the screen.
+                if config_manager.config.current.display.render_box_background then
+                    d2d.fill_rect(x, y, width, height, config_manager.config.current.display.color.box_background)
+                end
 
                 -- Create a number to track the current number of the achievement tracker being displayed.
                 local display_number = 1
@@ -270,11 +272,13 @@ function draw_manager.init_module()
                             progress_bar_width = math.floor(achievement_tracker.content_display_width)
                         end
                         
-                        -- Draw the achievement tracker background.
-                        d2d.fill_rect(local_x, local_y,
-                            tracker_width - (2 * padding),
-                            image_height + (2 * padding),
-                            config_manager.config.current.display.color.tracker_background)
+                        -- If enabled, draw the achievement tracker background.
+                        if config_manager.config.current.display.render_tracker_background then
+                            d2d.fill_rect(local_x, local_y,
+                                tracker_width - (2 * padding),
+                                image_height + (2 * padding),
+                                config_manager.config.current.display.color.tracker_background)
+                        end
                         
                         -- Draw the achievement image.
                         d2d.image(draw_manager.images[achievement_tracker.image_path],

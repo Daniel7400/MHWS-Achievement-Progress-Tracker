@@ -28,7 +28,9 @@ local language_manager = {
                 checkbox = {
                     enabled = "Enabled",
                     render_horizontally = "Render Trackers Horizontally",
-                    show_completed_achievements = "Show Completed Achievements"
+                    show_completed_achievements = "Show Completed Achievements",
+                    render_box_background = "Show Box Background",
+                    render_tracker_background = "Show Achievement Tracker Background",
                 },
                 color_picker = {
                     box_background = "Box Background",
