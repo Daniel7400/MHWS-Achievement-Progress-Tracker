@@ -16,6 +16,13 @@ local constants <const> = {
         | 1 << 20   --[[ Display RGB Value Fields ]]
         | 1 << 22,  --[[ Display Hex Value Field ]]
 
+    -- The standard options to use within a color picker with alpha.
+    color_picker_options_with_alpha = 1 << 3  --[[ No Options ]]
+        | 1 << 16   --[[ Display Alpha Bar ]]
+        | 1 << 18   --[[ Display Alpha Current Preview ]]
+        | 1 << 20   --[[ Display RGB Value Fields ]]
+        | 1 << 22,  --[[ Display Hex Value Field ]]
+
     -- The dropdown options for the size of the achievement trackers.
     size_option = {
         -- The small size option, this will NOT include the description.
