@@ -54,6 +54,6 @@ The following achievements are being tracked:
 - [Krude](https://github.com/Krude) - German translation.
 - [Smantella](https://www.nexusmods.com/users/66169141) - Italian translation.
 - [lvxuanwu123](https://www.nexusmods.com/users/12784843) - Simplified Chinese translation.
-- [rankx](https://www.nexusmods.com/monsterhunterwilds/users/77159328) / [ChanHong1024](https://github.com/ChanHong1024) - Traditional Chinese translation.
+- [rankx](https://www.nexusmods.com/users/77159328) / [ChanHong1024](https://github.com/ChanHong1024) - Traditional Chinese translation.
 - [PKTrainer](https://next.nexusmods.com/profile/PKTrainer) - Spanish translation.
 - [tetorapot](https://www.nexusmods.com/users/220084629) - Japanese translation.
