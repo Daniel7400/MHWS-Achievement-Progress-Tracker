@@ -131,6 +131,22 @@
         "monster_phd": {
             "name": "Doctorado en monstruos",
             "description": "Has cazado muchos monstruos grandes."
-        }
+        },
+		"mini_crown_collector": {
+			"name": "Mini-monarca",
+			"description": "Has conseguido una minicorona para 10 o más monstruos de tu registro de cazador."
+		},
+		"mini_crown_master": {
+			"name": "Rey de mini-reyes",
+			"description": "Has conseguido una minicorona para muchos monstruos de tu registro de cazador."
+		},
+		"giant_crown_collector": {
+			"name": "Mega-monarca",
+			"description": "Has conseguido una corona de oro para 10 o más monstruos de tu registro de cazador."
+		},
+		"giant_crown_master": {
+			"name": "Rey de reyes",
+			"description": "Has conseguido una corona de oro para muchos monstruos de tu registro de cazador."
+		}
     }
 }

@@ -131,6 +131,22 @@
 		"monster_phd": {
 			"name": "PhD em Monstros",
 			"description": "Caçou vários monstros grandes diferentes."
+		},
+		"mini_crown_collector": {
+			"name": "Colecionador de Coroas em Miniatura",
+			"description": "Obteve coroas em miniatura para 10 ou mais monstros no Histórico de Caçadas."
+		},
+		"mini_crown_master": {
+			"name": "Mestre das Coroas em Miniatura",
+			"description": "Obteve coroas em miniatura para vários monstros no Histórico de Caçadas."
+		},
+		"giant_crown_collector": {
+			"name": "Coleção de Coroas Gigantes",
+			"description": "Obteve coroas de ouro para 10 ou mais monstros no Histórico de Caçadas."
+		},
+		"giant_crown_master": {
+			"name": "Mestre das Coroas Gigantes",
+			"description": "Obteve coroas de ouro para vários monstros no Histórico de Caçadas."
 		}
 	}
 }

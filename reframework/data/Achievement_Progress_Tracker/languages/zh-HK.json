@@ -135,6 +135,22 @@
         "monster_phd": {
             "name": "魔物博士",
             "description": "狩獵許多大型魔物的證明"
-        }
+        },
+		"mini_crown_collector": {
+			"name": "迷你皇冠收藏家",
+			"description": "於狩獵紀錄中獲得至少10頭魔物的最小冠的證明"
+		},
+		"mini_crown_master": {
+			"name": "迷你皇冠大師",
+			"description": "於狩獵紀錄中獲得許多魔物的最小冠的證明"
+		},
+		"giant_crown_collector": {
+			"name": "巨大皇冠收藏家",
+			"description": "於狩獵紀錄中獲得至少10頭魔物的金冠的證明"
+		},
+		"giant_crown_master": {
+			"name": "巨大皇冠大師",
+			"description": "於狩獵紀錄中獲得許多魔物的金冠的證明"
+		}
     }
 }

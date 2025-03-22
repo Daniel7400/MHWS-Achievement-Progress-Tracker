@@ -131,6 +131,22 @@
         "monster_phd": {
             "name": "Laurea in mostrologia",
             "description": "Caccia molti mostri grandi diversi."
-        }
+        },
+		"mini_crown_collector": {
+			"name": "Collezionista di mini corone",
+			"description": "Ottieni una mini corona per 10 o più mostri."
+		},
+		"mini_crown_master": {
+			"name": "Esperto di mini corone",
+			"description": "Ottieni una mini corona per molti mostri."
+		},
+		"giant_crown_collector": {
+			"name": "Collezionista di grandi corone",
+			"description": "Ottieni una grande corona (oro) per 10 o più mostri."
+		},
+		"giant_crown_master": {
+			"name": "Esperto di grandi corone",
+			"description": "Ottieni una grande corona (oro) per molti mostri."
+		}
     }
 }

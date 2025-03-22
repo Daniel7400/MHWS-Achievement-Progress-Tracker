@@ -22,7 +22,7 @@ local draw_manager = {
         congrats_header = nil,
 
         -- The font used to display the message text in the congrats modal.
-        congrats_message = nil,
+        congrats_message = nil
     },
 
     -- The images for the achievements being tracked.

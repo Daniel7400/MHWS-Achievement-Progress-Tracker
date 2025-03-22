@@ -1,5 +1,5 @@
 # Achievement Progress Tracker
-Monster Hunter Wilds Mod - Track and display your progress on certain achievements that either aren't shown anywhere or are not easily accessible.
+Monster Hunter Wilds Mod - Track and display your progress on certain achievements (including crown tracking) that either aren't shown anywhere or are not easily accessible.
 
 ![image](https://github.com/user-attachments/assets/ed4d2765-6f00-41fe-a5be-446bce354027)
 
@@ -21,6 +21,10 @@ The following achievements are being tracked:
 - Power Is Everything
 - Explorer of the Eastlands
 - Monster Ph.D.
+- Miniature Crown Collector
+- Miniature Crown Master
+- Giant Crown Collector
+- Giant Crown Master
     
 ***
 
@@ -50,6 +54,6 @@ The following achievements are being tracked:
 - [Krude](https://github.com/Krude) - German translation.
 - [Smantella](https://www.nexusmods.com/users/66169141) - Italian translation.
 - [lvxuanwu123](https://www.nexusmods.com/users/12784843) - Simplified Chinese translation.
-- [rankx](https://www.nexusmods.com/monsterhunterwilds/users/77159328) - Traditional Chinese translation.
+- [rankx](https://www.nexusmods.com/monsterhunterwilds/users/77159328) / [ChanHong1024](https://github.com/ChanHong1024) - Traditional Chinese translation.
 - [PKTrainer](https://next.nexusmods.com/profile/PKTrainer) - Spanish translation.
 - [tetorapot](https://www.nexusmods.com/users/220084629) - Japanese translation.

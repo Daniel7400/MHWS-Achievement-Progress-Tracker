@@ -134,6 +134,22 @@
         "monster_phd": {
             "name": "モンスター博士",
             "description": "多くの大型モンスターを狩猟した証"
-        }
+        },
+		"mini_crown_collector": {
+			"name": "ミニチュアコレクタークラウン",
+			"description": "狩猟記録に記録されるモンスター10頭以上に最小冠をつけた証"
+		},
+		"mini_crown_master": {
+			"name": "ミニチュアマスタークラウン",
+			"description": "狩猟記録に記録される多くのモンスターに最小冠をつけた証"
+		},
+		"giant_crown_collector": {
+			"name": "ビッグコレクタークラウン",
+			"description": "狩猟記録に記録されるモンスター10頭以上に金冠をつけた証"
+		},
+		"giant_crown_master": {
+			"name": "ビッグマスタークラウン",
+			"description": "狩猟記録に記録される多くのモンスターに金冠をつけた証"
+		}
     }
 }

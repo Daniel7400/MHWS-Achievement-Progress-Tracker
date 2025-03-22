@@ -651,7 +651,7 @@ local tracking_manager = {
             language_manager.language.default.achievement.monster_phd.name,
             language_manager.language.default.achievement.monster_phd.description,
             "19a29baf3cc204ecbba1b03bbd417fc095a8121e.jpg",
-            29, 0,
+            table.length(constants.base_monster), 0,
             constants.update_source.enemy_report,
             constants.acquisition_method.call,
             "get_Boss",
@@ -674,8 +674,8 @@ local tracking_manager = {
                     -- Get the fixed id for the current boss (enemy).
                     local fixed_id = boss:get_field("FixedId")
 
-                    -- Check if the current boss fixed id exists in enemy phd candidate collection.
-                    if constants.enemy_phd_candidate[fixed_id] then
+                    -- Check if the current boss fixed id exists in base monster collection.
+                    if constants.base_monster[fixed_id] then
                         -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
                         local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
 
@@ -703,7 +703,271 @@ local tracking_manager = {
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.enemy_phd_candidate
+            constants.base_monster
+        ),
+
+        [constants.achievement.mini_crown_collector] = achievementtracker:new_with_collection(constants.achievement.mini_crown_collector,
+            constants.game_award_fixed_id.mini_crown_collector,
+            language_manager.language.default.achievement.mini_crown_collector.name,
+            language_manager.language.default.achievement.mini_crown_collector.description,
+            "c3b6b63d98ed79d376c8533a090477e763674c56.jpg",
+            10, 0,
+            constants.update_source.enemy_report,
+            constants.acquisition_method.call,
+            "get_Boss",
+            ---@param boss_report table
+            ---@param tracker_self achievementtracker
+            ---@return number
+            function(boss_report, tracker_self)
+                -- Check if the provided boss report is NOT valid.
+                if not boss_report then
+                    -- If yes, then return 0 by default.
+                    return 0
+                end
+
+                -- Reset the contents of the found and missing tables on the collection params.
+                tracker_self.collection_params.found = {}
+                tracker_self.collection_params.missing = {}
+
+                -- Iterate over each boss report entry.
+                for _, boss in pairs(boss_report) do
+                    -- Get the fixed id for the current boss (enemy).
+                    local fixed_id = boss:get_field("FixedId")
+
+                    -- Get the crown data, if any, for the fixed id for the current boss (enemy).
+                    local crown_data = constants.crown_target[fixed_id]
+
+                    -- Check if the crown data is NOT null (nil).
+                    if crown_data ~= nil then
+                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
+                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
+
+                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
+                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
+                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
+
+                        -- Check if the found item name is null (nil) or whitespace.
+                        if string.is_null_or_whitespace(name) then
+                            -- If yes, then just set the boss (enemy) name as the english name.
+                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
+                        end
+
+                        -- Get the minimum hunted size for the current boss (enemy) id.
+                        local min_hunted_size = sdk.constants.game_function.get_monster_min_size_record_func:call(nil, id)
+
+                        -- Check if the minimum hunted size is less than or equal to the mini size on the crown data.
+                        if min_hunted_size <= crown_data.mini_size then
+                            -- If yes, then insert the boss (enemy) name into the found collection.
+                            table.insert(tracker_self.collection_params.found, name)
+                        else
+                            -- Insert the boss (enemy) name into the missing collection.
+                            table.insert(tracker_self.collection_params.missing, name)
+                        end
+                    end
+                end
+
+                -- Return the length of the found collection.
+                return #tracker_self.collection_params.found
+            end,
+            constants.crown_target
+        ),
+
+        [constants.achievement.mini_crown_master] = achievementtracker:new_with_collection(constants.achievement.mini_crown_master,
+            constants.game_award_fixed_id.mini_crown_master,
+            language_manager.language.default.achievement.mini_crown_master.name,
+            language_manager.language.default.achievement.mini_crown_master.description,
+            "e7da4f45efb6e089c2c4da9219d2029c16fa9fd2.jpg",
+            table.length(constants.crown_target), 0,
+            constants.update_source.enemy_report,
+            constants.acquisition_method.call,
+            "get_Boss",
+            ---@param boss_report table
+            ---@param tracker_self achievementtracker
+            ---@return number
+            function(boss_report, tracker_self)
+                -- Check if the provided boss report is NOT valid.
+                if not boss_report then
+                    -- If yes, then return 0 by default.
+                    return 0
+                end
+
+                -- Reset the contents of the found and missing tables on the collection params.
+                tracker_self.collection_params.found = {}
+                tracker_self.collection_params.missing = {}
+
+                -- Iterate over each boss report entry.
+                for _, boss in pairs(boss_report) do
+                    -- Get the fixed id for the current boss (enemy).
+                    local fixed_id = boss:get_field("FixedId")
+
+                    -- Get the crown data, if any, for the fixed id for the current boss (enemy).
+                    local crown_data = constants.crown_target[fixed_id]
+
+                    -- Check if the crown data is NOT null (nil).
+                    if crown_data ~= nil then
+                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
+                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
+
+                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
+                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
+                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
+
+                        -- Check if the found item name is null (nil) or whitespace.
+                        if string.is_null_or_whitespace(name) then
+                            -- If yes, then just set the boss (enemy) name as the english name.
+                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
+                        end
+
+                        -- Get the minimum hunted size for the current boss (enemy) id.
+                        local min_hunted_size = sdk.constants.game_function.get_monster_min_size_record_func:call(nil, id)
+
+                        -- Check if the minimum hunted size is less than or equal to the mini size on the crown data.
+                        if min_hunted_size <= crown_data.mini_size then
+                            -- If yes, then insert the boss (enemy) name into the found collection.
+                            table.insert(tracker_self.collection_params.found, name)
+                        else
+                            -- Insert the boss (enemy) name into the missing collection.
+                            table.insert(tracker_self.collection_params.missing, name)
+                        end
+                    end
+                end
+
+                -- Return the length of the found collection.
+                return #tracker_self.collection_params.found
+            end,
+            constants.crown_target
+        ),
+
+        [constants.achievement.giant_crown_collector] = achievementtracker:new_with_collection(constants.achievement.giant_crown_collector,
+            constants.game_award_fixed_id.giant_crown_collector,
+            language_manager.language.default.achievement.giant_crown_collector.name,
+            language_manager.language.default.achievement.giant_crown_collector.description,
+            "4892108fcf89dec2e32ab155629ab1621c7ecc0d.jpg",
+            10, 0,
+            constants.update_source.enemy_report,
+            constants.acquisition_method.call,
+            "get_Boss",
+            ---@param boss_report table
+            ---@param tracker_self achievementtracker
+            ---@return number
+            function(boss_report, tracker_self)
+                -- Check if the provided boss report is NOT valid.
+                if not boss_report then
+                    -- If yes, then return 0 by default.
+                    return 0
+                end
+
+                -- Reset the contents of the found and missing tables on the collection params.
+                tracker_self.collection_params.found = {}
+                tracker_self.collection_params.missing = {}
+
+                -- Iterate over each boss report entry.
+                for _, boss in pairs(boss_report) do
+                    -- Get the fixed id for the current boss (enemy).
+                    local fixed_id = boss:get_field("FixedId")
+
+                    -- Get the crown data, if any, for the fixed id for the current boss (enemy).
+                    local crown_data = constants.crown_target[fixed_id]
+
+                    -- Check if the crown data is NOT null (nil).
+                    if crown_data ~= nil then
+                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
+                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
+
+                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
+                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
+                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
+
+                        -- Check if the found item name is null (nil) or whitespace.
+                        if string.is_null_or_whitespace(name) then
+                            -- If yes, then just set the boss (enemy) name as the english name.
+                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
+                        end
+
+                        -- Get the maximum hunted size for the current boss (enemy) id.
+                        local max_hunted_size = sdk.constants.game_function.get_monster_max_size_record_func:call(nil, id)
+
+                        -- Check if the maximum hunted size is greater than or equal to the gold size on the crown data.
+                        if max_hunted_size >= crown_data.gold_size then
+                            -- If yes, then insert the boss (enemy) name into the found collection.
+                            table.insert(tracker_self.collection_params.found, name)
+                        else
+                            -- Insert the boss (enemy) name into the missing collection.
+                            table.insert(tracker_self.collection_params.missing, name)
+                        end
+                    end
+                end
+
+                -- Return the length of the found collection.
+                return #tracker_self.collection_params.found
+            end,
+            constants.crown_target
+        ),
+
+        [constants.achievement.giant_crown_master] = achievementtracker:new_with_collection(constants.achievement.giant_crown_master,
+            constants.game_award_fixed_id.giant_crown_master,
+            language_manager.language.default.achievement.giant_crown_master.name,
+            language_manager.language.default.achievement.giant_crown_master.description,
+            "1e9e0612ec6b1e5d5bc155a30c99cb6a578cef5e.jpg",
+            table.length(constants.crown_target), 0,
+            constants.update_source.enemy_report,
+            constants.acquisition_method.call,
+            "get_Boss",
+            ---@param boss_report table
+            ---@param tracker_self achievementtracker
+            ---@return number
+            function(boss_report, tracker_self)
+                -- Check if the provided boss report is NOT valid.
+                if not boss_report then
+                    -- If yes, then return 0 by default.
+                    return 0
+                end
+
+                -- Reset the contents of the found and missing tables on the collection params.
+                tracker_self.collection_params.found = {}
+                tracker_self.collection_params.missing = {}
+
+                -- Iterate over each boss report entry.
+                for _, boss in pairs(boss_report) do
+                    -- Get the fixed id for the current boss (enemy).
+                    local fixed_id = boss:get_field("FixedId")
+
+                    -- Get the crown data, if any, for the fixed id for the current boss (enemy).
+                    local crown_data = constants.crown_target[fixed_id]
+
+                    -- Check if the crown data is NOT null (nil).
+                    if crown_data ~= nil then
+                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
+                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
+
+                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
+                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
+                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
+
+                        -- Check if the found item name is null (nil) or whitespace.
+                        if string.is_null_or_whitespace(name) then
+                            -- If yes, then just set the boss (enemy) name as the english name.
+                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
+                        end
+
+                        -- Get the maximum hunted size for the current boss (enemy) id.
+                        local max_hunted_size = sdk.constants.game_function.get_monster_max_size_record_func:call(nil, id)
+
+                        -- Check if the maximum hunted size is greater than or equal to the gold size on the crown data.
+                        if max_hunted_size >= crown_data.gold_size then
+                            -- If yes, then insert the boss (enemy) name into the found collection.
+                            table.insert(tracker_self.collection_params.found, name)
+                        else
+                            -- Insert the boss (enemy) name into the missing collection.
+                            table.insert(tracker_self.collection_params.missing, name)
+                        end
+                    end
+                end
+
+                -- Return the length of the found collection.
+                return #tracker_self.collection_params.found
+            end,
+            constants.crown_target
         )
     },
 

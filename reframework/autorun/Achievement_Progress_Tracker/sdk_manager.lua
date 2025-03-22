@@ -11,7 +11,7 @@ local sdk_manager = {
     mission_manager = nil,
 
     -- The player manager managed singleton from the sdk.
-    player_manager = nil,
+    player_manager = nil
 }
 
 ---
@@ -331,8 +331,35 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.quest_reward, "enter", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Capture Pro` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.capture_pro]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Capture Pro` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.capture_pro], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Monster Slayer` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.monster_slayer], user_save_data) or updated
+
+        -- Attempt to update then capture whether the tracker for the `Top of the Food Chain` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.top_of_the_food_chain], user_save_data) or updated
+
+        -- Attempt to update then capture whether the tracker for the `Monster Ph.D.` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.monster_phd], user_save_data) or updated
+
+        -- Attempt to update then capture whether the tracker for the `Miniature Crown Collector` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.mini_crown_collector], user_save_data) or updated
+
+        -- Attempt to update then capture whether the tracker for the `Miniature Crown Master` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.mini_crown_master], user_save_data) or updated
+
+        -- Attempt to update then capture whether the tracker for the `Giant Crown Collector` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.giant_crown_collector], user_save_data) or updated
+
+        -- Attempt to update then capture whether the tracker for the `Giant Crown Master` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.giant_crown_master], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -359,17 +386,8 @@ function sdk_manager.init_module()
             -- Attempt to update then capture whether the tracker for the `Someone Worth Following` achievement was updated, then OR the result with the updated flag.
             updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.someone_worth_following], user_save_data) or updated
 
-            -- Attempt to update then capture whether the tracker for the `Monster Slayer` achievement was updated, then OR the result with the updated flag.
-            updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.monster_slayer], user_save_data) or updated
-
             -- Attempt to update then capture whether the tracker for the `Seasoned Hunter` achievement was updated, then OR the result with the updated flag.
             updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.seasoned_hunter], user_save_data) or updated
-
-            -- Attempt to update then capture whether the tracker for the `Top of the Food Chain` achievement was updated, then OR the result with the updated flag.
-            updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.top_of_the_food_chain], user_save_data) or updated
-
-            -- Attempt to update then capture whether the tracker for the `Monster Ph.D.` achievement was updated, then OR the result with the updated flag.
-            updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.monster_phd], user_save_data) or updated
 
             -- Check if the updated flag is true.
             if updated then

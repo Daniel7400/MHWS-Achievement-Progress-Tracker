@@ -131,6 +131,22 @@
 		"monster_phd": {
 			"name": "Tiến sĩ quái vật",
 			"description": "Săn lùng nhiều quái vật lớn khác nhau."
+		},
+		"mini_crown_collector": {
+			"name": "Bộ sưu tập vương miện thu nhỏ",
+			"description": "Nhận được một vương miện thu nhỏ cho 10 quái thú trở lên trong Nhật ký săn bắn."
+		},
+		"mini_crown_master": {
+			"name": "Bậc thầy vương miện thu nhỏ",
+			"description": "Nhận được một vương miện thu nhỏ cho nhiều quái vật trong Nhật ký săn bắn."
+		},
+		"giant_crown_collector": {
+			"name": "Nhà sưu tập vương miện khổng lồ",
+			"description": "Nhận được vương miện vàng cho 10 quái thú trở lên trong Nhật ký săn bắn."
+		},
+		"giant_crown_master": {
+			"name": "Bậc thầy vương miện khổng lồ",
+			"description": "Nhận được vương miện vàng cho nhiều quái thú trong Nhật ký săn bắn."
 		}
 	}
 }

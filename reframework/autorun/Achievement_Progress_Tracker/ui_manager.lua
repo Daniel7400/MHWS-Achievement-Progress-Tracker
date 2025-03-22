@@ -104,14 +104,14 @@ function ui_manager.init_module()
 
     re.on_draw_ui(function()
         --[[ For reference: https://cursey.github.io/reframework-book/api/imgui.html ]]
-    
+
         -- Define the flags that will track when values in the UI are changed.
         local config_changed,
             language_changed,
             tracking_size_changed,
             tracking_changed,
             changed = false, false, false, false, false
-        
+
         -- Define the flags that will track when something is reset (when the reset button is pressed).
         local tracking_reset,
             language_reset = false, false
@@ -119,8 +119,8 @@ function ui_manager.init_module()
         -- Set the language index to default to 1 (default).
         local language_index = 1
 
-        -- Create a new tree node using the mod name from constants.
-        if imgui.tree_node(constants.mod_name) then
+        -- Create a new collapsing header using the mod name from constants.
+        if imgui.collapsing_header(constants.mod_name) then
 
             -- Push the font to ImGUI associated with the font name associated with the current language.
             imgui.push_font(ui_manager.fonts[language_manager.language.current.font])
@@ -137,12 +137,12 @@ function ui_manager.init_module()
                 tracking_reset = true
                 language_reset = true
             end
-    
+
             -- Create a checkbox that a user can use to enable/disable the functionality of the mod.
             changed, config_manager.config.current.enabled = imgui.checkbox(language_manager.language.current.ui.checkbox.enabled,
                 config_manager.config.current.enabled)
             config_changed = config_changed or changed
-    
+
             -- Create a new tree node for all of the mod settings.
             if imgui.tree_node(language_manager.language.current.ui.header.settings) then
 
@@ -192,7 +192,7 @@ function ui_manager.init_module()
 
                     -- Create a new tree node for all settings relating to the color selections.
                     if imgui.tree_node(language_manager.language.current.ui.header.color) then
-                    
+
                         -- Create a new counter that will track how many color pickers have been added.
                         local color_counter = 0
 
@@ -273,7 +273,7 @@ function ui_manager.init_module()
 
                 -- Create a new tree node for all settings relating to the achievement tracking.
                 if imgui.tree_node(language_manager.language.current.ui.header.tracking) then
-                    
+
                     -- Create a checkbox that a user can use to enable/disable whether completed achievements should be displayed or not.
                     tracking_changed, config_manager.config.current.display.show_completed = imgui.checkbox(
                         language_manager.language.current.ui.checkbox.show_completed_achievements,
@@ -310,7 +310,7 @@ function ui_manager.init_module()
                         -- is enabled AND NOT complete AND has collection params defined AND has missing.
                         if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
                             and #achievement_tracker.collection_params.missing > 0 and imgui.tree_node(string.format(language_manager.language.current.ui.header.missing, achievement_tracker.name)) then
-                            
+
                             -- If yes, then iterate over each missing entry.
                             for _, missing_entry in ipairs(achievement_tracker.collection_params.missing) do
                                 -- Draw some text with the value of the missing entry.
@@ -339,20 +339,17 @@ function ui_manager.init_module()
                         config_manager.config.current.language, language_manager.language.names)
                     language_changed = language_changed or language_selected
                     config_changed = language_changed or config_changed
-                    
+
                     -- Close the Language tree node.
                     imgui.tree_pop()
                 end
-    
+
                 -- Close the Settings tree node.
                 imgui.tree_pop()
             end
 
             -- Pop the font that was pushed earlier to return to the last used (default) REFramework font.
             imgui.pop_font()
-
-            -- Close the tree node for the mod.
-            imgui.tree_pop()
         end
 
         -- Check if the language was reset or the option was changed.
@@ -377,12 +374,12 @@ function ui_manager.init_module()
             ui_manager.size_options[constants.size_option.large] =
                 language_manager.language.current.ui.dropdown.size.large
         end
-    
+
         -- Check if the config was changed.
         if config_changed then
             -- If yes, then save the current config into the config file.
             config_manager.save()
-    
+
             -- Check if the mod enabled option was turned off (disabled).
             if not config_manager.config.current.enabled then
                 -- If yes, then reset the values on the draw manager since it will not be drawing anything anymore.

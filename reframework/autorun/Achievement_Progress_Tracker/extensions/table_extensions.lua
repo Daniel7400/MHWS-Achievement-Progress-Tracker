@@ -198,6 +198,35 @@ function table.is_array(list)
     return true
 end
 
+---
+--- Returns the number that represents the number of elements in the provided `list`. This should only be used when it is known ahead of time to be a dictionary type table, otherwise `#list` should be used.
+---
+---@param list table The table to to check the length of.
+---
+---@return number length The number that represents the number of elements in the provided list.
+function table.length(list)
+    -- Assert the provided value for list is a table.
+    assert(type(list) == "table", "The provided 'list' must be a table.")
+
+    -- Check if the provided list is nil.
+    if list == nil then
+        -- If yes, then return 0.
+        return 0
+    end
+
+    -- Initialize the length value that will be returned.
+    local length = 0
+
+    -- Iterate over each pair in the provided list, discarding the key and value.
+    for _ in pairs(list) do
+        -- Increment the length by 1.
+        length = length + 1
+    end
+
+    -- Return the length value.
+    return length
+end
+
 local spacing <const> = "    "
 
 ---

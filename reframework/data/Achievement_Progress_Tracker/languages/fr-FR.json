@@ -131,6 +131,22 @@
         "monster_phd": {
             "name": "Professeur ès monstrum",
             "description": "Chasser beaucoup de grands monstres différents."
-        }
+        },
+		"mini_crown_collector": {
+			"name": "Marquis de la chasse",
+			"description": "Obtenir une petite couronne pour 10 monstres."
+		},
+		"mini_crown_master": {
+			"name": "Prince de la chasse",
+			"description": "Obtenir une petite couronne pour beaucoup de monstres."
+		},
+		"giant_crown_collector": {
+			"name": "Empereur de la chasse",
+			"description": "Obtenir une grande couronne en or pour 10 monstres."
+		},
+		"giant_crown_master": {
+			"name": "Dieu de la chasse",
+			"description": "Obtenir une grande couronne en or pour beaucoup de monstres."
+		}
     }
 }

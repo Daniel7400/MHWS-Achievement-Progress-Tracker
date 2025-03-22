@@ -131,6 +131,22 @@
 		"monster_phd": {
 			"name": "Doktor der Monsterologie",
 			"description": "Erjage viele verschiedene große Monster."
+		},
+		"mini_crown_collector": {
+			"name": "Sammlung kleiner Kronen",
+			"description": "Verdiene für mindestens zehn Monster eine kleine Krone im Jagdprotokoll."
+		},
+		"mini_crown_master": {
+			"name": "Kollektion kleiner Kronen",
+			"description": "Verdiene für viele Monster eine kleine Krone im Jagdprotokoll."
+		},
+		"giant_crown_collector": {
+			"name": "Sammlung großer Kronen",
+			"description": "Verdiene für mindestens zehn Monster eine goldene Krone im Jagdprotokoll."
+		},
+		"giant_crown_master": {
+			"name": "Kollektion großer Kronen",
+			"description": "Verdiene für viele Monster eine goldene Krone im Jagdprotokoll."
 		}
 	}
 }

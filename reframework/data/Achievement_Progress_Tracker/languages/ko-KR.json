@@ -134,6 +134,22 @@
 		"monster_phd": {
 			"name": "몬스터 박사",
 			"description": "대형 몬스터를 많이 사냥한 증표"
+		},
+		"mini_crown_collector": {
+			"name": "미니어처 수집가 크라운",
+			"description": "사냥 기록에 기록되는 10마리 이상의 몬스터에 가장 작은 왕관을 달성한 증표"
+		},
+		"mini_crown_master": {
+			"name": "미니어처 마스터 크라운",
+			"description": "사냥 기록에 기록되는 많은 몬스터에 가장 작은 왕관을 달성한 증표"
+		},
+		"giant_crown_collector": {
+			"name": "빅 수집가 크라운",
+			"description": "사냥 기록에 기록되는 10마리 이상의 몬스터에 금관을 달성한 증표"
+		},
+		"giant_crown_master": {
+			"name": "빅 마스터 크라운",
+			"description": "사냥 기록에 기록되는 많은 몬스터에 금관을 달성한 증표"
 		}
 	}
 }

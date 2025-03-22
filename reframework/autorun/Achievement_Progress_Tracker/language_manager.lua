@@ -145,6 +145,22 @@ local language_manager = {
                 monster_phd = {
                     name = "Monster Ph.D.",
                     description = "Hunted many different large monsters."
+                },
+                mini_crown_collector = {
+                    name = "Miniature Crown Collector",
+                    description = "Obtained a miniature crown for 10 or more monsters in the Hunting Log."
+                },
+                mini_crown_master = {
+                    name = "Miniature Crown Master",
+                    description = "Obtained a miniature crown for many monsters in the Hunting Log."
+                },
+                giant_crown_collector = {
+                    name = "Giant Crown Collector",
+                    description = "Obtained a gold crown for 10 or more monsters in the Hunting Log."
+                },
+                giant_crown_master = {
+                    name = "Giant Crown Master",
+                    description = "Obtained a gold crown for many monsters in the Hunting Log."
                 }
             }
         },

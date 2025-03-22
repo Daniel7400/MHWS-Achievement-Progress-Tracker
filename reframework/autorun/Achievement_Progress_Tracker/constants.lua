@@ -39,6 +39,9 @@ local constants <const> = {
         -- The Player Manager type name.
         player_manager = "app.PlayerManager",
 
+        -- The Enemy Manager type name.
+        enemy_manager = "app.EnemyManager",
+
         -- The Network Context Manager type name.
         network_context_manager = "app.net_context_manager.cContextManager",
 
@@ -112,7 +115,19 @@ local constants <const> = {
         explorer_of_the_eastlands = 15,
 
         -- The id for the `Monster Ph.D.` achievement.
-        monster_phd = 16
+        monster_phd = 16,
+
+        -- The id for the `Miniature Crown Collector` achievement.
+        mini_crown_collector = 17,
+
+        -- The id for the `Miniature Crown Master` achievement.
+        mini_crown_master = 18,
+
+        -- The id for the `Giant Crown Collector` achievement.
+        giant_crown_collector = 19,
+
+        -- The id for the `Giant Crown Master` achievement.
+        giant_crown_master = 20
     },
 
     -- The in-game fixed id for the game award/medal.
@@ -146,6 +161,18 @@ local constants <const> = {
 
         -- The fixed id for the in-game award/medal `Seasoned Hunter`.
         seasoned_hunter = 37,           -- "MEDAL_036", Id: 36
+
+        -- The fixed id for the in-game award/medal `Miniature Crown Collector`.
+        mini_crown_collector = 39,      -- "MEDAL_038", Id: 38
+
+        -- The fixed id for the in-game award/medal `Miniature Crown Master`.
+        mini_crown_master = 40,         -- "MEDAL_039", Id: 39
+
+        -- The fixed id for the in-game award/medal `Giant Crown Collector`.
+        giant_crown_collector = 42,     -- "MEDAL_041", Id: 41
+
+        -- The fixed id for the in-game award/medal `Giant Crown Master`.
+        giant_crown_master = 43,        -- "MEDAL_042", Id: 42
 
         -- The fixed id for the in-game award/medal `Capture Pro`.
         capture_pro = 44,               -- "MEDAL_043", Id: 43
@@ -216,6 +243,35 @@ local constants <const> = {
         -- The counter index that tracks the count of completed quests with an accompanying palico.
         palico_accompanied_quest = 4
     },
+    -- TODO: Replace with the HunterProfileDef?
+    --[[ For reference:
+        namespace app::HunterProfileDef {
+            enum COUNT_TYPE_Fixed {
+                VETERAN_HUNT = 0,
+                GUEST_SOS_QUEST_CLEAR = 1,
+                MULTI_QUEST_CLEAR = 2,
+                FOLLOW = 3,
+                OTOMO_ACCOMPANY_QUEST_CLEAR = 4,
+                CIRCLE = 5,
+                FISHING = 6,
+                GRILL = 7,
+                CAMPFIRE_COOKING = 8,
+                RIDE = 9,
+                STEALTH = 10,
+                WEAK_ATTACK = 11,
+                TENT_CUSTOMIZE = 12,
+                LOOK_GOLD_CROWN = 13,
+                SEIKRET_CUSTOMIZE = 15,
+                SUPPORT_CAT_LEADER = 16,
+                MORIVER_GRILL = 17,
+                ACTIVITY_BOARD = 18,
+                ONLINE_LOBBY = 19,
+                BOWLING_CLEAR = 20,
+                BOWLING_S_CLEAR = 21,
+                MAX = 14,
+            }
+        }
+    ]]
 
     -- The collection of enemy fixed ids that are considered apex predators.
     apex_predator = {
@@ -249,8 +305,8 @@ local constants <const> = {
         [270] = true                -- "ITEM_0296", "Wyvernsprout"
     },
 
-    -- The collection of enemy fixed ids that are needed for the monster phd.
-    enemy_phd_candidate = {
+    -- The collection of enemy fixed ids for monsters in the base game that were included on release.
+    base_monster = {
         [26] = true,                -- "EM0001_00_0", "Rathian"
         [1965232896] = true,        -- "EM0002_00_0", "Rathalos"
         [1411933184] = true,        -- "EM0002_50_0", "Guardian Rathalos"
@@ -281,6 +337,9 @@ local constants <const> = {
         [1401863296] = true,        -- "EM0163_00_0", "Xu Wu"
         [-2003468672] = true        -- "EM0164_50_0", "Zoh Shia"
     },
+
+    -- The collection of enemy fixed ids for monsters that are crown targets.
+    crown_target = {},
 
     -- The enum that defines the id for each large monster, small monster, endemic life, and aquatic life in the game.
     enemy_def_id = sdk.enum_to_table("app.EnemyDef.ID"),
@@ -359,6 +418,40 @@ constants.weapon_type.CHARGE_AXE = nil
 
 constants.weapon_type["INSECT_GLAIVE"] = constants.weapon_type.ROD
 constants.weapon_type.ROD = nil
+
+-- Get the enemy manager managed singleton.
+local enemy_manager = sdk.get_managed_singleton(constants.type_name.enemy_manager)
+if enemy_manager then
+    -- Get the enemy manager settings.
+    local enemy_manager_settings = enemy_manager:call("get_Setting")
+    if enemy_manager_settings then
+        -- Get the enemy param size from the enemy manager settings.
+        local enemy_param_size = enemy_manager_settings:call("get_Size")
+        if enemy_param_size then
+            -- Iterate over each monster fixed id in the base monster collection.
+            for monster_fixed_id, _ in pairs(constants.base_monster) do
+                -- Get the corresponding monster id for the current monster fixed id.
+                local monster_id = constants.enemy_def_id[constants.enemy_def_id_fixed[monster_fixed_id]]
+            
+                -- Get the size data for the current monster id.
+                local size_data = enemy_param_size:call("getSizeData(app.EnemyDef.ID)", monster_id)
+                if size_data then
+                    -- Call the get is disable random function on the size data.
+                    local is_disable_random = size_data:call("get_IsDisableRandom")
+            
+                    -- Check if the is disable random flag is NOT true (is false), meaning the size can vary.
+                    if not is_disable_random then
+                        -- Add a new entry into the crown target table using the monster fixed id as the key and storing the mini and gold crown size requirements.
+                        constants.crown_target[monster_fixed_id] = {
+                            ["mini_size"] = size_data:call("get_CrownSize_Small"),
+                            ["gold_size"] = size_data:call("get_CrownSize_King")
+                        }
+                    end
+                end
+            end
+        end
+    end
+end
 
 -- For some reason this `isBigFish` function returns incorrect results until fish are actually loaded in the game.
 -- Like going to `Area 17: Great lake Shore` in the `Scarlet Forest`, until then it always returns false.

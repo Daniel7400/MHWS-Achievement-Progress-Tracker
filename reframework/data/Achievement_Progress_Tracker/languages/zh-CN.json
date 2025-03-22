@@ -135,6 +135,22 @@
         "monster_phd": {
             "name": "怪物博士",
             "description": "狩猎许多大型怪物的证明"
-        }
+        },
+		"mini_crown_collector": {
+			"name": "迷你皇冠收藏家",
+			"description": "在狩猎记录中获得10头或以上怪物的最小冠的证明"
+		},
+		"mini_crown_master": {
+			"name": "迷你皇冠大师",
+			"description": "在狩猎记录中获得许多怪物的最小冠的证明"
+		},
+		"giant_crown_collector": {
+			"name": "巨大皇冠收藏家",
+			"description": "在狩猎记录中获得10头或以上怪物的金冠的证明"
+		},
+		"giant_crown_master": {
+			"name": "巨大皇冠大师",
+			"description": "在狩猎记录中获得许多怪物的金冠的证明"
+		}
     }
 }

@@ -74,7 +74,9 @@ sdk.constants = {
         is_artian_weapon = sdk.find_type_definition("app.ArtianUtil"):get_method("isArtianWeapon(app.user_data.WeaponData.cData)"),
         get_armor_rarity = sdk.find_type_definition("app.ArmorDef"):get_method("Rare(app.ArmorDef.SERIES)"),
         get_item_name_guid = sdk.find_type_definition("app.ItemDef"):get_method("Name(app.ItemDef.ID)"),
-        get_enemy_name_guid = sdk.find_type_definition("app.EnemyDef"):get_method("EnemyName(app.EnemyDef.ID)")
+        get_enemy_name_guid = sdk.find_type_definition("app.EnemyDef"):get_method("EnemyName(app.EnemyDef.ID)"),
+        get_monster_min_size_record_func = sdk.find_type_definition("app.EnemyReportUtil"):get_method("getMinSize(app.EnemyDef.ID)"),
+        get_monster_max_size_record_func = sdk.find_type_definition("app.EnemyReportUtil"):get_method("getMaxSize(app.EnemyDef.ID)")
     },
     game_number_types = {
         "System.Byte",

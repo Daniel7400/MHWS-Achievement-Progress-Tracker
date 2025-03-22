@@ -113,7 +113,19 @@ local config_manager = {
                 explorer_of_the_eastlands = true,
 
                 -- The option that controls whether the `Monster Ph.D.` achievement should be tracked or not.
-                monster_phd = true
+                monster_phd = true,
+
+                -- The option that controls whether the `Miniature Crown Collector` achievement should be tracked or not.
+                mini_crown_collector = true,
+
+                -- The option that controls whether the `Miniature Crown Master` achievement should be tracked or not.
+                mini_crown_master = true,
+
+                -- The option that controls whether the `Giant Crown Collector` achievement should be tracked or not.
+                giant_crown_collector = true,
+
+                -- The option that controls whether the `Giant Crown Master` achievement should be tracked or not.
+                giant_crown_master = true
             },
 
             -- The selected language option.
