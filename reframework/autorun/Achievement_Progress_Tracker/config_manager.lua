@@ -28,12 +28,6 @@ local config_manager = {
                 -- The option that controls whether the achievement trackers will be rendered horizontally or not. Defaults to false, rendering vertically.
                 render_horizontally = false,
 
-                -- The option that controls whether the box background will be rendered or not. Defaults to true, rendering the box background.
-                render_box_background = true,
-
-                -- The option that controls whether the tracker background will be rendered or not. Defaults to true, rendering the tracker background.
-                render_tracker_background = true,
-
                 -- The color options for the achievement trackers.
                 color = {
                     -- The option that controls the background color of the progress tracker box.

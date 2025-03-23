@@ -188,20 +188,6 @@ function ui_manager.init_module()
                         config_manager.config.current.display.render_horizontally)
                     changed = changed or tracking_changed
                     config_changed = config_changed or changed
-
-                    -- Create a checkbox that a user can use to enable/disable whether the box background should be rendered or not.
-                    tracking_changed, config_manager.config.current.display.render_box_background = imgui.checkbox(
-                        language_manager.language.current.ui.checkbox.render_box_background,
-                        config_manager.config.current.display.render_box_background)
-                    changed = changed or tracking_changed
-                    config_changed = config_changed or changed
-
-                    -- Create a checkbox that a user can use to enable/disable whether the achievement tracker background should be rendered or not.
-                    tracking_changed, config_manager.config.current.display.render_tracker_background = imgui.checkbox(
-                        language_manager.language.current.ui.checkbox.render_tracker_background,
-                        config_manager.config.current.display.render_tracker_background)
-                    changed = changed or tracking_changed
-                    config_changed = config_changed or changed
                     imgui.new_line()
 
                     -- Create a new tree node for all settings relating to the color selections.
