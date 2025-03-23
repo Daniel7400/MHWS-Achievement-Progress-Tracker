@@ -200,14 +200,14 @@ function ui_manager.init_module()
                         changed, config_manager.config.current.display.color.box_background, color_counter =
                             imgui.color_picker_argb_top_label(config_manager.config.current.display.color.box_background,
                             language_manager.language.current.ui.color_picker.box_background, color_counter,
-                            language_manager.language.current.ui.misc.current, constants.color_picker_options, true)
+                            language_manager.language.current.ui.misc.current, constants.color_picker_options_with_alpha, true)
                         config_changed = config_changed or changed
 
                         -- Create a color picker that the user can use to change the color of the background of the trackers.
                         changed, config_manager.config.current.display.color.tracker_background, color_counter =
                             imgui.color_picker_argb_top_label(config_manager.config.current.display.color.tracker_background,
                             language_manager.language.current.ui.color_picker.tracker_background, color_counter,
-                            language_manager.language.current.ui.misc.current, constants.color_picker_options, true)
+                            language_manager.language.current.ui.misc.current, constants.color_picker_options_with_alpha, true)
                         config_changed = config_changed or changed
 
                         -- Create a color picker that the user can use to change the color of the background of the progress bar.
