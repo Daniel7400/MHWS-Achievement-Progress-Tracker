@@ -17,7 +17,10 @@
         "checkbox": {
             "enabled": "有効",
             "render_horizontally": "トラッカーを水平に表示する",
-            "show_completed_achievements": "達成した実績を表示"
+            "show_completed_achievements": "達成した実績を表示",
+			"show_images": "Show Achievement Images",
+			"display_progress_as_percentage": "Display Progress as Percentage",
+			"center_align_text": "Center Align Tracker Text"
         },
         "color_picker": {
             "box_background": "枠の色",
@@ -35,6 +38,7 @@
         },
         "dropdown": {
             "size": {
+				"tiny": "Tiny",
                 "small": "小",
                 "medium": "中",
                 "large": "大"
@@ -46,11 +50,13 @@
             "language": "言語",
             "settings": "設定",
             "tracking": "トラッカー",
-            "missing": "足りないもの:%s"
+            "missing": "足りないもの:%s",
+			"base_game": "Base Game"
         },
         "misc": {
             "current": "現在",
-            "select_achievements": "表示する実績を選択"
+            "select_achievements": "表示する実績を選択",
+			"completed": "- COMPLETED"
         },
         "selector": {
             "alignment": "表示位置"
@@ -150,6 +156,10 @@
 		"giant_crown_master": {
 			"name": "ビッグマスタークラウン",
 			"description": "狩猟記録に記録される多くのモンスターに金冠をつけた証"
+		},
+		"eastward_wings": {
+			"name": "東西を繋ぐ鳥",
+			"description": "すべての勲章を獲得した証"
 		}
     }
 }

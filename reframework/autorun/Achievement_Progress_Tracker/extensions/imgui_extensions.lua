@@ -253,8 +253,8 @@ function imgui.xy_position_sliders(current_x, current_y, min_x, max_x, min_y, ma
     local changed = x_changed or y_changed
 
     -- Fix the x and y value by clamping between the provided min and max, then taking the floor to ensure only whole numbers.
-    x = math.floor(math.clamp(x, min_x, max_x))
-    y = math.floor(math.clamp(y, min_y, max_y))
+    x = math.ceil(math.clamp(x, min_x, max_x))
+    y = math.ceil(math.clamp(y, min_y, max_y))
 
     -- Check if either the x or y value is different compared to the provided current x and y values.
     if x ~= current_x or y ~= current_y then

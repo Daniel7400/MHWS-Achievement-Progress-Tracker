@@ -298,8 +298,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.network_context_manager, "downloadHunterProfile(System.Guid, System.String, System.Action`2<System.Boolean,app.NETWORK_ERROR_CODE>)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Gossip Hunter` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.gossip_hunter]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Gossip Hunter` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.gossip_hunter], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -309,8 +318,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.hunter_profile_param, "addFishCaptureNum(app.FieldDef.STAGE)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `A-fish-ionado` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.a_fish_ionado]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `A-fish-ionado` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.a_fish_ionado], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -320,8 +338,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.basic_param, "addMoney(System.Int32, System.Boolean)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Bourgeois Hunter` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.bourgeois_hunter]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Bourgeois Hunter` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.bourgeois_hunter], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -358,6 +385,9 @@ function sdk_manager.init_module()
         -- Attempt to update then capture whether the tracker for the `Giant Crown Master` achievement was updated, then OR the result with the updated flag.
         updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.giant_crown_master], user_save_data) or updated
 
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
         -- Check if the updated flag is true.
         if updated then
             -- If yes, then force the draw manager to reset and update its values.
@@ -389,6 +419,9 @@ function sdk_manager.init_module()
             -- Attempt to update then capture whether the tracker for the `Seasoned Hunter` achievement was updated, then OR the result with the updated flag.
             updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.seasoned_hunter], user_save_data) or updated
 
+            -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+            updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
             -- Check if the updated flag is true.
             if updated then
                 -- If yes, then force the draw manager to reset and update its values.
@@ -401,8 +434,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.item_util, "pickupItem(app.ItemDef.ID, System.Int16, app.EnemyDef.ID)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Explorer of the Eastlands` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.explorer_of_the_eastlands]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Explorer of the Eastlands` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.explorer_of_the_eastlands], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -412,8 +454,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.equip_param, "addEquipBoxWeapon(app.user_data.WeaponData.cData)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Power Is Everything` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.power_is_everything]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Power Is Everything` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.power_is_everything], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -423,8 +474,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.equip_param, "upgradeEquipBoxWeapon(app.EquipDef.EquipWorkInfo, app.user_data.WeaponData.cData)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Power Is Everything` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.power_is_everything]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Power Is Everything` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.power_is_everything], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -434,8 +494,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.equip_param, "addEquipBoxArmor(app.user_data.ArmorData.cData, app.CharacterDef.GENDER)", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Impregnable Defense` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.impregnable_defense]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Impregnable Defense` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.impregnable_defense], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end
@@ -445,8 +514,17 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.gui_camp_view_data, "executeSetCamp()", nil, function(retval)
-        -- Attempt to update then check if the tracker for the `Campmaster` achievement was updated.
-        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.campmaster]) then
+        -- Get the user save data.
+        local user_save_data = sdk_manager.get_user_save_data()
+
+        -- Attempt to update then capture whether the tracker for the `Campmaster` achievement was updated.
+        local updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.campmaster], user_save_data)
+
+        -- Attempt to update then capture whether the tracker for the `Eastward Wings` achievement was updated, then OR the result with the updated flag.
+        updated = tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.eastward_wings], user_save_data) or updated
+
+        -- Check if the updated flag is true.
+        if updated then
             -- If yes, then force the draw manager to reset and update its values.
             tracking_manager.force_draw_manager_values_reset_and_update()
         end

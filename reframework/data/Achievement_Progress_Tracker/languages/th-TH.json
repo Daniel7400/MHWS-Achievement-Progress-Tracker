@@ -16,7 +16,10 @@
 		"checkbox": {
 			"enabled": "เปิดใช้งานแล้ว",
 			"render_horizontally": "เรนเดอร์ตัวติดตามในแนวนอน",
-			"show_completed_achievements": "แสดงความสำเร็จที่เสร็จสมบูรณ์"
+			"show_completed_achievements": "แสดงความสำเร็จที่เสร็จสมบูรณ์",
+			"show_images": "แสดงภาพความสำเร็จ",
+			"display_progress_as_percentage": "แสดงความคืบหน้าเป็นเปอร์เซ็นต์",
+			"center_align_text": "ติดตามการจัดตำแหน่งข้อความให้ตรงกลาง"
 		},
 		"color_picker": {
 			"box_background": "พื้นหลังกล่อง",
@@ -34,6 +37,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "ขนาดเล็ก",
 				"small": "เล็ก",
 				"medium": "ปานกลาง",
 				"large": "ใหญ่"
@@ -45,11 +49,13 @@
 			"language": "ภาษา",
 			"settings": "การตั้งค่า",
 			"tracking": "การติดตาม",
-			"missing": "หายไปสําหรับ %s"
+			"missing": "หายไปสําหรับ %s",
+			"base_game": "เกมฐาน"
 		},
 		"misc": {
 			"current": "ปัจจุบัน",
-			"select_achievements": "เลือกความสำเร็จที่จะติดตาม"
+			"select_achievements": "เลือกความสำเร็จที่จะติดตาม",
+			"completed": "- สมบูรณ์"
 		},
 		"selector": {
 			"alignment": "การจัดตำแหน่ง"
@@ -149,6 +155,10 @@
 		"giant_crown_master": {
 			"name": "มงกุฎยักษ์มาสเตอร์",
 			"description": "ได้รับมงกุฎทองคําสําหรับมอนสเตอร์หลายตัวในบันทึกการล่าสัตว์"
+		},
+		"eastward_wings": {
+			"name": "ปีกตะวันออก",
+			"description": "ได้รับรางวัลอื่นๆทั้งหมด"
 		}
 	}
 }

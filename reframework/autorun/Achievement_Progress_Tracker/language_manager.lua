@@ -28,7 +28,10 @@ local language_manager = {
                 checkbox = {
                     enabled = "Enabled",
                     render_horizontally = "Render Trackers Horizontally",
-                    show_completed_achievements = "Show Completed Achievements"
+                    show_completed_achievements = "Show Completed Achievements",
+                    show_images = "Show Achievement Images",
+                    display_progress_as_percentage = "Display Progress as Percentage",
+                    center_align_text = "Center Align Tracker Text"
                 },
                 color_picker = {
                     box_background = "Box Background",
@@ -46,6 +49,7 @@ local language_manager = {
                 },
                 dropdown = {
                     size = {
+                        tiny = "Tiny",
                         small = "Small",
                         medium = "Medium",
                         large = "Large"
@@ -57,11 +61,13 @@ local language_manager = {
                     language = "Language",
                     settings = "Settings",
                     tracking = "Tracking",
-                    missing = "Missing for: %s"
+                    missing = "Missing for: %s",
+			        base_game = "Base Game"
                 },
                 misc = {
                     current = "Current",
-                    select_achievements = "Select achievements to track"
+                    select_achievements = "Select achievements to track",
+                    completed = "- COMPLETED"
                 },
                 selector = {
                     alignment = "Alignment"
@@ -161,6 +167,10 @@ local language_manager = {
                 giant_crown_master = {
                     name = "Giant Crown Master",
                     description = "Obtained a gold crown for many monsters in the Hunting Log."
+                },
+                eastward_wings = {
+                    name = "Eastward Wings",
+                    description = "Obtained all other awards."
                 }
             }
         },
@@ -170,7 +180,7 @@ local language_manager = {
             "default (en-US)"
         },
     },
-    
+
     -- The range of loaded unicode glyphs.
     unicode_glyph_ranges = {
         0x0020, 0x00FF, -- Basic Latin + Latin Supplement

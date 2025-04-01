@@ -14,7 +14,10 @@
 		"checkbox": {
 			"enabled": "Habilitado",
 			"render_horizontally": "Renderizar rastreadores horizontalmente",
-			"show_completed_achievements": "Mostrar conquistas concluídas"
+			"show_completed_achievements": "Mostrar conquistas concluídas",
+			"show_images": "Mostrar imagens de conquistas",
+			"display_progress_as_percentage": "Exibir o progresso como porcentagem",
+			"center_align_text": "Alinhamento central do texto do rastreador"
 		},
 		"color_picker": {
 			"box_background": "Fundo da caixa",
@@ -32,6 +35,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "Minúsculo",
 				"small": "Pequeno",
 				"medium": "Médio",
 				"large": "Grande"
@@ -43,11 +47,13 @@
 			"language": "Linguagem",
 			"settings": "Configurações",
 			"tracking": "Monitorando",
-			"missing": "Faltando para: %s"
+			"missing": "Faltando para: %s",
+			"base_game": "Jogo base"
 		},
 		"misc": {
 			"current": "Atual",
-			"select_achievements": "Selecione conquistas para acompanhar"
+			"select_achievements": "Selecione conquistas para acompanhar",
+			"completed": "- COMPLETADO"
 		},
 		"selector": {
 			"alignment": "Alinhamento"
@@ -61,7 +67,7 @@
 		}
 	},
 	"tracker": {
-		"completed": "Concluído!"
+		"completed": "Completado!"
 	},
 	"modal": {
 		"header": "Parabéns",
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Mestre das Coroas Gigantes",
 			"description": "Obteve coroas de ouro para vários monstros no Histórico de Caçadas."
+		},
+		"eastward_wings": {
+			"name": "Asas do Leste",
+			"description": "Obteve todas as medalhas."
 		}
 	}
 }

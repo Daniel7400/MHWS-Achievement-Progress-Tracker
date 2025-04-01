@@ -14,7 +14,10 @@
         "checkbox": {
             "enabled": "Activado",
             "render_horizontally": "Renderizar horizontalmente",
-            "show_completed_achievements": "Mostrar logros completados"
+            "show_completed_achievements": "Mostrar logros completados",
+			"show_images": "Mostrar Imágenes de Logros",
+			"display_progress_as_percentage": "Mostrar Progreso como Porcentaje",
+			"center_align_text": "Centrar Texto del seguimiento"
         },
         "color_picker": {
             "box_background": "Fondo de caja",
@@ -32,6 +35,7 @@
         },
         "dropdown": {
             "size": {
+				"tiny": "Diminuto",
                 "small": "Pequeño",
                 "medium": "Mediano",
                 "large": "Grande"
@@ -43,11 +47,13 @@
             "language": "Idioma",
             "settings": "Opciones",
             "tracking": "Seguimiento",
-            "missing": "Falta: %s"
+            "missing": "Falta: %s",
+			"base_game": "Juego Base"
         },
         "misc": {
             "current": "Actual",
-            "select_achievements": "Selecciona logros para seguir"
+            "select_achievements": "Selecciona logros para seguir",
+			"completed": "- COMPLETADO"
         },
         "selector": {
             "alignment": "Alineación"
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Rey de reyes",
 			"description": "Has conseguido una corona de oro para muchos monstruos de tu registro de cazador."
+		},
+		"eastward_wings": {
+			"name": "Viaje hacia el este",
+			"description": "Has conseguido todas las demás medallas."
 		}
     }
 }

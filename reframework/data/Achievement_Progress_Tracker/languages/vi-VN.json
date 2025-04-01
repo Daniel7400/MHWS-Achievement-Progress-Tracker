@@ -14,7 +14,10 @@
 		"checkbox": {
 			"enabled": "Đã bật",
 			"render_horizontally": "Hiển thị trình theo dõi theo chiều ngang",
-			"show_completed_achievements": "Hiển thị thành tích đã hoàn thành"
+			"show_completed_achievements": "Hiển thị thành tích đã hoàn thành",
+			"show_images": "Hiển thị hình ảnh thành tích",
+			"display_progress_as_percentage": "Hiển thị tiến trình theo phần trăm",
+			"center_align_text": "Căn giữa văn bản theo dõi"
 		},
 		"color_picker": {
 			"box_background": "Hộp Nền",
@@ -32,6 +35,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "Nhỏ xíu",
 				"small": "Bé nhỏ",
 				"medium": "Trung bình",
 				"large": "Lớn"
@@ -43,11 +47,13 @@
 			"language": "Ngôn ngữ",
 			"settings": "Cài đặt",
 			"tracking": "Theo dõi",
-			"missing": "Thiếu cho %s"
+			"missing": "Thiếu cho %s",
+			"base_game": "Trò chơi cơ bản"
 		},
 		"misc": {
 			"current": "Hiện hành",
-			"select_achievements": "Chọn thành tích để theo dõi"
+			"select_achievements": "Chọn thành tích để theo dõi",
+			"completed": "- HOÀN THÀNH"
 		},
 		"selector": {
 			"alignment": "Căn chỉnh"
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Bậc thầy vương miện khổng lồ",
 			"description": "Nhận được vương miện vàng cho nhiều quái thú trong Nhật ký săn bắn."
+		},
+		"eastward_wings": {
+			"name": "Cánh hướng đông",
+			"description": "Đã nhận được tất cả các giải thưởng khác."
 		}
 	}
 }

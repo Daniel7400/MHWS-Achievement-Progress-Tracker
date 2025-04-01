@@ -18,7 +18,10 @@
 		"checkbox": {
 			"enabled": "Включено",
 			"render_horizontally": "Горизонтальное отображение трекеров",
-			"show_completed_achievements": "Показать выполненные достижения"
+			"show_completed_achievements": "Показать выполненные достижения",
+			"show_images": "Показать изображения достижений",
+			"display_progress_as_percentage": "Отображение прогресса в процентах",
+			"center_align_text": "Выравнивание текста трекера по центру"
 		},
 		"color_picker": {
 			"box_background": "Фон коробки",
@@ -36,6 +39,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "Крошечный",
 				"small": "Маленький",
 				"medium": "Середина",
 				"large": "Большой"
@@ -47,11 +51,13 @@
 			"language": "Язык",
 			"settings": "Настройки",
 			"tracking": "Отслеживание",
-			"missing": "Отсутствует для: %s"
+			"missing": "Отсутствует для: %s",
+			"base_game": "Базовая игра"
 		},
 		"misc": {
 			"current": "Текущий",
-			"select_achievements": "Выберите достижения для отслеживания"
+			"select_achievements": "Выберите достижения для отслеживания",
+			"completed": "- ЗАПОЛНЕННЫЙ"
 		},
 		"selector": {
 			"alignment": "Выравнивание"
@@ -151,6 +157,10 @@
 		"giant_crown_master": {
 			"name": "Мастер огромных корон",
 			"description": "Добавить в охотничий журнал золотые короны для множества монстров."
+		},
+		"eastward_wings": {
+			"name": "Восточные крылья",
+			"description": "Получить все прочие награды."
 		}
 	}
 }

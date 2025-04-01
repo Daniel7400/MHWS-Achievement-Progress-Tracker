@@ -17,7 +17,10 @@
 		"checkbox": {
 			"enabled": "활성화됨",
 			"render_horizontally": "트래커 가로 렌더링",
-			"show_completed_achievements": "완료된 업적 표시"
+			"show_completed_achievements": "완료된 업적 표시",
+			"show_images": "업적 이미지 표시",
+			"display_progress_as_percentage": "진행률을 백분율로 표시",
+			"center_align_text": "트래커 텍스트 중앙 정렬"
 		},
 		"color_picker": {
 			"box_background": "상자 배경",
@@ -35,6 +38,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "매우 작은",
 				"small": "작은",
 				"medium": "중간",
 				"large": "크기가 큰"
@@ -46,11 +50,13 @@
 			"language": "언어",
 			"settings": "설정",
 			"tracking": "추적",
-			"missing": "누락된 항목: %s"
+			"missing": "누락된 항목: %s",
+			"base_game": "기본 게임"
 		},
 		"misc": {
 			"current": "현재의",
-			"select_achievements": "추적할 성과 선택"
+			"select_achievements": "추적할 성과 선택",
+			"completed": "- 완료"
 		},
 		"selector": {
 			"alignment": "조정"
@@ -150,6 +156,10 @@
 		"giant_crown_master": {
 			"name": "빅 마스터 크라운",
 			"description": "사냥 기록에 기록되는 많은 몬스터에 금관을 달성한 증표"
+		},
+		"eastward_wings": {
+			"name": "동서를 잇는 새",
+			"description": "모든 훈장을 획득한 증표"
 		}
 	}
 }

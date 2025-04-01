@@ -25,6 +25,9 @@ local constants <const> = {
 
     -- The dropdown options for the size of the achievement trackers.
     size_option = {
+        -- The tiny size option, this will NOT include the description.
+        tiny = 0,
+
         -- The small size option, this will NOT include the description.
         small = 1,
 
@@ -134,11 +137,17 @@ local constants <const> = {
         giant_crown_collector = 19,
 
         -- The id for the `Giant Crown Master` achievement.
-        giant_crown_master = 20
+        giant_crown_master = 20,
+
+        -- The id for the `Eastward Wings` achievement.
+        eastward_wings = 21
     },
 
-    -- The in-game fixed id for the game award/medal.
+    -- The in-game fixed id for the game award/medal being tracked by this mod.
     game_award_fixed_id = {
+        -- The fixed id for the in-game award/medal `Eastward Wings`.
+        eastward_wings = 1,             -- "MEDAL_000", Id: 0
+
         -- The fixed id for the in-game award/medal `A True Hunter Is Never Satisfied`.
         a_true_hunter = 10,             -- "MEDAL_009", Id: 9
 
@@ -198,6 +207,60 @@ local constants <const> = {
 
         -- The fixed id for the in-game award/medal `Gossip Hunter`.
         gossip_hunter = 49              -- "MEDAL_048", Id: 48
+    },
+
+    -- The collection of medal fixed ids for award/medals in the base game that were included on release.
+    base_award = {
+        [1] = true,     -- "MEDAL_000", "Eastward Wings"
+        [2] = true,     -- "MEDAL_001", "Windward Lands"
+        [3] = true,     -- "MEDAL_002", "Shadow in the Downpour"
+        [4] = true,     -- "MEDAL_003", "Guardians of the Forge"
+        [5] = true,     -- "MEDAL_004", "Bringer of Harmony"
+        [6] = true,     -- "MEDAL_005", "New Ecosystems"
+        [7] = true,     -- "MEDAL_006", "A Bitter Environment"
+        [8] = true,     -- "MEDAL_007", "Beyond the Black Wings"
+        [9] = true,     -- "MEDAL_008", "One Corner of the World"
+        [10] = true,    -- "MEDAL_009", "A True Hunter Is Never Satisfied"
+        [11] = true,    -- "MEDAL_010", "Let the Investigations Begin!"
+        [12] = true,    -- "MEDAL_011", "The Hunt Is On!"
+        [13] = true,    -- "MEDAL_012", "A Step Toward Mutual Understanding"
+        [14] = true,    -- "MEDAL_013", "East to West, A Hunter Never Rests"
+        [15] = true,    -- "MEDAL_014", "Angling for a Bite"
+        [16] = true,    -- "MEDAL_015", "Mmm, So Tasty!"
+        [17] = true,    -- "MEDAL_016", "Was It a Meal to Remember?"
+        [18] = true,    -- "MEDAL_017", "The Bigger They Are..."
+        [19] = true,    -- "MEDAL_018", "Hunter-Assassin"
+        [20] = true,    -- "MEDAL_019", "Hit 'Em Where It Hurts!"
+        [21] = true,    -- "MEDAL_020", "A Prize Held High"
+        [22] = true,    -- "MEDAL_021", "I Caught a Shooting Star!"
+        [23] = true,    -- "MEDAL_022", "Monster (Squid) Hunter"
+        [24] = true,    -- "MEDAL_023", "A-fish-ionado"
+        [25] = true,    -- "MEDAL_024", "Campmaster"
+        [26] = true,    -- "MEDAL_025", "Glamper"
+        [27] = true,    -- "MEDAL_026", "A Keen-eyed Observation"
+        [28] = true,    -- "MEDAL_027", "Ride-or-die Companion"
+        [29] = true,    -- "MEDAL_028", "Established Hunter"
+        [30] = true,    -- "MEDAL_029", "Impregnable Defense"
+        [31] = true,    -- "MEDAL_030", "Power Is Everything"
+        [32] = true,    -- "MEDAL_031", "Someone Worth Following"
+        [33] = true,    -- "MEDAL_032", "A Legacy Restored"
+        [34] = true,    -- "MEDAL_033", "Bourgeois Hunter"
+        [35] = true,    -- "MEDAL_034", "Explorer of the Eastlands"
+        [36] = true,    -- "MEDAL_035", "Monster Ph.D."
+        [37] = true,    -- "MEDAL_036", "Seasoned Hunter"
+        [38] = true,    -- "MEDAL_037", "Miniature Crown"
+        [39] = true,    -- "MEDAL_038", "Miniature Crown Collector"
+        [40] = true,    -- "MEDAL_039", "Miniature Crown Master"
+        [41] = true,    -- "MEDAL_040", "Giant Crown"
+        [42] = true,    -- "MEDAL_041", "Giant Crown Collector"
+        [43] = true,    -- "MEDAL_042", "Giant Crown Master"
+        [44] = true,    -- "MEDAL_043", "Capture Pro"
+        [45] = true,    -- "MEDAL_044", "Monster Slayer"
+        [46] = true,    -- "MEDAL_045", "Top of the Food Chain"
+        [47] = true,    -- "MEDAL_046", "Hunters United"
+        [48] = true,    -- "MEDAL_047", "Hunters United Forever"
+        [49] = true,    -- "MEDAL_048", "Gossip Hunter"
+        [50] = true     -- "MEDAL_049", "Newly Forged Bonds"
     },
 
     -- The sources from where the values for an achievement tracker are pulled to update their value.
@@ -394,8 +457,14 @@ local constants <const> = {
     -- The enum that defines the id for each item in the game.
     item_id = sdk.enum_to_table("app.ItemDef.ID"),
 
-    -- The enum taht defines the fixed id for each item in the game. Using the fixed id as the key.
-    item_id_fixed = sdk.enum_to_table("app.ItemDef.ID_Fixed", true)
+    -- The enum that defines the fixed id for each item in the game. Using the fixed id as the key.
+    item_id_fixed = sdk.enum_to_table("app.ItemDef.ID_Fixed", true),
+
+    -- The enum that defines the id for each award/medal in the game.
+    award_id = sdk.enum_to_table("app.HunterProfileDef.MEDAL_ID"),
+
+    -- The enum that defines the fixed id for each award/medal in the game. Using the fixed id as the key.
+    award_id_fixed = sdk.enum_to_table("app.HunterProfileDef.MEDAL_ID_Fixed", true)
 }
 
 -- The language directory path that contains all of the language files.
@@ -439,13 +508,13 @@ if enemy_manager then
             for monster_fixed_id, _ in pairs(constants.base_monster) do
                 -- Get the corresponding monster id for the current monster fixed id.
                 local monster_id = constants.enemy_def_id[constants.enemy_def_id_fixed[monster_fixed_id]]
-            
+
                 -- Get the size data for the current monster id.
                 local size_data = enemy_param_size:call("getSizeData(app.EnemyDef.ID)", monster_id)
                 if size_data then
                     -- Call the get is disable random function on the size data.
                     local is_disable_random = size_data:call("get_IsDisableRandom")
-            
+
                     -- Check if the is disable random flag is NOT true (is false), meaning the size can vary.
                     if not is_disable_random then
                         -- Add a new entry into the crown target table using the monster fixed id as the key and storing the mini and gold crown size requirements.

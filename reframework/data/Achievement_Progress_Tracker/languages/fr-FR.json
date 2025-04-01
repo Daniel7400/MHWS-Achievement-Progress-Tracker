@@ -14,7 +14,10 @@
         "checkbox": {
             "enabled": "Activé",
             "render_horizontally": "Afficher les suivis horizontalement",
-            "show_completed_achievements": "Afficher les distinctions obtenues"
+            "show_completed_achievements": "Afficher les distinctions obtenues",
+			"show_images": "Afficher l’Illustration des Distinctions",
+			"display_progress_as_percentage": "Afficher la Progression en Pourcentage",
+			"center_align_text": "Aligner au Centre tout le Texte des Suivis"
         },
         "color_picker": {
             "box_background": "Couleur du fond de la fenêtre",
@@ -32,6 +35,7 @@
         },
         "dropdown": {
             "size": {
+				"tiny": "Minuscule",
                 "small": "Petite",
                 "medium": "Moyenne",
                 "large": "Grande"
@@ -43,11 +47,13 @@
             "language": "Langue",
             "settings": "Paramètres",
             "tracking": "Distinctions à suivre",
-            "missing": "Manquant pour: %s"
+            "missing": "Manquant pour: %s",
+			"base_game": "Jeu de Base"
         },
         "misc": {
             "current": "Actuel",
-            "select_achievements": "Sélectionnez les distinctions à suivre"
+            "select_achievements": "Sélectionnez les distinctions à suivre",
+			"completed": "- OBTENUE"
         },
         "selector": {
             "alignment": "Alignement"
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Dieu de la chasse",
 			"description": "Obtenir une grande couronne en or pour beaucoup de monstres."
+		},
+		"eastward_wings": {
+			"name": "Une véritable monsterclass",
+			"description": "Obtenir toutes les distinctions."
 		}
     }
 }

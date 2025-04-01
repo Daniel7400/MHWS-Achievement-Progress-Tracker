@@ -14,7 +14,10 @@
 		"checkbox": {
 			"enabled": "Aktiviert",
 			"render_horizontally": "Horizontale Tracker-Darstellung",
-			"show_completed_achievements": "Abgeschlossene Erfolge anzeigen"
+			"show_completed_achievements": "Abgeschlossene Erfolge anzeigen",
+			"show_images": "Show Achievement Images",
+			"display_progress_as_percentage": "Display Progress as Percentage",
+			"center_align_text": "Center Align Tracker Text"
 		},
 		"color_picker": {
 			"box_background": "Hintergrund der Box",
@@ -32,6 +35,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "Tiny",
 				"small": "Klein",
 				"medium": "Mittel",
 				"large": "Groß"
@@ -43,11 +47,13 @@
 			"language": "Sprache",
 			"settings": "Einstellungen",
 			"tracking": "Tracker",
-			"missing": "Fehlt für: %s"
+			"missing": "Fehlt für: %s",
+			"base_game": "Base Game"
 		},
 		"misc": {
 			"current": "Aktuell",
-			"select_achievements": "Zu verfolgende Erfolge"
+			"select_achievements": "Zu verfolgende Erfolge",
+			"completed": "- COMPLETED"
 		},
 		"selector": {
 			"alignment": "Ausrichtung"
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Kollektion großer Kronen",
 			"description": "Verdiene für viele Monster eine goldene Krone im Jagdprotokoll."
+		},
+		"eastward_wings": {
+			"name": "Ost-West-Verständigung",
+			"description": "Verdiene alle anderen Auszeichnungen."
 		}
 	}
 }

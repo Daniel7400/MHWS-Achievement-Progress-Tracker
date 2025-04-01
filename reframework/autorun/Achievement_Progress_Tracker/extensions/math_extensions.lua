@@ -27,8 +27,8 @@ function math.get_centered_origin(total_width, total_height, target_width, targe
     assert(total_height >= target_height, "Total height must be greater than or equal to the target height.")
     
     -- Calculate the x and y coordinate by taking the difference between the provided total and target, then dividing by 2.
-    local x = math.floor((total_width - target_width) / 2)
-    local y = math.floor((total_height - target_height) / 2)
+    local x = math.ceil((total_width - target_width) / 2)
+    local y = math.ceil((total_height - target_height) / 2)
 
     -- Return the tuple of the x and y coordinates.
     return x, y

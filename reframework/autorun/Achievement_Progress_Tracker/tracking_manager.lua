@@ -139,7 +139,7 @@ local tracking_manager = {
 
                 -- Get the count of completed multiplayer quests.
                 local result = tonumber(counters[constants.counter.multiplayer_quest]:call("ToString"))
-                
+
                 -- Check if the resulting number is nil.
                 if result == nil then
                     -- If yes, then return 0.
@@ -968,6 +968,60 @@ local tracking_manager = {
                 return #tracker_self.collection_params.found
             end,
             constants.crown_target
+        ),
+
+        [constants.achievement.eastward_wings] = achievementtracker:new_with_collection(constants.achievement.eastward_wings,
+            constants.game_award_fixed_id.eastward_wings,
+            language_manager.language.default.achievement.eastward_wings.name,
+            language_manager.language.default.achievement.eastward_wings.description,
+            "57afb97b918edcbbc6827d844e5da32c6c94b95b.jpg",
+            table.length(constants.base_award) - 1, 0,
+            constants.update_source.hunter_profile,
+            constants.acquisition_method.call,
+            "get_Medal",
+            ---@param acquired_awards_bitset userdata
+            ---@param tracker_self achievementtracker
+            ---@return number
+            function(acquired_awards_bitset, tracker_self)
+                -- Check if the provided acquired awards bitset is NOT valid.
+                if not acquired_awards_bitset then
+                    -- If yes, then return 0 by default.
+                    return 0
+                end
+
+                -- Reset the contents of the found and missing tables on the collection params.
+                tracker_self.collection_params.found = {}
+                tracker_self.collection_params.missing = {}
+
+                -- Get the collection of already acquired award/medal fixed ids.
+                local acquired_awards_fixed_ids = sdk.get_bitset_value(acquired_awards_bitset, nil, true)
+
+                -- Iterate over each acquired award id.
+                for award_fixed_id, _ in pairs(constants.base_award) do
+                    -- Check if the current award fixed id is NOT the one for the `Eastward Wings` award (since that is what this tracker is for).
+                    if award_fixed_id ~= constants.game_award_fixed_id.eastward_wings then
+                        -- If yes, then get the corresponding award id for the award fixed id.
+                        local award_id = constants.award_id[constants.award_id_fixed[award_fixed_id]]
+
+                        -- Get the award name guid then use that to get the actual name string for the award.
+                        local award_name_guid = sdk.constants.game_function.get_award_name_guid:call(nil, award_id)
+                        local award_name = sdk.get_localized_text(award_name_guid, language_manager.language.current.associated_in_game_language_option)
+
+                        -- Check if the current award fixed id is found in the collection of acquired awards fixed ids.
+                        if acquired_awards_fixed_ids[award_fixed_id] then
+                            -- If yes, then insert the award name into the found collection.
+                            table.insert(tracker_self.collection_params.found, award_name)
+                        else
+                            -- Insert the award name into the missing collection.
+                            table.insert(tracker_self.collection_params.missing, award_name)
+                        end
+                    end
+                end
+
+                -- Return the length of the found collection.
+                return #tracker_self.collection_params.found
+            end,
+            constants.base_award
         )
     },
 
@@ -1036,7 +1090,7 @@ local function update_tracker_value(achievement_tracker, update_source, skip_dra
     if achievement_tracker.current >= achievement_tracker.amount then
         -- If yes, then set the award obtained flag on the provided achievementtracker as true.
         achievement_tracker.award_obtained = true
-    
+
     -- Else if, check if the provided achievementtracker has the award obtained flag as true (but doesn't meet the current vs amount requirement).
     elseif achievement_tracker.award_obtained then
         -- If yes, then set the current value for the provided achievement tracker as the amount to make the progress bar show as complete.
@@ -1051,29 +1105,6 @@ local function update_tracker_value(achievement_tracker, update_source, skip_dra
 
     -- Return the tracker value changed flag.
     return tracker_value_changed
-end
-
----
---- Update the language values of the provided `achievement_tracker`.
----
----@param achievement_tracker achievementtracker The achievement tracker to update language values for.
-local function update_tracker_language(achievement_tracker)
-    -- Set the name and description of the provided achievement tracker as the values set on the current language.
-    achievement_tracker.name = language_manager.language.current.achievement[achievement_tracker.key].name
-    achievement_tracker.description = language_manager.language.current.achievement[achievement_tracker.key].description
-
-    -- Check if the provided achievement tracker is enabled AND NOT complete AND has collection params defined AND has missing.
-    if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
-        and #achievement_tracker.collection_params.missing > 0 then
-        -- If yes, then update the tracker so it calls its additional processing function and update the missing entries text.
-        tracking_manager.update_tracker(achievement_tracker)
-    end
-
-    -- Check if the provided achievement tracker should be displayed.
-    if achievement_tracker:should_display() then
-        -- If yes, then call the update values function on the draw manager.
-        draw_manager.update_values(achievement_tracker)
-    end
 end
 
 ---
@@ -1250,8 +1281,25 @@ function tracking_manager.update_language()
 
     -- Iterate over each achievement tracker.
     for _, achievement_tracker in ipairs(tracking_manager.achievements) do
-        -- Call the update tracker language function for the current achievement tracker.
-        update_tracker_language(achievement_tracker)
+        -- Set the name and description of the provided achievement tracker as the values set on the current language.
+        achievement_tracker.name = language_manager.language.current.achievement[achievement_tracker.key].name
+        achievement_tracker.description = language_manager.language.current.achievement[achievement_tracker.key].description
+
+        -- Check if the is initialized flag on the tracking manager is true, because otherwise there will be no values to update yet.
+        if tracking_manager.is_initialized then
+            -- If yes, then check if the provided achievement tracker is enabled AND NOT complete AND has collection params defined AND has missing.
+            if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
+                and #achievement_tracker.collection_params.missing > 0 then
+                -- If yes, then update the tracker so it calls its additional processing function and update the missing entries text.
+                tracking_manager.update_tracker(achievement_tracker)
+            end
+
+            -- Check if the provided achievement tracker should be displayed.
+            if achievement_tracker:should_display() then
+                -- If yes, then call the update values function on the draw manager.
+                draw_manager.update_values(achievement_tracker)
+            end
+        end
     end
 end
 

@@ -97,9 +97,10 @@ function ui_manager.init_module()
 
     -- Set the size dropdown options text with the associated keys from the current language.
     ui_manager.size_options = {
-        language_manager.language.current.ui.dropdown.size.small,
-        language_manager.language.current.ui.dropdown.size.medium,
-        language_manager.language.current.ui.dropdown.size.large,
+        [constants.size_option.tiny] = language_manager.language.current.ui.dropdown.size.tiny,
+        [constants.size_option.small] = language_manager.language.current.ui.dropdown.size.small,
+        [constants.size_option.medium] = language_manager.language.current.ui.dropdown.size.medium,
+        [constants.size_option.large] = language_manager.language.current.ui.dropdown.size.large,
     }
 
     re.on_draw_ui(function()
@@ -183,10 +184,31 @@ function ui_manager.init_module()
                     config_changed = config_changed or changed
 
                     -- Create a checkbox that a user can use to enable/disable whether trackers should be rendered horizontally or not.
-                    tracking_changed, config_manager.config.current.display.render_horizontally = imgui.checkbox(
+                    changed, config_manager.config.current.display.render_horizontally = imgui.checkbox(
                         language_manager.language.current.ui.checkbox.render_horizontally,
                         config_manager.config.current.display.render_horizontally)
-                    changed = changed or tracking_changed
+                    tracking_changed = tracking_changed or changed
+                    config_changed = config_changed or changed
+
+                    -- Create a checkbox that a user can use to enable/disable whether the image for an achievement will be displayed in the achievement tracker or not.
+                    changed, config_manager.config.current.display.show_images = imgui.checkbox(
+                        language_manager.language.current.ui.checkbox.show_images,
+                        config_manager.config.current.display.show_images)
+                    tracking_changed = tracking_changed or changed
+                    config_changed = config_changed or changed
+
+                    -- Create a checkbox that a user can use to enable/disable whether the image for an achievement will be displayed in the achievement tracker or not.
+                    changed, config_manager.config.current.display.display_progress_as_percentage = imgui.checkbox(
+                        language_manager.language.current.ui.checkbox.display_progress_as_percentage,
+                        config_manager.config.current.display.display_progress_as_percentage)
+                    tracking_changed = tracking_changed or changed
+                    config_changed = config_changed or changed
+
+                    -- Create a checkbox that a user can use to enable/disable whether the text that will display in the tracker will be centered or not.
+                    changed, config_manager.config.current.display.center_align_text = imgui.checkbox(
+                        language_manager.language.current.ui.checkbox.center_align_text,
+                        config_manager.config.current.display.center_align_text)
+                    tracking_changed = tracking_changed or changed
                     config_changed = config_changed or changed
                     imgui.new_line()
 
@@ -275,16 +297,25 @@ function ui_manager.init_module()
                 if imgui.tree_node(language_manager.language.current.ui.header.tracking) then
 
                     -- Create a checkbox that a user can use to enable/disable whether completed achievements should be displayed or not.
-                    tracking_changed, config_manager.config.current.display.show_completed = imgui.checkbox(
+                    changed, config_manager.config.current.display.show_completed = imgui.checkbox(
                         language_manager.language.current.ui.checkbox.show_completed_achievements,
                         config_manager.config.current.display.show_completed)
-                    changed = changed or tracking_changed
+                    tracking_changed = tracking_changed or changed
                     config_changed = config_changed or changed
                     imgui.new_line()
 
                     -- Draw some text and a tooltip to describe what the checkboxes below do.
                     imgui.text(language_manager.language.current.ui.misc.select_achievements)
                     imgui.help_tooltip(language_manager.language.current.ui.tooltip.uncheck_achievement)
+
+                    --[[
+                    -- Create a new tree node for all of the achievement trackers for achievements in the base game.
+                    if imgui.tree_node(language_manager.language.current.ui.header.base_game) then
+
+                        -- Close the Base Game tree node.
+                        imgui.tree_pop()
+                    end
+                    --]]
 
                     -- Iterate over each achievement tracker.
                     for _, achievement_tracker in ipairs(tracking_manager.achievements) do
@@ -306,21 +337,40 @@ function ui_manager.init_module()
                             imgui.end_tooltip()
                         end
 
-                        -- Create a new tree node to list any missing entries the current tracker may have. This is done by checking if the current achievement tracker
-                        -- is enabled AND NOT complete AND has collection params defined AND has missing.
-                        if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
-                            and #achievement_tracker.collection_params.missing > 0 and imgui.tree_node(string.format(language_manager.language.current.ui.header.missing, achievement_tracker.name)) then
-
-                            -- If yes, then iterate over each missing entry.
-                            for _, missing_entry in ipairs(achievement_tracker.collection_params.missing) do
-                                -- Draw some text with the value of the missing entry.
-                                imgui.text(string.format("• %s", missing_entry))
+                        -- Check if the is initialized flag on the tracking manager is true, because otherwise there will be no values to display yet.
+                        if tracking_manager.is_initialized then
+                            -- If yes, then check if the current achievement tracker is completed.
+                            if achievement_tracker:is_complete() then
+                                -- If yes, then draw some text on the same line as the achievement name marking it as completed.
+                                imgui.same_line()
+                                imgui.text_colored(language_manager.language.current.ui.misc.completed, math.argb_to_abgr(0xFF008000))
                             end
 
-                            -- Close the missing entries tree node.
-                            imgui.tree_pop()
+                            -- Create a new tree node to list any missing entries the current tracker may have. This is done by checking if the current achievement tracker
+                            -- is enabled AND NOT complete AND has collection params defined AND has missing.
+                            if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
+                                and #achievement_tracker.collection_params.missing > 0 and imgui.tree_node(string.format(language_manager.language.current.ui.header.missing, achievement_tracker.name)) then
+
+                                -- If yes, then iterate over each missing entry.
+                                for _, missing_entry in ipairs(achievement_tracker.collection_params.missing) do
+                                    -- Draw some text with the value of the missing entry.
+                                    imgui.text(string.format("• %s", missing_entry))
+                                end
+
+                                -- Close the missing entries tree node.
+                                imgui.tree_pop()
+                            end
                         end
                     end
+
+                    --[[
+                    -- Create a new tree node for all of the achievement trackers for achievements in the `Future DLC Name here` DLC.
+                    if imgui.tree_node("Future DLC Name Here") then
+
+                        -- Close the `Future DLC Name here` tree node.
+                        imgui.tree_pop()
+                    end
+                    --]]
 
                     -- Insert a new line for spacing.
                     imgui.new_line()
@@ -367,6 +417,8 @@ function ui_manager.init_module()
             ui_manager.load_font_if_missing()
 
             -- Set the size dropdown options text with the associated keys from the new current language.
+            ui_manager.size_options[constants.size_option.tiny] =
+                language_manager.language.current.ui.dropdown.size.tiny
             ui_manager.size_options[constants.size_option.small] =
                 language_manager.language.current.ui.dropdown.size.small
             ui_manager.size_options[constants.size_option.medium] =

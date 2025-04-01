@@ -18,7 +18,10 @@
         "checkbox": {
             "enabled": "启用",
             "render_horizontally": "横向显示跟踪器",
-            "show_completed_achievements": "显示已完成的成就"
+            "show_completed_achievements": "显示已完成的成就",
+            "show_images": "显示成就图标",
+            "display_progress_as_percentage": "切换百分比显示",
+			"center_align_text": "居中显示追踪内容"
         },
         "color_picker": {
             "box_background": "追踪器边框",
@@ -36,6 +39,7 @@
         },
         "dropdown": {
             "size": {
+				"tiny": "微型",
                 "small": "小型",
                 "medium": "中型",
                 "large": "大型"
@@ -47,11 +51,13 @@
             "language": "语言",
             "settings": "设置",
             "tracking": "追踪",
-            "missing": "未获得：%s"
+            "missing": "未获得：%s",
+			"base_game": "本体"
         },
         "misc": {
             "current": "当前的",
-            "select_achievements": "选择要追踪的成就"
+            "select_achievements": "选择要追踪的成就",
+            "completed": "- 已完成"
         },
         "selector": {
             "alignment": "显示方位"
@@ -151,6 +157,10 @@
 		"giant_crown_master": {
 			"name": "巨大皇冠大师",
 			"description": "在狩猎记录中获得许多怪物的金冠的证明"
+		},
+		"eastward_wings": {
+			"name": "飞鸟连西东",
+			"description": "获得所有勋章的证明"
 		}
     }
 }

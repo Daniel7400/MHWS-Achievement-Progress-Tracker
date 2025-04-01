@@ -17,7 +17,10 @@
 		"checkbox": {
 			"enabled": "Ενεργοποιήθηκε",
 			"render_horizontally": "Εμφάνιση ιχνηλατών οριζόντια",
-			"show_completed_achievements": "Εμφάνιση Ολοκληρωμένων Επιτευγμάτων"
+			"show_completed_achievements": "Εμφάνιση Ολοκληρωμένων Επιτευγμάτων",
+			"show_images": "Εμφάνιση εικόνων επιτευγμάτων",
+			"display_progress_as_percentage": "Εμφάνιση προόδου ως ποσοστό",
+			"center_align_text": "Κείμενο παρακολούθησης στοίχισης στο κέντρο"
 		},
 		"color_picker": {
 			"box_background": "Φόντο κουτιού",
@@ -35,6 +38,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "Μικροσκοπικός",
 				"small": "Μικρό",
 				"medium": "Μεσαίο",
 				"large": "Μεγάλο"
@@ -46,11 +50,13 @@
 			"language": "Γλώσσα",
 			"settings": "Ρυθμίσεις",
 			"tracking": "Παρακολούθηση",
-			"missing": "Λείπει για %s"
+			"missing": "Λείπει για %s",
+			"base_game": "Βασικό παιχνίδι"
 		},
 		"misc": {
 			"current": "Ρεύμα",
-			"select_achievements": "Επιλέξτε επιτεύγματα για παρακολούθηση"
+			"select_achievements": "Επιλέξτε επιτεύγματα για παρακολούθηση",
+			"completed": "- ΟΛΟΚΛΗΡΩΜΕΝΟ"
 		},
 		"selector": {
 			"alignment": "Ευθυγραμμία"
@@ -150,6 +156,10 @@
 		"giant_crown_master": {
 			"name": "Αφέντης γιγαντιαίου στέμματος",
 			"description": "Αποκτήσατε ένα χρυσό στέμμα για πολλά τέρατα στο ημερολόγιο κυνηγιού."
+		},
+		"eastward_wings": {
+			"name": "Ανατολικά φτερά",
+			"description": "Έλαβε όλα τα άλλα βραβεία."
 		}
 	}
 }

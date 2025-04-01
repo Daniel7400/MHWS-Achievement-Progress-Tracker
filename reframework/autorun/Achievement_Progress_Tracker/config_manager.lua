@@ -28,6 +28,15 @@ local config_manager = {
                 -- The option that controls whether the achievement trackers will be rendered horizontally or not. Defaults to false, rendering vertically.
                 render_horizontally = false,
 
+                -- The option that controls whether the image for an achievement will be displayed in the achievement tracker. Defaults to true.
+                show_images = true,
+
+                -- The option that controls whether the progress text in a progress bar will display as a percentage or not. Defaults to false.
+                display_progress_as_percentage = false,
+
+                -- The option that controls whether the text that will display in the tracker will be centered or not. Does not effect the progress bar text. Defaults to false.
+                center_align_text = false,
+
                 -- The color options for the achievement trackers.
                 color = {
                     -- The option that controls the background color of the progress tracker box.
@@ -125,7 +134,10 @@ local config_manager = {
                 giant_crown_collector = true,
 
                 -- The option that controls whether the `Giant Crown Master` achievement should be tracked or not.
-                giant_crown_master = true
+                giant_crown_master = true,
+
+                -- The option that controls whether the `Eastward Wings` achievement should be tracked or not.
+                eastward_wings = true
             },
 
             -- The selected language option.

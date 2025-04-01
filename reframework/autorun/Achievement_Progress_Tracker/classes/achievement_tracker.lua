@@ -9,7 +9,7 @@ local config_manager = require("Achievement_Progress_Tracker.config_manager")
 ---@field game_award_fixed_id number The fixed id of the in-game award/medal that corresponds to this achievement tracker.
 ---@field key number The look up key of the achievement to reference the config and language entries.
 ---@field name string The name of the achievement to track.
----@field description string The image of the achievement to track.
+---@field description string The description of the achievement to track.
 ---@field image_path string The image of the achievement to track.
 ---@field award_obtained boolean The flag used to determine if the award/medal has already been obtained in-game.
 ---@field amount number The amount to reach for the achievement to track to be considered complete.
@@ -37,7 +37,7 @@ achievementtracker.__index = achievementtracker
 ---@param id number The id of the achievement to track.
 ---@param game_award_fixed_id number The fixed id of the in-game award/medal that corresponds to this achievement tracker.
 ---@param name string The name of the achievement to track.
----@param description string The image of the achievement to track.
+---@param description string The description of the achievement to track.
 ---@param image_path string The image of the achievement to track.
 ---@param amount number The amount to reach for the achievement to track to be considered complete.
 ---@param current number The current amount of progress for the achievement to track tracked. When this reaches or exceeds the amount, it will be considered complete.
@@ -83,7 +83,7 @@ end
 ---@param id number The id of the achievement to track.
 ---@param game_award_fixed_id number The fixed id of the in-game award/medal that corresponds to this achievement tracker.
 ---@param name string The name of the achievement to track.
----@param description string The image of the achievement to track.
+---@param description string The description of the achievement to track.
 ---@param image_path string The image of the achievement to track.
 ---@param amount number The amount to reach for the achievement to track to be considered complete.
 ---@param current number The current amount of progress for the achievement to track tracked. When this reaches or exceeds the amount, it will be considered complete.

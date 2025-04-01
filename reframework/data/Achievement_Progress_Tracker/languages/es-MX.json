@@ -14,7 +14,10 @@
 		"checkbox": {
 			"enabled": "Activado",
 			"render_horizontally": "Renderizar rastreadores horizontalmente",
-			"show_completed_achievements": "Mostrar logros completados"
+			"show_completed_achievements": "Mostrar logros completados",
+			"show_images": "Mostrar Imágenes de Logros",
+			"display_progress_as_percentage": "Mostrar Progreso como Porcentaje",
+			"center_align_text": "Centrar Texto del seguimiento"
 		},
 		"color_picker": {
 			"box_background": "Fondo de caja",
@@ -32,6 +35,7 @@
 		},
 		"dropdown": {
 			"size": {
+				"tiny": "Diminuto",
 				"small": "Pequeño",
 				"medium": "Medio",
 				"large": "Grande"
@@ -43,11 +47,13 @@
 			"language": "Idioma",
 			"settings": "Ajustes",
 			"tracking": "Seguimiento",
-			"missing": "Falta por: %s"
+			"missing": "Falta por: %s",
+			"base_game": "Juego base"
 		},
 		"misc": {
 			"current": "Actual",
-			"select_achievements": "Seleccione logros para realizar un seguimiento"
+			"select_achievements": "Seleccione logros para realizar un seguimiento",
+			"completed": "- COMPLETADO"
 		},
 		"selector": {
 			"alignment": "Alineación"
@@ -61,7 +67,7 @@
 		}
 	},
 	"tracker": {
-		"completed": "¡Terminado!"
+		"completed": "¡Completado!"
 	},
 	"modal": {
 		"header": "Felicidades",
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Coleccionista de coronas",
 			"description": "Conseguiste una corona de oro para muchos monstruos de el registro de cazador."
+		},
+		"eastward_wings": {
+			"name": "Alas orientales",
+			"description": "Obtuviste todas las otras medallas."
 		}
 	}
 }

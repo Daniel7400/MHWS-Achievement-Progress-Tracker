@@ -14,7 +14,10 @@
         "checkbox": {
             "enabled": "Abilitato",
             "render_horizontally": "Visualizza i Tracker in Orizzontale",
-            "show_completed_achievements": "Mostra gli Achievement Completati"
+            "show_completed_achievements": "Mostra gli Achievement Completati",
+			"show_images": "Mostra le immagini degli obiettivi",
+			"display_progress_as_percentage": "Mostra il progresso come percentuale",
+			"center_align_text": "Allinea il testo del tracker al centro"
         },
         "color_picker": {
             "box_background": "Sfondo del Riquadro",
@@ -32,6 +35,7 @@
         },
         "dropdown": {
             "size": {
+				"tiny": "Minuscolo",
                 "small": "Piccola",
                 "medium": "Media",
                 "large": "Grande"
@@ -43,11 +47,13 @@
             "language": "Lingua",
             "settings": "Impostazioni",
             "tracking": "Monitoraggio",
-            "missing": "%s Mancante:"
+            "missing": "%s Mancante:",
+			"base_game": "Gioco base"
         },
         "misc": {
             "current": "Attuale",
-            "select_achievements": "Seleziona gli Achievement da monitorare"
+            "select_achievements": "Seleziona gli Achievement da monitorare",
+			"completed": "- COMPLETATO"
         },
         "selector": {
             "alignment": "Allineamento"
@@ -147,6 +153,10 @@
 		"giant_crown_master": {
 			"name": "Esperto di grandi corone",
 			"description": "Ottieni una grande corona (oro) per molti mostri."
+		},
+		"eastward_wings": {
+			"name": "Ali dell'est",
+			"description": "Ottieni tutte le altre medaglie."
 		}
     }
 }

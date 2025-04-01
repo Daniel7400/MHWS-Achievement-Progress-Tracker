@@ -14,7 +14,8 @@
 ---@param bar_complete_color? number [OPTIONAL] The color (in ARGB form) to use for the completed progress bar. Defaults to [0xFF9DC34C](https://www.colorhexa.com/9DC34C).
 ---@param text_color? number [OPTIONAL] The color (in ARGB form) to use for the text inside the progress bar. Defaults to [0xFFFFFFFF](https://www.colorhexa.com/FFFFFF).
 ---@param text_complete_color? number [OPTIONAL] The color (in ARGB form) to use for the text inside the completed progress bar. Defaults to [0xFFFFFFFF](https://www.colorhexa.com/FFFFFF).
-function d2d.progress_bar(current, max, font, x, y, width, height, completed_text, bar_background_color, bar_color, bar_complete_color, text_color, text_complete_color)
+---@param display_progress_as_percentage? boolean [OPTIONAL] The flag used to determine if the progress text (when not completed) will display as a percentage. Defaults to false, showing progress as `x / y`.
+function d2d.progress_bar(current, max, font, x, y, width, height, completed_text, bar_background_color, bar_color, bar_complete_color, text_color, text_complete_color, display_progress_as_percentage)
     -- Set defaults for the optional parameters that didn't have a value provided.
     completed_text = completed_text or "Completed!"
     bar_background_color = bar_background_color or 0xFF3D4450
@@ -22,6 +23,9 @@ function d2d.progress_bar(current, max, font, x, y, width, height, completed_tex
     bar_complete_color = bar_complete_color or 0xFF9DC34C
     text_color = text_color or 0xFFFFFFFF
     text_complete_color = text_complete_color or 0xFFFFFFFF
+    if display_progress_as_percentage == nil then
+        display_progress_as_percentage = false
+    end
 
     -- Assert the provided colors are valid.
     assert(bar_background_color >= 0x00000000 and bar_background_color <= 0xFFFFFFFF,
@@ -61,6 +65,12 @@ function d2d.progress_bar(current, max, font, x, y, width, height, completed_tex
 
         -- Update the percentage to be the result of dividing the current against the max.
         percentage = current / max
+
+        -- Check if the provided display as percentage flag is true. 
+        if display_progress_as_percentage then
+            -- If yes, then set the progress bar text as the percentage value.
+            progress_bar_text = string.format("%.2f%%", percentage * 100)
+        end
     end
 
     -- Draw the actual progress bar with the width set as the progress percentage amount.
@@ -76,7 +86,7 @@ function d2d.progress_bar(current, max, font, x, y, width, height, completed_tex
     -- Draw the progress bar text in the center of the progress bar.
     d2d.text(font, progress_bar_text,
         x + x_center_offset,
-        y + y_center_offset + 1,
+        y + y_center_offset - 1,
         progress_text_color)
 end
 
@@ -91,17 +101,17 @@ end
 ---
 ---@private
 ---
----@return integer
----@return integer
+---@return number
+---@return number
 local function calculate_modal_size(header_width, header_height, message_width, message_height, padding)
     -- Calculate the dimensions of the modal.
-    local modal_width = math.floor(padding + message_width + padding)
-    local modal_height = math.floor(padding + header_height + (padding / 2) + message_height + padding)
+    local modal_width = math.ceil(padding + message_width + padding)
+    local modal_height = math.ceil(padding + header_height + (padding / 2) + message_height + padding)
 
     -- Check if the width of the header is larger than the width of the message.
     if header_width > message_width then
         -- If yes, then recalculate the box width using the header width instead.
-        modal_width = math.floor(padding + header_width + padding)
+        modal_width = math.ceil(padding + header_width + padding)
     end
 
     -- Return the tuple of the modal width and height values.
@@ -186,14 +196,14 @@ function d2d.modal(header_text, message_text, header_font, message_font, x, y, p
         message_width, message_height, padding)
 
     -- Calculate the x offset for the header text to ensure it sits in the middle of the modal.
-    local header_x_offset = math.floor((message_width - header_width) / 2) + padding
+    local header_x_offset = math.ceil((message_width - header_width) / 2) + padding
     local message_x_offset = padding
 
     -- Check if the width of the header is larger than the width of the message.
     if header_width > message_width then
         -- If yes, then recalculate the header and message x offsets.
         header_x_offset = padding
-        message_x_offset = math.floor((header_width - message_width) / 2) + padding
+        message_x_offset = math.ceil((header_width - message_width) / 2) + padding
     end
 
     -- Draw the box with outline to the screen.
@@ -210,7 +220,7 @@ function d2d.modal(header_text, message_text, header_font, message_font, x, y, p
         y + padding - 5, header_text_color)
 
     -- Calculate half of the padding to separate the header and message vertically.
-    local padding_half = math.floor(padding / 2)
+    local padding_half = math.ceil(padding / 2)
 
     -- Draw the message text into the modal.
     d2d.text(message_font, message_text, x + message_x_offset,
@@ -286,8 +296,8 @@ function d2d.calculate_modal_coordinates_for_alignment(alignment, screen_width, 
     end
 
     -- Calculate the x and y as their calculated value added with the provided position offset value.
-    x = math.floor(x + x_offset)
-    y = math.floor(y + y_offset)
+    x = math.ceil(x + x_offset)
+    y = math.ceil(y + y_offset)
 
     -- Return the tuple of the x and y position values.
     return x, y
