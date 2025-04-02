@@ -1307,6 +1307,12 @@ end
 --- Initializes the tracking manager module.
 ---
 function tracking_manager.init_module()
+    -- Iterate over each achievement tracker.
+    for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+        -- Reset the changeable values for the current achievement tracker (needed when loading a different character).
+        achievement_tracker:reset()
+    end
+    
     -- Get the user data data.
     local user_save_data = sdk_manager.get_user_save_data()
 

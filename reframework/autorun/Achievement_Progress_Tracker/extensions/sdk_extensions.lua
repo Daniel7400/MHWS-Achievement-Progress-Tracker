@@ -337,7 +337,7 @@ function sdk.get_bitset_value(bitset, enum_type_name, id_as_key)
     end
 
     -- Check if there were no positions found.
-    if #positions < 1 then
+    if table.length(positions) < 1 then
         -- If yes, then return an empty table.
         return {}
     end

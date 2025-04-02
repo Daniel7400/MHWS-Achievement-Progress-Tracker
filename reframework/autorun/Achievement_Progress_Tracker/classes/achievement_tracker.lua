@@ -131,4 +131,23 @@ function achievementtracker:should_display()
     return (not self:is_complete() or config_manager.config.current.display.show_completed) and self:is_enabled()
 end
 
+---
+--- Reset all of the changeable values for the achievement tracker. Changeable values include:
+--- - `current` - Reset back to `0`.
+--- - `content_display_width` - Reset back to `0`.
+--- - `award_obtained` - Reset back to `false`.
+--- - `collection_params.found` - Reset back to an empty table if applicable.
+--- - `collection_params.missing` - Reset back to the target collection if applicable.
+---
+function achievementtracker:reset()
+    self.current = 0
+    self.content_display_width = 0
+    self.award_obtained = false
+
+    if self.collection_params ~= nil then
+        self.collection_params.found = {}
+        self.collection_params.missing = table.clone(self.collection_params.target_collection)
+    end
+end
+
 return achievementtracker
