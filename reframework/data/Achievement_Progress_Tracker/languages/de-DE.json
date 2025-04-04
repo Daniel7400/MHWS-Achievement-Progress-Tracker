@@ -15,9 +15,9 @@
 			"enabled": "Aktiviert",
 			"render_horizontally": "Horizontale Tracker-Darstellung",
 			"show_completed_achievements": "Abgeschlossene Erfolge anzeigen",
-			"show_images": "Show Achievement Images",
-			"display_progress_as_percentage": "Display Progress as Percentage",
-			"center_align_text": "Center Align Tracker Text"
+			"show_images": "Erfolgsbild anzeigen",
+			"display_progress_as_percentage": "Fortschritt in Prozent zeigen",
+			"center_align_text": "Tracker-Text zentrieren"
 		},
 		"color_picker": {
 			"box_background": "Hintergrund der Box",
@@ -35,7 +35,7 @@
 		},
 		"dropdown": {
 			"size": {
-				"tiny": "Tiny",
+				"tiny": "Winzig",
 				"small": "Klein",
 				"medium": "Mittel",
 				"large": "Groß"
@@ -48,12 +48,12 @@
 			"settings": "Einstellungen",
 			"tracking": "Tracker",
 			"missing": "Fehlt für: %s",
-			"base_game": "Base Game"
+			"base_game": "Basisspiel"
 		},
 		"misc": {
 			"current": "Aktuell",
 			"select_achievements": "Zu verfolgende Erfolge",
-			"completed": "- COMPLETED"
+			"completed": "- ERREICHT"
 		},
 		"selector": {
 			"alignment": "Ausrichtung"
