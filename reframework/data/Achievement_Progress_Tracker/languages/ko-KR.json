@@ -7,55 +7,55 @@
 	"associated_in_game_language_option": 11,
 	"ui": {
 		"button": {
-			"reset_config": "구성 재설정",
+			"reset_config": "설정 초기화",
 			"top_left": "왼쪽 위",
-            "top_right": "맨 위 오른쪽",
+            "top_right": "오른쪽 위",
             "middle": "가운데",
-            "bottom_left": "왼쪽 하단",
-            "bottom_right": "오른쪽 하단"
+            "bottom_left": "왼쪽 아래",
+            "bottom_right": "오른쪽 아래"
 		},
 		"checkbox": {
 			"enabled": "활성화됨",
-			"render_horizontally": "트래커 가로 렌더링",
-			"show_completed_achievements": "완료된 업적 표시",
-			"show_images": "업적 이미지 표시",
+			"render_horizontally": "추적기를 가로로 표시",
+			"show_completed_achievements": "완료된 도전 과제 표시",
+			"show_images": "도전 과제 이미지 표시",
 			"display_progress_as_percentage": "진행률을 백분율로 표시",
 			"center_align_text": "트래커 텍스트 중앙 정렬"
 		},
 		"color_picker": {
 			"box_background": "상자 배경",
-			"tracker_background": "성과 추적기 배경",
-			"progress_bar_background": "진행률 표시줄 배경",
-			"progress_bar": "진행 표시 줄",
-			"progress_bar_complete": "완료된 진행률 표시줄",
-			"tracker_name_text": "성과 추적기 이름 텍스트",
-			"tracker_description_text": "성과 추적기 설명 텍스트",
+			"tracker_background": "도전 과제 추적기 배경",
+			"progress_bar_background": "진행 표시줄 배경",
+			"progress_bar": "진행 표시줄",
+			"progress_bar_complete": "완료된 진행 표시줄",
+			"tracker_name_text": "도전 과제 추적기 이름 텍스트",
+			"tracker_description_text": "도전 과제 추적기 설명 텍스트",
 			"progress_text": "진행 표시줄 텍스트",
-			"progress_complete_text": "완료된 진행률 표시줄 텍스트"
+			"progress_complete_text": "완료된 진행 표시줄 텍스트"
 		},
 		"combo_box": {
 			"size": "크기"
 		},
 		"dropdown": {
 			"size": {
-				"tiny": "매우 작은",
-				"small": "작은",
+				"tiny": "매우 작음",
+				"small": "작음",
 				"medium": "중간",
-				"large": "크기가 큰"
+				"large": "큼"
 			}
 		},
 		"header": {
 			"color": "색상",
-			"display": "표시하다",
+			"display": "표시",
 			"language": "언어",
 			"settings": "설정",
 			"tracking": "추적",
-			"missing": "누락된 항목: %s",
+			"missing": "달성하지 못 한 항목: %s",
 			"base_game": "기본 게임"
 		},
 		"misc": {
 			"current": "현재의",
-			"select_achievements": "추적할 성과 선택",
+			"select_achievements": "추적할 도전 과제 선택",
 			"completed": "- 완료"
 		},
 		"selector": {
@@ -66,15 +66,15 @@
 		},
 		"tooltip": {
 			"manual_input": "CTRL + 마우스 왼쪽 버튼을 클릭하여 수동으로 입력하세요.",
-			"uncheck_achievement": "특정 업적 추적기를 숨기려면 선택을 취소하세요."
+			"uncheck_achievement": "특정 도전 과제에 대한 추적을 숨기려면 선택을 취소하세요."
 		}
 	},
 	"tracker": {
-		"completed": "완전한!"
+		"completed": "완료!"
 	},
 	"modal": {
-		"header": "축하해요",
-		"message": "이 모드가 추적하는 모든 업적을 완료했습니다!"
+		"header": "축하합니다",
+		"message": "이 모드가 추적하는 모든 도전 과제를 완료했습니다!"
 	},
 	"achievement": {
 		"a_true_hunter": {
@@ -111,7 +111,7 @@
 		},
 		"a_fish_ionado": {
 			"name": "대물 낚시에 매료되어",
-			"description": "대물 낚시에 매료되어"
+			"description": "대물을 30마리 낚아 올린 증표"
 		},
 		"campmaster": {
 			"name": "캠프 마스터",
@@ -131,7 +131,7 @@
 		},
 		"power_is_everything": {
 			"name": "힘이야말로 모든 것",
-			"description": "희귀도 7 이상인 파생 무기를 (아르티안 제외) 5종류 생산한 증표"
+			"description": "희귀도 7 이상인 파생 무기(아티어 제외)를 5종류 생산한 증표"
 		},
 		"explorer_of_the_eastlands": {
 			"name": "동쪽 땅 탐험가",
