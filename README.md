@@ -58,4 +58,5 @@ The following achievements are being tracked:
 - [rankx](https://www.nexusmods.com/users/77159328) / [ChanHong1024](https://github.com/ChanHong1024) - Traditional Chinese translation.
 - [PKTrainer](https://next.nexusmods.com/profile/PKTrainer) - Spanish translation.
 - [tetorapot](https://www.nexusmods.com/users/220084629) - Japanese translation.
+- [unitymind9](https://github.com/unitymind9) - Korean translation.
 - [XxInvictus](https://github.com/XxInvictus) - Added alpha/transparency control to the tracker backgrounds.
