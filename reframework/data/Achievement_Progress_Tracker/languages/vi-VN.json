@@ -6,10 +6,10 @@
 		"button": {
 			"reset_config": "Đặt lại cấu hình",
 			"top_left": "Trên cùng bên trái",
-            "top_right": "Trên cùng bên phải",
-            "middle": "Ở giữa",
-            "bottom_left": "Dưới cùng bên trái",
-            "bottom_right": "Góc phải ở phía dưới"
+			"top_right": "Trên cùng bên phải",
+			"middle": "Ở giữa",
+			"bottom_left": "Dưới cùng bên trái",
+			"bottom_right": "Góc phải ở phía dưới"
 		},
 		"checkbox": {
 			"enabled": "Đã bật",

@@ -6,10 +6,10 @@
 		"button": {
 			"reset_config": "Restablecer configuración",
 			"top_left": "Arriba a la izquierda",
-            "top_right": "Parte superior derecha",
-            "middle": "Medio",
-            "bottom_left": "Abajo a la izquierda",
-            "bottom_right": "Abajo a la derecha"
+			"top_right": "Parte superior derecha",
+			"middle": "Medio",
+			"bottom_left": "Abajo a la izquierda",
+			"bottom_right": "Abajo a la derecha"
 		},
 		"checkbox": {
 			"enabled": "Activado",

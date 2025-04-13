@@ -8,10 +8,10 @@
 		"button": {
 			"reset_config": "รีเซ็ตการกำหนดค่า",
 			"top_left": "บนซ้าย",
-            "top_right": "ขวาบน",
-            "middle": "กลาง",
-            "bottom_left": "ล่างซ้าย",
-            "bottom_right": "ล่างขวา"
+			"top_right": "ขวาบน",
+			"middle": "กลาง",
+			"bottom_left": "ล่างซ้าย",
+			"bottom_right": "ล่างขวา"
 		},
 		"checkbox": {
 			"enabled": "เปิดใช้งานแล้ว",

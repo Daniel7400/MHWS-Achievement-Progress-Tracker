@@ -1,143 +1,143 @@
 {
-    "font": "NotoSansSC-Bold.otf",
-    "unicode_glyph_ranges": [],
-    "associated_in_game_language_option": 2,
-    "ui": {
-        "button": {
-            "reset_config": "Réinitialiser la configuration",
-            "top_left": "En haut à gauche",
-            "top_right": "En haut à droite",
-            "middle": "Centré",
-            "bottom_left": "En bas à gauche",
-            "bottom_right": "En bas à droite"
-        },
-        "checkbox": {
-            "enabled": "Activé",
-            "render_horizontally": "Afficher les suivis horizontalement",
-            "show_completed_achievements": "Afficher les distinctions obtenues",
+	"font": "NotoSansSC-Bold.otf",
+	"unicode_glyph_ranges": [],
+	"associated_in_game_language_option": 2,
+	"ui": {
+		"button": {
+			"reset_config": "Réinitialiser la configuration",
+			"top_left": "En haut à gauche",
+			"top_right": "En haut à droite",
+			"middle": "Centré",
+			"bottom_left": "En bas à gauche",
+			"bottom_right": "En bas à droite"
+		},
+		"checkbox": {
+			"enabled": "Activé",
+			"render_horizontally": "Afficher les suivis horizontalement",
+			"show_completed_achievements": "Afficher les distinctions obtenues",
 			"show_images": "Afficher l’Illustration des Distinctions",
 			"display_progress_as_percentage": "Afficher la Progression en Pourcentage",
 			"center_align_text": "Aligner au Centre tout le Texte des Suivis"
-        },
-        "color_picker": {
-            "box_background": "Couleur du fond de la fenêtre",
-            "tracker_background": "Couleur du fond des distinctions suivies",
-            "progress_bar_background": "Couleur du fond de la barre de progression",
-            "progress_bar": "Couleur de la barre de progression",
-            "progress_bar_complete": "Couleur de la barre de progression complétée",
-            "tracker_name_text": "Couleur du nom des distinctions suivies",
-            "tracker_description_text": "Couleur des descriptions des distinctions suivies",
-            "progress_text": "Couleur du texte de la barre de progression",
-            "progress_complete_text": "Couleur du texte de la barre de progression une fois complétée"
-        },
-        "combo_box": {
-            "size": "Taille"
-        },
-        "dropdown": {
-            "size": {
+		},
+		"color_picker": {
+			"box_background": "Couleur du fond de la fenêtre",
+			"tracker_background": "Couleur du fond des distinctions suivies",
+			"progress_bar_background": "Couleur du fond de la barre de progression",
+			"progress_bar": "Couleur de la barre de progression",
+			"progress_bar_complete": "Couleur de la barre de progression complétée",
+			"tracker_name_text": "Couleur du nom des distinctions suivies",
+			"tracker_description_text": "Couleur des descriptions des distinctions suivies",
+			"progress_text": "Couleur du texte de la barre de progression",
+			"progress_complete_text": "Couleur du texte de la barre de progression une fois complétée"
+		},
+		"combo_box": {
+			"size": "Taille"
+		},
+		"dropdown": {
+			"size": {
 				"tiny": "Minuscule",
-                "small": "Petite",
-                "medium": "Moyenne",
-                "large": "Grande"
-            }
-        },
-        "header": {
-            "color": "Couleur",
-            "display": "Affichage",
-            "language": "Langue",
-            "settings": "Paramètres",
-            "tracking": "Distinctions à suivre",
-            "missing": "Manquant pour: %s",
+				"small": "Petite",
+				"medium": "Moyenne",
+				"large": "Grande"
+			}
+		},
+		"header": {
+			"color": "Couleur",
+			"display": "Affichage",
+			"language": "Langue",
+			"settings": "Paramètres",
+			"tracking": "Distinctions à suivre",
+			"missing": "Manquant pour: %s",
 			"base_game": "Jeu de Base"
-        },
-        "misc": {
-            "current": "Actuel",
-            "select_achievements": "Sélectionnez les distinctions à suivre",
+		},
+		"misc": {
+			"current": "Actuel",
+			"select_achievements": "Sélectionnez les distinctions à suivre",
 			"completed": "- OBTENUE"
-        },
-        "selector": {
-            "alignment": "Alignement"
-        },
-        "slider": {
-            "adjust_position": "Ajuster la position"
-        },
-        "tooltip": {
-            "manual_input": "CTRL + clic gauche pour saisir manuellement",
-            "uncheck_achievement": "Décochez les cases des distinctions que vous ne souhaitez pas suivre"
-        }
-    },
-    "tracker": {
-        "completed": "Obtenue!"
-    },
-    "modal": {
-        "header": "Félicitations",
-        "message": "Vous avez obtenu toutes les distinctions suivies par ce mod!"
-    },
-    "achievement": {
-        "a_true_hunter": {
-            "name": "La fièvre de la chasse",
-            "description": "Compléter 50 quêtes."
-        },
-        "hunters_united_forever": {
-            "name": "Chasseurs, rassemblement !",
-            "description": "Compléter 100 quêtes en mode multijoueur."
-        },
-        "someone_worth_following": {
-            "name": "Inséparables",
-            "description": "Compléter 100 quêtes aux côtés de votre Palico."
-        },
-        "capture_pro": {
-            "name": "Pacifiste",
-            "description": "Capturer 50 monstres."
-        },
-        "monster_slayer": {
-            "name": "Chassez-les tous !",
-            "description": "Chasser 100 grands monstres."
-        },
-        "seasoned_hunter": {
-            "name": "Chasseur vétéran",
-            "description": "Chasser 50 monstres alpha."
-        },
-        "top_of_the_food_chain": {
-            "name": "Au sommet de la chaîne",
-            "description": "Chasser 50 prédateurs ultimes."
-        },
-        "east_to_west": {
-            "name": "Pas de repos pour les braves",
-            "description": "Compléter 30 missions secondaires."
-        },
-        "a_fish_ionado": {
-            "name": "Le rêve de tout pêcheur",
-            "description": "Pêcher 30 gros spécimens."
-        },
-        "campmaster": {
-            "name": "Campeur et sans reproche",
-            "description": "Installer des camps provisoires à 10 endroits."
-        },
-        "bourgeois_hunter": {
-            "name": "Le million !",
-            "description": "Avoir 1 million de zenny en votre possession."
-        },
-        "gossip_hunter": {
-            "name": "Chasseur de têtes",
-            "description": "Consulter 30 profils de Chasseur."
-        },
-        "impregnable_defense": {
-            "name": "La meilleure défense, c'est la défense",
-            "description": "Forger 5 pièces d'équipement différentes de rareté 7 ou plus."
-        },
-        "power_is_everything": {
-            "name": "La puissance avant tout",
-            "description": "Forger 5 armes différentes (non artiennes) de rareté 7 ou plus."
-        },
-        "explorer_of_the_eastlands": {
-            "name": "Exploration des Terres orientales",
-            "description": "Obtenir 10 objets spéciaux différents de rareté 6."
-        },
-        "monster_phd": {
-            "name": "Professeur ès monstrum",
-            "description": "Chasser beaucoup de grands monstres différents."
-        },
+		},
+		"selector": {
+			"alignment": "Alignement"
+		},
+		"slider": {
+			"adjust_position": "Ajuster la position"
+		},
+		"tooltip": {
+			"manual_input": "CTRL + clic gauche pour saisir manuellement",
+			"uncheck_achievement": "Décochez les cases des distinctions que vous ne souhaitez pas suivre"
+		}
+	},
+	"tracker": {
+		"completed": "Obtenue!"
+	},
+	"modal": {
+		"header": "Félicitations",
+		"message": "Vous avez obtenu toutes les distinctions suivies par ce mod!"
+	},
+	"achievement": {
+		"a_true_hunter": {
+			"name": "La fièvre de la chasse",
+			"description": "Compléter 50 quêtes."
+		},
+		"hunters_united_forever": {
+			"name": "Chasseurs, rassemblement !",
+			"description": "Compléter 100 quêtes en mode multijoueur."
+		},
+		"someone_worth_following": {
+			"name": "Inséparables",
+			"description": "Compléter 100 quêtes aux côtés de votre Palico."
+		},
+		"capture_pro": {
+			"name": "Pacifiste",
+			"description": "Capturer 50 monstres."
+		},
+		"monster_slayer": {
+			"name": "Chassez-les tous !",
+			"description": "Chasser 100 grands monstres."
+		},
+		"seasoned_hunter": {
+			"name": "Chasseur vétéran",
+			"description": "Chasser 50 monstres alpha."
+		},
+		"top_of_the_food_chain": {
+			"name": "Au sommet de la chaîne",
+			"description": "Chasser 50 prédateurs ultimes."
+		},
+		"east_to_west": {
+			"name": "Pas de repos pour les braves",
+			"description": "Compléter 30 missions secondaires."
+		},
+		"a_fish_ionado": {
+			"name": "Le rêve de tout pêcheur",
+			"description": "Pêcher 30 gros spécimens."
+		},
+		"campmaster": {
+			"name": "Campeur et sans reproche",
+			"description": "Installer des camps provisoires à 10 endroits."
+		},
+		"bourgeois_hunter": {
+			"name": "Le million !",
+			"description": "Avoir 1 million de zenny en votre possession."
+		},
+		"gossip_hunter": {
+			"name": "Chasseur de têtes",
+			"description": "Consulter 30 profils de Chasseur."
+		},
+		"impregnable_defense": {
+			"name": "La meilleure défense, c'est la défense",
+			"description": "Forger 5 pièces d'équipement différentes de rareté 7 ou plus."
+		},
+		"power_is_everything": {
+			"name": "La puissance avant tout",
+			"description": "Forger 5 armes différentes (non artiennes) de rareté 7 ou plus."
+		},
+		"explorer_of_the_eastlands": {
+			"name": "Exploration des Terres orientales",
+			"description": "Obtenir 10 objets spéciaux différents de rareté 6."
+		},
+		"monster_phd": {
+			"name": "Professeur ès monstrum",
+			"description": "Chasser beaucoup de grands monstres différents."
+		},
 		"mini_crown_collector": {
 			"name": "Marquis de la chasse",
 			"description": "Obtenir une petite couronne pour 10 monstres."
@@ -158,5 +158,5 @@
 			"name": "Une véritable monsterclass",
 			"description": "Obtenir toutes les distinctions."
 		}
-    }
+	}
 }

@@ -10,10 +10,10 @@
 		"button": {
 			"reset_config": "Сбросить конфигурацию",
 			"top_left": "Верхний левый",
-            "top_right": "В правом верхнем углу",
-            "middle": "Середина",
-            "bottom_left": "Внизу слева",
-            "bottom_right": "Внизу справа"
+			"top_right": "В правом верхнем углу",
+			"middle": "Середина",
+			"bottom_left": "Внизу слева",
+			"bottom_right": "Внизу справа"
 		},
 		"checkbox": {
 			"enabled": "Включено",

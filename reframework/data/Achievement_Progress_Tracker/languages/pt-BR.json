@@ -6,10 +6,10 @@
 		"button": {
 			"reset_config": "Redefinir configuração",
 			"top_left": "Canto superior esquerdo",
-            "top_right": "Canto superior direito",
-            "middle": "Meio",
-            "bottom_left": "Inferior esquerdo",
-            "bottom_right": "Canto inferior direito"
+			"top_right": "Canto superior direito",
+			"middle": "Meio",
+			"bottom_left": "Inferior esquerdo",
+			"bottom_right": "Canto inferior direito"
 		},
 		"checkbox": {
 			"enabled": "Habilitado",

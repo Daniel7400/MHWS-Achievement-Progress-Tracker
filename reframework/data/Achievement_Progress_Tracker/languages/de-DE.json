@@ -6,10 +6,10 @@
 		"button": {
 			"reset_config": "Zurücksetzen",
 			"top_left": "Oben links",
-            "top_right": "Oben rechts",
-            "middle": "Mitte",
-            "bottom_left": "Unten links",
-            "bottom_right": "Unten rechts"
+			"top_right": "Oben rechts",
+			"middle": "Mitte",
+			"bottom_left": "Unten links",
+			"bottom_right": "Unten rechts"
 		},
 		"checkbox": {
 			"enabled": "Aktiviert",

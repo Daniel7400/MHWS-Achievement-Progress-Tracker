@@ -9,10 +9,10 @@
 		"button": {
 			"reset_config": "Επαναφορά διαμόρφωσης",
 			"top_left": "Πάνω αριστερά",
-            "top_right": "Επάνω δεξιά",
-            "middle": "Μέση",
-            "bottom_left": "Κάτω αριστερά",
-            "bottom_right": "Κάτω δεξιά"
+			"top_right": "Επάνω δεξιά",
+			"middle": "Μέση",
+			"bottom_left": "Κάτω αριστερά",
+			"bottom_right": "Κάτω δεξιά"
 		},
 		"checkbox": {
 			"enabled": "Ενεργοποιήθηκε",
