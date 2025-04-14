@@ -1007,6 +1007,12 @@ local tracking_manager = {
                         local award_name_guid = sdk.constants.game_function.get_award_name_guid:call(nil, award_id)
                         local award_name = sdk.get_localized_text(award_name_guid, language_manager.language.current.associated_in_game_language_option)
 
+                        -- Check if the found award name is null (nil) or whitespace.
+                        if string.is_null_or_whitespace(award_name) then
+                            -- If yes, then just set the award name as the english name.
+                            award_name = sdk.get_localized_text(award_name_guid, sdk.constants.enum.game_language_option.English)
+                        end
+
                         -- Check if the current award fixed id is found in the collection of acquired awards fixed ids.
                         if acquired_awards_fixed_ids[award_fixed_id] then
                             -- If yes, then insert the award name into the found collection.
@@ -1086,15 +1092,18 @@ local function update_tracker_value(achievement_tracker, update_source, skip_dra
     -- Determine if the tracker value changed by comparing if the previous value and new current are NOT equal.
     local tracker_value_changed = previous_value ~= achievement_tracker.current
 
-    -- Check if the newly updated current value for the provided achievement tracker is greater than or equal to the amount.
-    if achievement_tracker.current >= achievement_tracker.amount then
-        -- If yes, then set the award obtained flag on the provided achievementtracker as true.
-        achievement_tracker.award_obtained = true
-
-    -- Else if, check if the provided achievementtracker has the award obtained flag as true (but doesn't meet the current vs amount requirement).
-    elseif achievement_tracker.award_obtained then
+    -- Check if the provided achievement tracker has the award obtained flag as true.
+    if achievement_tracker.award_obtained then
         -- If yes, then set the current value for the provided achievement tracker as the amount to make the progress bar show as complete.
         achievement_tracker.current = achievement_tracker.amount
+
+    -- Else if, check if the newly updated current value for the provided achievement tracker is greater than or equal to the amount.
+    elseif achievement_tracker.current >= achievement_tracker.amount then
+        -- If yes, then set the award obtained flag on the provided achievement tracker as true.
+        achievement_tracker.award_obtained = true
+
+        -- Call the send completion notification function on the sdk manager for the provided achievement tracker.
+        sdk_manager.send_completion_notification(achievement_tracker)
     end
 
     -- Check if the provided achievement tracker should be displayed and the skip draw manager update flag is NOT true (is false).
@@ -1312,7 +1321,7 @@ function tracking_manager.init_module()
         -- Reset the changeable values for the current achievement tracker (needed when loading a different character).
         achievement_tracker:reset()
     end
-    
+
     -- Get the user data data.
     local user_save_data = sdk_manager.get_user_save_data()
 

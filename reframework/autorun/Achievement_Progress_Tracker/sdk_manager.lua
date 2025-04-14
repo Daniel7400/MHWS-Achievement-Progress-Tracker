@@ -1,5 +1,6 @@
 --- IMPORTS
 local constants = require("Achievement_Progress_Tracker.constants")
+local language_manager = require("Achievement_Progress_Tracker.language_manager")
 --- END IMPORTS
 
 --- The manager for all things related calling into the sdk.
@@ -11,8 +12,14 @@ local sdk_manager = {
     mission_manager = nil,
 
     -- The player manager managed singleton from the sdk.
-    player_manager = nil
+    player_manager = nil,
+
+    -- The chat manager managed singleton from the sdk.
+    chat_manager = nil
 }
+
+-- The text to use as the header of any completion notifications that are sent.
+local notification_header_text = nil
 
 ---
 --- Attempt to get the `app.cPlayerManageInfo` object from the game.
@@ -25,7 +32,7 @@ function sdk_manager.get_player()
         sdk_manager.player_manager = sdk.get_managed_singleton(constants.type_name.player_manager)
     end
 
-    -- Check if the player manager is stil NOT valid.
+    -- Check if the player manager is still NOT valid.
     if not sdk_manager.player_manager then
         -- If yes, then return nil since no player can be found.
         return nil
@@ -62,7 +69,7 @@ function sdk_manager.get_user_save_data()
         sdk_manager.save_data_manager = sdk.get_managed_singleton(constants.type_name.save_data_manager)
     end
 
-    -- Check if the save data manager is stil NOT valid.
+    -- Check if the save data manager is still NOT valid.
     if not sdk_manager.save_data_manager then
         -- If yes, then return nil since no user save data can be found.
         return nil
@@ -209,7 +216,7 @@ function sdk_manager.get_mission_activator()
         sdk_manager.mission_manager = sdk.get_managed_singleton(constants.type_name.mission_manager)
     end
 
-    -- Check if the mission manager is stil NOT valid.
+    -- Check if the mission manager is still NOT valid.
     if not sdk_manager.mission_manager then
         -- If yes, then return nil since no mission activator can be found.
         return nil
@@ -248,12 +255,52 @@ function sdk_manager.get_acquired_award_fixed_ids(hunter_profile)
 end
 
 ---
+--- Send a notification using the in-game chat notification system to show that the provided achievement tracker has been completed.
+---
+---@param achievement_tracker achievementtracker The achievement tracker to send the completion notification for.
+function sdk_manager.send_completion_notification(achievement_tracker)
+    -- KNOWN ISSUE: In `Thai` and `Vietnamese` the text will either all display as boxes, or only partially.
+
+    -- Check if the chat manager on the sdk manager is NOT already loaded/valid.
+    if not sdk_manager.chat_manager then
+        -- If yes, then call into the sdk to get the chat manager managed singleton.
+        sdk_manager.chat_manager = sdk.get_managed_singleton(constants.type_name.chat_manager)
+    end
+
+    -- Check if the chat manager is still valid.
+    if sdk_manager.chat_manager then
+        -- Check if the notification header text is nil (has NOT already been created).
+        if notification_header_text == nil then
+            -- If yes, then set the notification header text as a new gui message managed object with the mod name as the text.
+            notification_header_text = sdk.create_gui_message(constants.mod_name)
+        end
+
+        -- Get the name of the award from the provided achievement tracker.
+        local award_name = language_manager.language.current.achievement[achievement_tracker.key].name
+
+        -- Get the award id of the award using the award fixed id on the provided achievement tracker.
+        local award_id = constants.award_id[constants.award_id_fixed[achievement_tracker.game_award_fixed_id]]
+
+        -- Create the body text for the notification using the award name and the tracker completed text.
+        local body_text = sdk.create_gui_message(string.format("%s - %s", award_name, language_manager.language.current.tracker.completed))
+
+        -- Call the add system text with title log function on the chat manager do display the notification.
+        sdk_manager.chat_manager:call("addSystemTextWithTitleLog(app.ChatDef.LOG_ID, ace.cGUIMessageInfo, ace.cGUIMessageInfo, System.Int32, System.Int32, System.Boolean)",
+            constants.notification_type.award_unlock, notification_header_text, body_text, award_id, 0, false)
+    else
+        -- Log an error that this function was called and the chat manager could not be accessed.
+        log.error(string.format("[%s] - Failed to get the `app.ChatManager` managed object.", constants.mod_name))
+    end
+end
+
+---
 --- Initializes the sdk manager module.
 ---
 function sdk_manager.init_module()
     sdk_manager.save_data_manager = sdk.get_managed_singleton(constants.type_name.save_data_manager)
     sdk_manager.mission_manager = sdk.get_managed_singleton(constants.type_name.mission_manager)
     sdk_manager.player_manager = sdk.get_managed_singleton(constants.type_name.player_manager)
+    sdk_manager.chat_manager = sdk.get_managed_singleton(constants.type_name.chat_manager)
 
     local tracking_manager = require("Achievement_Progress_Tracker.tracking_manager")
 

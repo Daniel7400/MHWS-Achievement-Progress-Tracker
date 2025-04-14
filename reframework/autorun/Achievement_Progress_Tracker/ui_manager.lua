@@ -400,6 +400,10 @@ function ui_manager.init_module()
 
             -- Pop the font that was pushed earlier to return to the last used (default) REFramework font.
             imgui.pop_font()
+
+            -- Add a horizontal line separator and new line to space out any mods that come after this one.
+            imgui.separator()
+            imgui.new_line()
         end
 
         -- Check if the language was reset or the option was changed.
