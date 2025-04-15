@@ -269,13 +269,7 @@ function sdk_manager.send_completion_notification(achievement_tracker)
 
     -- Check if the chat manager is still valid.
     if sdk_manager.chat_manager then
-        -- Check if the notification header text is nil (has NOT already been created).
-        if notification_header_text == nil then
-            -- If yes, then set the notification header text as a new gui message managed object with the mod name as the text.
-            notification_header_text = sdk.create_gui_message(constants.mod_name)
-        end
-
-        -- Get the name of the award from the provided achievement tracker.
+        -- If yes, then get the name of the award from the provided achievement tracker.
         local award_name = language_manager.language.current.achievement[achievement_tracker.key].name
 
         -- Get the award id of the award using the award fixed id on the provided achievement tracker.
@@ -301,6 +295,7 @@ function sdk_manager.init_module()
     sdk_manager.mission_manager = sdk.get_managed_singleton(constants.type_name.mission_manager)
     sdk_manager.player_manager = sdk.get_managed_singleton(constants.type_name.player_manager)
     sdk_manager.chat_manager = sdk.get_managed_singleton(constants.type_name.chat_manager)
+    notification_header_text = sdk.create_gui_message(constants.mod_name)
 
     local tracking_manager = require("Achievement_Progress_Tracker.tracking_manager")
 

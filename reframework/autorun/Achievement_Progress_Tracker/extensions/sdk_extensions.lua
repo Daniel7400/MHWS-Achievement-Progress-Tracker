@@ -434,24 +434,14 @@ end
 ---@return userdata gui_message The created `ace.cGUIMessageInfo` managed object.
 function sdk.create_gui_message(message_text)
     -- Create a new instance of a gui message info (`ace.cGUIMessageInfo`) managed object.
-    local gui_message = sdk.create_instance("ace.cGUIMessageInfo")
+    local gui_message = sdk.create_instance("ace.cGUIMessageInfo"):add_ref()
     if not gui_message then
         -- Throw an error if it was not created properly.
         error("`ace.cGUIMessageInfo` failed to be created.")
     end
 
-    -- Create a new instance of a list of gui message info param data (`System.Collections.Generic.List`1<ace.cGUIMessageInfo.ParamData>`).
-    local gui_message_params = sdk.create_instance("System.Collections.Generic.List`1<ace.cGUIMessageInfo.ParamData>")
-    if not gui_message_params then
-        -- Throw an error if it was not created properly.
-        error("`System.Collections.Generic.List`1<ace.cGUIMessageInfo.ParamData>` failed to be created.")
-    end
-
-    -- Set the params property on the gui message info managed object using the newly created gui message params.
-    gui_message:call("set_Params(System.Collections.Generic.List`1<ace.cGUIMessageInfo.ParamData>)", gui_message_params)
-
-    -- Add the provided message text as a param on the gui message.
-    gui_message:call("addParam(System.String)", message_text)
+    -- Call the set message info function on the gui message and use the provided message text as the parameter.
+    gui_message:call("setMessageInfo(System.String)", message_text)
 
     -- Return the gui message (`ace.cGUIMessageInfo`) managed object.
     return gui_message
