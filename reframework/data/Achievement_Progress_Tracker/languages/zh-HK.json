@@ -19,9 +19,9 @@
 			"enabled": "啟用",
 			"render_horizontally": "橫向顯示追蹤器",
 			"show_completed_achievements": "顯示已完成的成就",
-			"show_images": "Show Achievement Images",
-			"display_progress_as_percentage": "Display Progress as Percentage",
-			"center_align_text": "Center Align Tracker Text"
+			"show_images": "顯示成就圖標",
+			"display_progress_as_percentage": "切換百分比顯示",
+			"center_align_text": "居中顯示追蹤內容"
 		},
 		"color_picker": {
 			"box_background": "追蹤器邊框",
@@ -39,7 +39,7 @@
 		},
 		"dropdown": {
 			"size": {
-				"tiny": "Tiny",
+				"tiny": "微型",
 				"small": "小型",
 				"medium": "中型",
 				"large": "大型"
@@ -52,12 +52,12 @@
 			"settings": "設定",
 			"tracking": "追蹤",
 			"missing": "未獲得：%s",
-			"base_game": "Base Game"
+			"base_game": "本體"
 		},
 		"misc": {
 			"current": "當前的",
 			"select_achievements": "選擇要追蹤的成就",
-			"completed": "- COMPLETED"
+			"completed": "- 已完成"
 		},
 		"selector": {
 			"alignment": "顯示方位"

@@ -18,9 +18,9 @@
 			"enabled": "有効",
 			"render_horizontally": "トラッカーを水平に表示する",
 			"show_completed_achievements": "達成した実績を表示",
-			"show_images": "Show Achievement Images",
-			"display_progress_as_percentage": "Display Progress as Percentage",
-			"center_align_text": "Center Align Tracker Text"
+			"show_images": "達成画像を表示",
+			"display_progress_as_percentage": "進捗状況をパーセントで表示",
+			"center_align_text": "トラッカーテキストの中央揃え"
 		},
 		"color_picker": {
 			"box_background": "枠の色",
@@ -38,7 +38,7 @@
 		},
 		"dropdown": {
 			"size": {
-				"tiny": "Tiny",
+				"tiny": "小さい",
 				"small": "小",
 				"medium": "中",
 				"large": "大"
@@ -51,12 +51,12 @@
 			"settings": "設定",
 			"tracking": "トラッカー",
 			"missing": "足りないもの:%s",
-			"base_game": "Base Game"
+			"base_game": "ベースゲーム"
 		},
 		"misc": {
 			"current": "現在",
 			"select_achievements": "表示する実績を選択",
-			"completed": "- COMPLETED"
+			"completed": "- 達成しました"
 		},
 		"selector": {
 			"alignment": "表示位置"
