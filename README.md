@@ -1,7 +1,7 @@
 # Achievement Progress Tracker
 Monster Hunter Wilds Mod - Track and display your progress on 21 achievements, including crowns, with some showing what you're missing to unlock them. Multi-language support.
 
-![image](https://github.com/user-attachments/assets/ed4d2765-6f00-41fe-a5be-446bce354027)
+![image](https://github.com/user-attachments/assets/475e3739-71e5-4f93-af63-0e9e9eac4de0)
 
 
 The following achievements are being tracked:
@@ -19,13 +19,13 @@ The following achievements are being tracked:
 - Gossip Hunter
 - Impregnable Defense
 - Power Is Everything
-- Explorer of the Eastlands **(supports showing missing entries in the REFramework UI)**
-- Monster Ph.D. **(supports showing missing entries in the REFramework UI)**
-- Miniature Crown Collector **(supports showing missing entries in the REFramework UI)**
-- Miniature Crown Master **(supports showing missing entries in the REFramework UI)**
-- Giant Crown Collector **(supports showing missing entries in the REFramework UI)**
-- Giant Crown Master **(supports showing missing entries in the REFramework UI)**
-- Eastward Wings **(supports showing missing entries in the REFramework UI)**
+- Explorer of the Eastlands `(supports showing missing entries in the REFramework UI)`
+- Monster Ph.D. `(supports showing missing entries in the REFramework UI)`
+- Miniature Crown Collector `(supports showing missing entries in the REFramework UI)`
+- Miniature Crown Master `(supports showing missing entries in the REFramework UI)`
+- Giant Crown Collector `(supports showing missing entries in the REFramework UI)`
+- Giant Crown Master `(supports showing missing entries in the REFramework UI)`
+- Eastward Wings `(supports showing missing entries in the REFramework UI)`
     
 ***
 
