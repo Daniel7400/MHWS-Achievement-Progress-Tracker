@@ -1209,6 +1209,17 @@ function tracking_manager.update_values(basic_data, item_data, equipment_data, c
         if acquired_awards_fixed_ids[achievement_tracker.game_award_fixed_id] and not achievement_tracker.award_obtained then
             -- If yes, then set the award obtained flag on the current achievement tracker as true.
             achievement_tracker.award_obtained = true
+
+            -- Check if the achievement id on the current tracker being marked as obtained is for the
+            -- `East to West, A Hunter Never Rests` achievement AND its current value is one less than the target amount.
+            if achievement_tracker.id == constants.achievement.east_to_west and
+                achievement_tracker.current == (achievement_tracker.amount - 1) then
+                -- If yes, then call the send completion notification function on the sdk manager since it will be marked as
+                -- obtained before the value is actually updated (since the update occurs on the save call).
+                sdk_manager.send_completion_notification(achievement_tracker)
+            end
+            -- TODO: Look into another hook to more accurately capture when this gets updated rather then
+            -- relying on the overall save update which is the cause of the issue and why this special code needs to be here.
         end
 
         -- Set the update source as nil by default.
@@ -1313,15 +1324,23 @@ function tracking_manager.update_language()
 end
 
 ---
---- Initializes the tracking manager module.
+--- Reset the tracking manager is initialized flag and achievement trackers.
 ---
-function tracking_manager.init_module()
+function tracking_manager.reset()
+    -- Set the is intialized flag to false.
+    tracking_manager.is_initialized = false
+
     -- Iterate over each achievement tracker.
     for _, achievement_tracker in ipairs(tracking_manager.achievements) do
         -- Reset the changeable values for the current achievement tracker (needed when loading a different character).
         achievement_tracker:reset()
     end
+end
 
+---
+--- Initializes the tracking manager module.
+---
+function tracking_manager.init_module()
     -- Get the user data data.
     local user_save_data = sdk_manager.get_user_save_data()
 
