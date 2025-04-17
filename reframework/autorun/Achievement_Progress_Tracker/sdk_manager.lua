@@ -313,38 +313,41 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.save_data_manager, "systemRequestUserSave", nil, function(retval)
-        -- Get the user data data.
-        local user_save_data = sdk_manager.get_user_save_data()
+        -- Check if the tracking manager is initialized.
+        if tracking_manager.is_initialized then
+            -- Get the user data data.
+            local user_save_data = sdk_manager.get_user_save_data()
 
-        -- Get the basic data.
-        local basic_data = sdk_manager.get_basic_data(user_save_data)
+            -- Get the basic data.
+            local basic_data = sdk_manager.get_basic_data(user_save_data)
 
-        -- Get the item data.
-        local item_data = sdk_manager.get_item_data(user_save_data)
+            -- Get the item data.
+            local item_data = sdk_manager.get_item_data(user_save_data)
 
-        -- Get the equipment data.
-        local equipment_data = sdk_manager.get_equipment_data(user_save_data)
+            -- Get the equipment data.
+            local equipment_data = sdk_manager.get_equipment_data(user_save_data)
 
-        -- Get the camp data.
-        local camp_data = sdk_manager.get_camp_data(user_save_data)
+            -- Get the camp data.
+            local camp_data = sdk_manager.get_camp_data(user_save_data)
 
-        -- Get the hunter profile.
-        local hunter_profile = sdk_manager.get_hunter_profile(user_save_data)
+            -- Get the hunter profile.
+            local hunter_profile = sdk_manager.get_hunter_profile(user_save_data)
 
-        -- Get the enemy report.
-        local enemy_report = sdk_manager.get_enemy_report(user_save_data)
+            -- Get the enemy report.
+            local enemy_report = sdk_manager.get_enemy_report(user_save_data)
 
-        -- Get the mission activator.
-        local mission_activator = sdk_manager.get_mission_activator()
+            -- Get the mission activator.
+            local mission_activator = sdk_manager.get_mission_activator()
 
-        -- Check if the basic data, item data, equipment data, camp data, hunter profile, enemy report, and mission activator were found.
-        if basic_data and item_data and equipment_data and camp_data and hunter_profile and enemy_report and mission_activator then
-            -- If yes, then call the update values on the tracking manager.
-            tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator)
+            -- Check if the basic data, item data, equipment data, camp data, hunter profile, enemy report, and mission activator were found.
+            if basic_data and item_data and equipment_data and camp_data and hunter_profile and enemy_report and mission_activator then
+                -- If yes, then call the update values on the tracking manager.
+                tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator)
+            end
+
+            -- Reset the entered set hunter rank message to false.
+            entered_set_hunter_rank_message = false
         end
-
-        -- Reset the entered set hunter rank message to false.
-        entered_set_hunter_rank_message = false
 
         -- Return the provided return value with no changes.
         return retval

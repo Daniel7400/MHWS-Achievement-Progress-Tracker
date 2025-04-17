@@ -31,16 +31,22 @@ ui_manager.init_module()
 re.on_frame(function()
     -- Check if the enabled flag on the config is NOT true (meaning the user marked it as disabled).
     if not config_manager.config.current.enabled then
-        -- Return to exit early.
+        -- Check if the tracking manager is initialized.
+        if tracking_manager.is_initialized then
+            -- If yes, then reset the tracking manager to clear the REFramework UI and achievement trackers.
+            tracking_manager.reset()
+        end
+
+        -- Return to exit early since the mod is not enabled.
         return
     end
-    
+
     -- Call the reset function on the draw manager to reset the values for the new frame.
     draw_manager.reset()
 
     -- Call the get player function on the sdk manager to get the player object.
     if not sdk_manager.get_player() then
-        -- Check if the tracking manager is intialized.
+        -- Check if the tracking manager is initialized.
         if tracking_manager.is_initialized then
             -- If yes, then reset the tracking manager to clear the REFramework UI and achievement trackers.
             tracking_manager.reset()
@@ -50,7 +56,7 @@ re.on_frame(function()
         return
     end
 
-    -- Check if the tracking manager is NOT intialized.
+    -- Check if the tracking manager is NOT initialized.
     if not tracking_manager.is_initialized then
         -- If yes, then initialize the tracking manager module.
         tracking_manager.init_module()
