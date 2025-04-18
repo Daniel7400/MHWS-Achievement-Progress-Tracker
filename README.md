@@ -1,13 +1,13 @@
 # Achievement Progress Tracker
-![GitHub Release](https://img.shields.io/github/v/release/Daniel7400/MHWS-Achievement-Progress-Tracker?link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Freleases)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Daniel7400/MHWS-Achievement-Progress-Tracker?link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fcommits)
-![GitHub contributors](https://img.shields.io/github/contributors/Daniel7400/MHWS-Achievement-Progress-Tracker?link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fgraphs%2Fcontributors)
-![GitHub License](https://img.shields.io/github/license/Daniel7400/MHWS-Achievement-Progress-Tracker?link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fblob%2Fmain%2FLICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/Daniel7400/MHWS-Achievement-Progress-Tracker)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/releases)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Daniel7400/MHWS-Achievement-Progress-Tracker)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/commits)
+[![GitHub contributors](https://img.shields.io/github/contributors/Daniel7400/MHWS-Achievement-Progress-Tracker)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/graphs/contributors)
+[![GitHub License](https://img.shields.io/github/license/Daniel7400/MHWS-Achievement-Progress-Tracker)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/blob/main/LICENSE)
 
-![GitHub Open Issues](https://img.shields.io/github/issues/Daniel7400/MHWS-Achievement-Progress-Tracker?link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fissues)
-![GitHub Closed Issues](https://img.shields.io/github/issues-closed/Daniel7400/MHWS-Achievement-Progress-Tracker?color=dark-green&link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fpulls%3Fq%3Dis%253Apr%2Bis%253Aclosed)
-![GitHub Open Pull Requests](https://img.shields.io/github/issues-pr/Daniel7400/MHWS-Achievement-Progress-Tracker?link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fpulls)
-![GitHub Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/Daniel7400/MHWS-Achievement-Progress-Tracker?color=dark-green&link=https%3A%2F%2Fgithub.com%2FDaniel7400%2FMHWS-Achievement-Progress-Tracker%2Fpulls%3Fq%3Dis%253Apr%2Bis%253Aclosed)
+[![GitHub Open Issues](https://img.shields.io/github/issues/Daniel7400/MHWS-Achievement-Progress-Tracker)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/issues)
+[![GitHub Closed Issues](https://img.shields.io/github/issues-closed/Daniel7400/MHWS-Achievement-Progress-Tracker?color=dark-green)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/issues?q=is%3Aissue%20state%3Aclosed)
+[![GitHub Open Pull Requests](https://img.shields.io/github/issues-pr/Daniel7400/MHWS-Achievement-Progress-Tracker)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/pulls)
+[![GitHub Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/Daniel7400/MHWS-Achievement-Progress-Tracker?color=dark-green)](https://github.com/Daniel7400/MHWS-Achievement-Progress-Tracker/pulls?q=is%3Apr+is%3Aclosed)
 
 
 Monster Hunter Wilds Mod - Track and display your progress on 21 achievements, including crowns, with some showing what you're missing to unlock them. Multi-language support.
