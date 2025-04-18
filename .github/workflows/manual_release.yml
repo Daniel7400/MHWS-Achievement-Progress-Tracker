@@ -1,0 +1,37 @@
+name: Manual Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Extract version from modinfo.ini
+      id: get_version
+      run: |
+        version=$(grep '^version=' modinfo.ini | cut -d= -f2)
+        echo "VERSION=$version" >> $GITHUB_OUTPUT
+
+    - name: Create ZIP archive
+      run: |
+        mkdir -p release_temp
+        cp -r reframework release_temp/
+        cp Cover.png release_temp/
+        cp modinfo.ini release_temp/
+        cd release_temp
+        zip -r "../Achievement Progress Tracker - v${{ steps.get_version.outputs.VERSION }}.zip" .
+        cd ..
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
+        name: Achievement Progress Tracker v${{ steps.get_version.outputs.VERSION }}
+        files: Achievement Progress Tracker - v${{ steps.get_version.outputs.VERSION }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
