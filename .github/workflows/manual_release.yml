@@ -34,4 +34,4 @@ jobs:
         name: Achievement Progress Tracker v${{ steps.get_version.outputs.VERSION }}
         files: Achievement Progress Tracker - v${{ steps.get_version.outputs.VERSION }}.zip
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
