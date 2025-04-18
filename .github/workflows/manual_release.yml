@@ -31,7 +31,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: v${{ steps.get_version.outputs.VERSION }}
-        name: Achievement Progress Tracker v${{ steps.get_version.outputs.VERSION }}
+        name: v${{ steps.get_version.outputs.VERSION }}
         files: Achievement Progress Tracker - v${{ steps.get_version.outputs.VERSION }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
