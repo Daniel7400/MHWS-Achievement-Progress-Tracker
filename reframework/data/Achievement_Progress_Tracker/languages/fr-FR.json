@@ -15,7 +15,7 @@
 			"enabled": "Activé",
 			"render_horizontally": "Afficher les suivis horizontalement",
 			"show_completed_achievements": "Afficher les distinctions obtenues",
-			"show_images": "Afficher l’Illustration des Distinctions",
+			"show_images": "Afficher l'Illustration des Distinctions",
 			"display_progress_as_percentage": "Afficher la Progression en Pourcentage",
 			"center_align_text": "Aligner au Centre tout le Texte des Suivis"
 		},
@@ -51,7 +51,7 @@
 			"base_game": "Jeu de Base"
 		},
 		"misc": {
-			"current": "Actuel",
+			"current": "Actuelle",
 			"select_achievements": "Sélectionnez les distinctions à suivre",
 			"completed": "- OBTENUE"
 		},
@@ -62,7 +62,7 @@
 			"adjust_position": "Ajuster la position"
 		},
 		"tooltip": {
-			"manual_input": "CTRL + clic gauche pour saisir manuellement",
+			"manual_input": "Faites un CTRL + Clic gauche sur la barre pour saisir une valeur manuellement",
 			"uncheck_achievement": "Décochez les cases des distinctions que vous ne souhaitez pas suivre"
 		}
 	},
