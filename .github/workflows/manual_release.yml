@@ -24,7 +24,7 @@ jobs:
         cp Cover.png release_temp/
         cp modinfo.ini release_temp/
         cd release_temp
-        zip -r "../Achievement Progress Tracker - v${{ steps.get_version.outputs.VERSION }}.zip" .
+        zip -r "../Achievement Progress Tracker.zip" .
         cd ..
 
     - name: Create GitHub Release
