@@ -55,6 +55,9 @@ local constants <const> = {
         -- The Enemy Manager type name.
         enemy_manager = "app.EnemyManager",
 
+        -- The Analysis Log Service type name.
+        analysis_log_service = "app.AnalysisLogService",
+
         -- The Network Context Manager type name.
         network_context_manager = "app.net_context_manager.cContextManager",
 

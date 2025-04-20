@@ -163,9 +163,22 @@ sdk.constants = {
 --- @param pre_function? function [OPTIONAL] The function to execute before the method is hooked.
 --- @param post_function? function [OPTIONAL] The function to execute after the method is hooked.
 function sdk.add_hook(type_name, method_name, pre_function, post_function)
+    assert(not string.is_null_or_whitespace(type_name), "The provided 'type_name' cannot be nil or whitespace.")
+    assert(not string.is_null_or_whitespace(method_name), "The provided 'method_name' cannot be nil or whitespace.")
     assert(pre_function or post_function, "Either the provided 'pre_function' or 'post_function' must not be nil.")
 
-    sdk.hook(sdk.find_type_definition(type_name):get_method(method_name), pre_function, post_function)
+    -- Get the method definition for the provided type name and method name.
+    local method_definition = sdk.find_type_definition(type_name):get_method(method_name)
+
+    -- Check if there was NO method definition found.
+    if not method_definition then
+        -- If yes, then throw a hard error saying the hook could not be created.
+        error(string.format("\n\nHook could NOT be created. No method definition found for: '%s.%s'\n",
+            type_name, method_name))
+    end
+
+    -- Create an sdk hook using the found method definition and provided pre + post functions.
+    sdk.hook(method_definition, pre_function, post_function)
 end
 
 ---
