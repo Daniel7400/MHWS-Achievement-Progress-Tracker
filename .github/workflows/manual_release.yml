@@ -17,7 +17,7 @@ jobs:
         version=$(grep '^version=' modinfo.ini | cut -d= -f2)
         echo "VERSION=$version" >> $GITHUB_OUTPUT
 
-    - name: Create ZIP archive
+    - name: Package Files
       run: |
         mkdir -p release_temp
         cp -r reframework release_temp/
@@ -32,6 +32,7 @@ jobs:
       with:
         tag_name: v${{ steps.get_version.outputs.VERSION }}
         name: v${{ steps.get_version.outputs.VERSION }}
-        files: Achievement Progress Tracker - v${{ steps.get_version.outputs.VERSION }}.zip
+        files: "Achievement Progress Tracker.zip"
+        generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
