@@ -6,7 +6,9 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-
+    env:
+      PACKAGE_NAME: Achievement_Progress_Tracker.zip
+      
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -24,7 +26,7 @@ jobs:
         cp Cover.png release_temp/
         cp modinfo.ini release_temp/
         cd release_temp
-        zip -r "../Achievement Progress Tracker.zip" .
+        zip -r "../$PACKAGE_NAME" .
         cd ..
 
     - name: Create GitHub Release
@@ -32,7 +34,7 @@ jobs:
       with:
         tag_name: v${{ steps.get_version.outputs.VERSION }}
         name: v${{ steps.get_version.outputs.VERSION }}
-        files: "Achievement Progress Tracker.zip"
+        files: ${{ env.PACKAGE_NAME }}
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
