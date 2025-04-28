@@ -210,6 +210,13 @@ function ui_manager.init_module()
                         config_manager.config.current.display.center_align_text)
                     tracking_changed = tracking_changed or changed
                     config_changed = config_changed or changed
+
+                    -- Create a checkbox that a user can use to enable/disable whether progress for achievement trackers will be displayed in-game using the notification system or not.
+                    changed, config_manager.config.current.display.show_progress_notifications = imgui.checkbox(
+                        language_manager.language.current.ui.checkbox.show_progress_notifications,
+                        config_manager.config.current.display.show_progress_notifications)
+                    tracking_changed = tracking_changed or changed
+                    config_changed = config_changed or changed
                     imgui.new_line()
 
                     -- Create a new tree node for all settings relating to the color selections.

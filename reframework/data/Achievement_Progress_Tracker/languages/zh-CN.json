@@ -21,7 +21,8 @@
 			"show_completed_achievements": "显示已完成的成就",
 			"show_images": "显示成就图标",
 			"display_progress_as_percentage": "切换百分比显示",
-			"center_align_text": "居中显示追踪内容"
+			"center_align_text": "居中显示追踪内容",
+			"show_progress_notifications": "显示目前追踪中的成就进度"
 		},
 		"color_picker": {
 			"box_background": "追踪器边框",

@@ -21,7 +21,8 @@
 			"show_completed_achievements": "顯示已完成的成就",
 			"show_images": "顯示成就圖標",
 			"display_progress_as_percentage": "切換百分比顯示",
-			"center_align_text": "居中顯示追蹤內容"
+			"center_align_text": "居中顯示追蹤內容",
+			"show_progress_notifications": "顯示遊戲內進度通知"
 		},
 		"color_picker": {
 			"box_background": "追蹤器邊框",

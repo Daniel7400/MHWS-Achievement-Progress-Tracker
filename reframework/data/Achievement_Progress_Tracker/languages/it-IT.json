@@ -17,7 +17,8 @@
 			"show_completed_achievements": "Mostra gli Achievement Completati",
 			"show_images": "Mostra le immagini degli obiettivi",
 			"display_progress_as_percentage": "Mostra il progresso come percentuale",
-			"center_align_text": "Allinea il testo del tracker al centro"
+			"center_align_text": "Allinea il testo del tracker al centro",
+			"show_progress_notifications": "Mostra i progressi mentre sei in gioco"
 		},
 		"color_picker": {
 			"box_background": "Sfondo del Riquadro",

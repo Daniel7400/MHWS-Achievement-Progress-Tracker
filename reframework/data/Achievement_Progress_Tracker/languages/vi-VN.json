@@ -17,7 +17,8 @@
 			"show_completed_achievements": "Hiển thị thành tích đã hoàn thành",
 			"show_images": "Hiển thị hình ảnh thành tích",
 			"display_progress_as_percentage": "Hiển thị tiến trình theo phần trăm",
-			"center_align_text": "Căn giữa văn bản theo dõi"
+			"center_align_text": "Căn giữa văn bản theo dõi",
+			"show_progress_notifications": "Hiển thị thông báo tiến trình trong trò chơi"
 		},
 		"color_picker": {
 			"box_background": "Hộp Nền",

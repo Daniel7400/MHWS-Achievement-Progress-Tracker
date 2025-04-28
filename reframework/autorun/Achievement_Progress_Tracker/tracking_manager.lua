@@ -2,6 +2,7 @@
 local constants = require("Achievement_Progress_Tracker.constants")
 local achievementtracker = require("Achievement_Progress_Tracker.classes.achievement_tracker")
 local sdk_manager = require("Achievement_Progress_Tracker.sdk_manager")
+local config_manager = require("Achievement_Progress_Tracker.config_manager")
 local language_manager = require("Achievement_Progress_Tracker.language_manager")
 local draw_manager = require("Achievement_Progress_Tracker.draw_manager")
 -- END IMPORTS
@@ -1041,13 +1042,20 @@ local tracking_manager = {
 ---@param achievement_tracker achievementtracker The achievement tracker to update the value for.
 ---@param update_source userdata The source used to get the update value from.
 ---@param skip_draw_manager_update? boolean [OPTIONAL] The flag used to determine if the tracker should skip the call into the draw manager to update its values. Defaults to false (doing the draw manager updates).
+---@param is_for_initialization? boolean [OPTIONAL] The flag used to determine if this function is being called for the initialization of the tracking manager. Defaults to false.
 ---
 ---@return boolean tracker_value_changed The flag that represents whether the value of the provided achievement tracker changed or not.
-local function update_tracker_value(achievement_tracker, update_source, skip_draw_manager_update)
+local function update_tracker_value(achievement_tracker, update_source, skip_draw_manager_update, is_for_initialization)
     -- Check if the provided skip draw manager update flag is null (nil).
     if skip_draw_manager_update == nil then
         -- If yes, then set it to false.
         skip_draw_manager_update = false
+    end
+
+    -- Check if the provided is for initialization flag is null (nil).
+    if is_for_initialization == nil then
+        -- If yes, then set it to false.
+        is_for_initialization = false
     end
 
     -- Store the current value of the provided achievement tracker as the previous value.
@@ -1104,6 +1112,12 @@ local function update_tracker_value(achievement_tracker, update_source, skip_dra
 
         -- Call the send completion notification function on the sdk manager for the provided achievement tracker.
         sdk_manager.send_completion_notification(achievement_tracker)
+    
+    -- Else if, check the provided is for initialization flag is false (we don't want to do this everytime the script starts/resets) AND the tracker value
+    -- changed AND the show progress notifications config option is true.
+    elseif not is_for_initialization and tracker_value_changed and config_manager.config.current.display.show_progress_notifications then
+        -- If yes, then call the send progress notification function on the sdk manager for the provided achievement tracker and previous value.
+        sdk_manager.send_progress_notification(achievement_tracker, previous_value)
     end
 
     -- Check if the provided achievement tracker should be displayed and the skip draw manager update flag is NOT true (is false).
@@ -1261,7 +1275,7 @@ function tracking_manager.update_values(basic_data, item_data, equipment_data, c
         end
 
         -- Call the update tracker value for the current achievement tracker and update source.
-        update_tracker_value(achievement_tracker, update_source)
+        update_tracker_value(achievement_tracker, update_source, false, is_for_initialization)
 
         -- Update the all completed flag as the and between itself and the is complete function of the current achievement tracker.
         all_completed = all_completed and achievement_tracker:is_complete()

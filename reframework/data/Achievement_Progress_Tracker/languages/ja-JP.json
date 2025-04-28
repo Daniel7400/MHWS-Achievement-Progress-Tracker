@@ -20,7 +20,8 @@
             "show_completed_achievements": "達成した実績を表示",
             "show_images": "勲章アイコンを表示",
             "display_progress_as_percentage": "進捗状況をパーセントで表示",
-            "center_align_text": "トラッカーテキストの中央揃え"
+            "center_align_text": "トラッカーテキストの中央揃え",
+            "show_progress_notifications": "ゲーム内の進捗状況通知を表示"
         },
         "color_picker": {
             "box_background": "枠の色",

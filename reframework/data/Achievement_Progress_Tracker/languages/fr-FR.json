@@ -17,7 +17,8 @@
 			"show_completed_achievements": "Afficher les distinctions obtenues",
 			"show_images": "Afficher l'Illustration des Distinctions",
 			"display_progress_as_percentage": "Afficher la Progression en Pourcentage",
-			"center_align_text": "Aligner au Centre tout le Texte des Suivis"
+			"center_align_text": "Aligner au Centre tout le Texte des Suivis",
+			"show_progress_notifications": "Afficher les notifications de progression"
 		},
 		"color_picker": {
 			"box_background": "Couleur du fond de la fenêtre",
