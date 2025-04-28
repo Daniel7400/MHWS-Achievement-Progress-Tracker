@@ -21,7 +21,8 @@
 			"show_completed_achievements": "Показать выполненные достижения",
 			"show_images": "Показать изображения достижений",
 			"display_progress_as_percentage": "Отображение прогресса в процентах",
-			"center_align_text": "Выравнивание текста трекера по центру"
+			"center_align_text": "Выравнивание текста трекера по центру",
+			"show_progress_notifications": "Показывать уведомления о ходе игры"
 		},
 		"color_picker": {
 			"box_background": "Фон коробки",

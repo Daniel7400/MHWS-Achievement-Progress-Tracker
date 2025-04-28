@@ -64,7 +64,7 @@ end
 ---@param append_new_line? boolean [OPTIONAL] The flag used to determine if a new line should be appended after drawing this element. Defaults to false.
 ---
 ---@return boolean changed The boolean that represents whether any values were changed.
----@return number selected_alignment The number that represents the enum value for the selected alignment.WWWWWW
+---@return number selected_alignment The number that represents the enum value for the selected alignment.
 function imgui.alignment_selector(selected_alignment, label_text, top_left_text, top_right_text, middle_text, bottom_left_text, bottom_right_text, append_new_line)
     -- Assert the provided selected assignment is valid.
     assert(table.find_key(imgui.constants.alignment_option, selected_alignment),
