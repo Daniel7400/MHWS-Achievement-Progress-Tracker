@@ -1,5 +1,6 @@
 --- IMPORTS
 local constants = require("Achievement_Progress_Tracker.constants")
+local language_manager = require("Achievement_Progress_Tracker.language_manager")
 --- END IMPORTS
 
 --- The manager for all things related calling into the sdk.
@@ -11,8 +12,14 @@ local sdk_manager = {
     mission_manager = nil,
 
     -- The player manager managed singleton from the sdk.
-    player_manager = nil
+    player_manager = nil,
+
+    -- The chat manager managed singleton from the sdk.
+    chat_manager = nil
 }
+
+-- The text to use as the header of any completion notifications that are sent.
+local notification_header_text = nil
 
 ---
 --- Attempt to get the `app.cPlayerManageInfo` object from the game.
@@ -25,7 +32,7 @@ function sdk_manager.get_player()
         sdk_manager.player_manager = sdk.get_managed_singleton(constants.type_name.player_manager)
     end
 
-    -- Check if the player manager is stil NOT valid.
+    -- Check if the player manager is still NOT valid.
     if not sdk_manager.player_manager then
         -- If yes, then return nil since no player can be found.
         return nil
@@ -62,7 +69,7 @@ function sdk_manager.get_user_save_data()
         sdk_manager.save_data_manager = sdk.get_managed_singleton(constants.type_name.save_data_manager)
     end
 
-    -- Check if the save data manager is stil NOT valid.
+    -- Check if the save data manager is still NOT valid.
     if not sdk_manager.save_data_manager then
         -- If yes, then return nil since no user save data can be found.
         return nil
@@ -209,7 +216,7 @@ function sdk_manager.get_mission_activator()
         sdk_manager.mission_manager = sdk.get_managed_singleton(constants.type_name.mission_manager)
     end
 
-    -- Check if the mission manager is stil NOT valid.
+    -- Check if the mission manager is still NOT valid.
     if not sdk_manager.mission_manager then
         -- If yes, then return nil since no mission activator can be found.
         return nil
@@ -248,12 +255,88 @@ function sdk_manager.get_acquired_award_fixed_ids(hunter_profile)
 end
 
 ---
+--- Send a notification using the in-game chat notification system to show that the provided achievement tracker has been completed.
+---
+---@param achievement_tracker achievementtracker The achievement tracker to send the completion notification for.
+function sdk_manager.send_completion_notification(achievement_tracker)
+    -- KNOWN ISSUE: In `Thai` and `Vietnamese` the text will either all display as boxes, or only partially.
+
+    -- Check if the chat manager on the sdk manager is NOT already loaded/valid.
+    if not sdk_manager.chat_manager then
+        -- If yes, then call into the sdk to get the chat manager managed singleton.
+        sdk_manager.chat_manager = sdk.get_managed_singleton(constants.type_name.chat_manager)
+    end
+
+    -- Check if the chat manager is still valid.
+    if sdk_manager.chat_manager then
+        -- If yes, then get the name of the award from the provided achievement tracker.
+        local award_name = language_manager.language.current.achievement[achievement_tracker.key].name
+
+        -- Get the award id of the award using the award fixed id on the provided achievement tracker.
+        local award_id = constants.award_id[constants.award_id_fixed[achievement_tracker.game_award_fixed_id]]
+
+        -- Create the body text for the notification using the award name and the tracker completed text.
+        local body_text = sdk.create_gui_message(string.format("%s - %s", award_name, language_manager.language.current.tracker.completed))
+
+        -- Call the add system text with title log function on the chat manager do display the notification.
+        sdk_manager.chat_manager:call("addSystemTextWithTitleLog(app.ChatDef.LOG_ID, ace.cGUIMessageInfo, ace.cGUIMessageInfo, System.Int32, System.Int32, System.Boolean)",
+            constants.notification_type.award_unlock, notification_header_text, body_text, award_id, 0, false)
+    else
+        -- Log an error that this function was called and the chat manager could not be accessed.
+        log.error(string.format("[%s] - Failed to get the `app.ChatManager` managed object.", constants.mod_name))
+    end
+end
+
+---
+--- Send a notification using the in-game chat notification system to show that the provided achievement tracker has had some progress.
+---
+---@param achievement_tracker achievementtracker The achievement tracker to send the completion notification for.
+---@param previous_value number The previous progress value of the provided achievement tracker.
+function sdk_manager.send_progress_notification(achievement_tracker, previous_value)
+    -- KNOWN ISSUE: In `Thai` and `Vietnamese` the text will either all display as boxes, or only partially.
+
+    -- Check if the chat manager on the sdk manager is NOT already loaded/valid.
+    if not sdk_manager.chat_manager then
+        -- If yes, then call into the sdk to get the chat manager managed singleton.
+        sdk_manager.chat_manager = sdk.get_managed_singleton(constants.type_name.chat_manager)
+    end
+
+    -- Check if the chat manager is still valid.
+    if sdk_manager.chat_manager then
+        -- If yes, then get the name of the award from the provided achievement tracker.
+        local award_name = language_manager.language.current.achievement[achievement_tracker.key].name
+
+        -- Get the award id of the award using the award fixed id on the provided achievement tracker.
+        local award_id = constants.award_id[constants.award_id_fixed[achievement_tracker.game_award_fixed_id]]
+
+        -- Create the percentage text for the old (previous) value and the current value of the provided achievement tracker.
+        local old_percentage_text = string.format("%.2f%%", (previous_value / achievement_tracker.amount) * 100)
+        local new_percentage_text = string.format("%.2f%%", (achievement_tracker.current / achievement_tracker.amount) * 100)
+
+        -- Create the body text for the notification using the award name, previous value, tracker target value, old percentage text, current tracker value,
+        -- tracker target value, and new percentage text.
+        local body_text = sdk.create_gui_message(string.format("%s\n%s/%s (%s) → %s/%s (%s)", award_name, previous_value, achievement_tracker.amount, old_percentage_text,
+            achievement_tracker.current, achievement_tracker.amount, new_percentage_text
+        ))
+
+        -- Call the add system text with title log function on the chat manager do display the notification.
+        sdk_manager.chat_manager:call("addSystemTextWithTitleLog(app.ChatDef.LOG_ID, ace.cGUIMessageInfo, ace.cGUIMessageInfo, System.Int32, System.Int32, System.Boolean)",
+            constants.notification_type.award_unlock, notification_header_text, body_text, award_id, 0, false)
+    else
+        -- Log an error that this function was called and the chat manager could not be accessed.
+        log.error(string.format("[%s] - Failed to get the `app.ChatManager` managed object.", constants.mod_name))
+    end
+end
+
+---
 --- Initializes the sdk manager module.
 ---
 function sdk_manager.init_module()
     sdk_manager.save_data_manager = sdk.get_managed_singleton(constants.type_name.save_data_manager)
     sdk_manager.mission_manager = sdk.get_managed_singleton(constants.type_name.mission_manager)
     sdk_manager.player_manager = sdk.get_managed_singleton(constants.type_name.player_manager)
+    sdk_manager.chat_manager = sdk.get_managed_singleton(constants.type_name.chat_manager)
+    notification_header_text = sdk.create_gui_message(constants.mod_name)
 
     local tracking_manager = require("Achievement_Progress_Tracker.tracking_manager")
 
@@ -271,38 +354,52 @@ function sdk_manager.init_module()
     end)
 
     sdk.add_hook(constants.type_name.save_data_manager, "systemRequestUserSave", nil, function(retval)
-        -- Get the user data data.
-        local user_save_data = sdk_manager.get_user_save_data()
+        -- Check if the tracking manager is initialized.
+        if tracking_manager.is_initialized then
+            -- Get the user data data.
+            local user_save_data = sdk_manager.get_user_save_data()
 
-        -- Get the basic data.
-        local basic_data = sdk_manager.get_basic_data(user_save_data)
+            -- Get the basic data.
+            local basic_data = sdk_manager.get_basic_data(user_save_data)
 
-        -- Get the item data.
-        local item_data = sdk_manager.get_item_data(user_save_data)
+            -- Get the item data.
+            local item_data = sdk_manager.get_item_data(user_save_data)
 
-        -- Get the equipment data.
-        local equipment_data = sdk_manager.get_equipment_data(user_save_data)
+            -- Get the equipment data.
+            local equipment_data = sdk_manager.get_equipment_data(user_save_data)
 
-        -- Get the camp data.
-        local camp_data = sdk_manager.get_camp_data(user_save_data)
+            -- Get the camp data.
+            local camp_data = sdk_manager.get_camp_data(user_save_data)
 
-        -- Get the hunter profile.
-        local hunter_profile = sdk_manager.get_hunter_profile(user_save_data)
+            -- Get the hunter profile.
+            local hunter_profile = sdk_manager.get_hunter_profile(user_save_data)
 
-        -- Get the enemy report.
-        local enemy_report = sdk_manager.get_enemy_report(user_save_data)
+            -- Get the enemy report.
+            local enemy_report = sdk_manager.get_enemy_report(user_save_data)
 
-        -- Get the mission activator.
-        local mission_activator = sdk_manager.get_mission_activator()
+            -- Get the mission activator.
+            local mission_activator = sdk_manager.get_mission_activator()
 
-        -- Check if the basic data, item data, equipment data, camp data, hunter profile, enemy report, and mission activator were found.
-        if basic_data and item_data and equipment_data and camp_data and hunter_profile and enemy_report and mission_activator then
-            -- If yes, then call the update values on the tracking manager.
-            tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator)
+            -- Check if the basic data, item data, equipment data, camp data, hunter profile, enemy report, and mission activator were found.
+            if basic_data and item_data and equipment_data and camp_data and hunter_profile and enemy_report and mission_activator then
+                -- If yes, then call the update values on the tracking manager.
+                tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator)
+            end
+
+            -- Reset the entered set hunter rank message to false.
+            entered_set_hunter_rank_message = false
         end
 
-        -- Reset the entered set hunter rank message to false.
-        entered_set_hunter_rank_message = false
+        -- Return the provided return value with no changes.
+        return retval
+    end)
+
+    sdk.add_hook(constants.type_name.analysis_log_service, "sideMissionEndLog(System.String)", nil, function(retval)
+        -- Attempt to update then check if the tracker for the `East to West, A Hunter Never Rests` achievement was updated.
+        if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.east_to_west]) then
+            -- If yes, then force the draw manager to reset and update its values.
+            tracking_manager.force_draw_manager_values_reset_and_update()
+        end
 
         -- Return the provided return value with no changes.
         return retval
@@ -411,7 +508,7 @@ function sdk_manager.init_module()
         return retval
     end)
 
-    sdk.add_hook(constants.type_name.item_util, "pickupItem(app.ItemDef.ID, System.Int16, app.EnemyDef.ID)", nil, function(retval)
+    sdk.add_hook(constants.type_name.item_util, "pickupItem(app.ItemDef.ID, System.Int16, app.EnemyDef.ID, app.ItemDef.LOG_TYPE)", nil, function(retval)
         -- Attempt to update then check if the tracker for the `Explorer of the Eastlands` achievement was updated.
         if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.explorer_of_the_eastlands]) then
             -- If yes, then force the draw manager to reset and update its values.

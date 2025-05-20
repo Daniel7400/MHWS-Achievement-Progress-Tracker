@@ -6,10 +6,10 @@
 		"button": {
 			"reset_config": "Restablecer configuración",
 			"top_left": "Arriba a la izquierda",
-            "top_right": "Parte superior derecha",
-            "middle": "Medio",
-            "bottom_left": "Abajo a la izquierda",
-            "bottom_right": "Abajo a la derecha"
+			"top_right": "Parte superior derecha",
+			"middle": "Medio",
+			"bottom_left": "Abajo a la izquierda",
+			"bottom_right": "Abajo a la derecha"
 		},
 		"checkbox": {
 			"enabled": "Activado",
@@ -17,7 +17,8 @@
 			"show_completed_achievements": "Mostrar logros completados",
 			"show_images": "Mostrar Imágenes de Logros",
 			"display_progress_as_percentage": "Mostrar Progreso como Porcentaje",
-			"center_align_text": "Centrar Texto del seguimiento"
+			"center_align_text": "Centrar Texto del seguimiento",
+			"show_progress_notifications": "Mostrar notificaciones de progreso en el juego"
 		},
 		"color_picker": {
 			"box_background": "Fondo de caja",

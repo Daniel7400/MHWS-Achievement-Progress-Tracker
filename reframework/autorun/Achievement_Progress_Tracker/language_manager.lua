@@ -31,7 +31,8 @@ local language_manager = {
                     show_completed_achievements = "Show Completed Achievements",
                     show_images = "Show Achievement Images",
                     display_progress_as_percentage = "Display Progress as Percentage",
-                    center_align_text = "Center Align Tracker Text"
+                    center_align_text = "Center Align Tracker Text",
+                    show_progress_notifications = "Show In-Game Progress Notifications"
                 },
                 color_picker = {
                     box_background = "Box Background",

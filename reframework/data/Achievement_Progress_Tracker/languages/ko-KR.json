@@ -2,17 +2,17 @@
 	"font": "NotoSansKR-Bold.otf",
 	"unicode_glyph_ranges": [
 		"0x3131", "0x3163",
-        "0xAC00", "0xD7A3"
+		"0xAC00", "0xD7A3"
 	],
 	"associated_in_game_language_option": 11,
 	"ui": {
 		"button": {
 			"reset_config": "설정 초기화",
 			"top_left": "왼쪽 위",
-            "top_right": "오른쪽 위",
-            "middle": "가운데",
-            "bottom_left": "왼쪽 아래",
-            "bottom_right": "오른쪽 아래"
+			"top_right": "오른쪽 위",
+			"middle": "가운데",
+			"bottom_left": "왼쪽 아래",
+			"bottom_right": "오른쪽 아래"
 		},
 		"checkbox": {
 			"enabled": "활성화됨",

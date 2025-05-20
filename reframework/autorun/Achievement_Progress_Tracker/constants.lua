@@ -49,8 +49,14 @@ local constants <const> = {
         -- The Player Manager type name.
         player_manager = "app.PlayerManager",
 
+        -- The Chat Manager type name.
+        chat_manager = "app.ChatManager",
+
         -- The Enemy Manager type name.
         enemy_manager = "app.EnemyManager",
+
+        -- The Analysis Log Service type name.
+        analysis_log_service = "app.AnalysisLogService",
 
         -- The Network Context Manager type name.
         network_context_manager = "app.net_context_manager.cContextManager",
@@ -339,6 +345,17 @@ local constants <const> = {
                 BOWLING_CLEAR = 20,
                 BOWLING_S_CLEAR = 21,
                 MAX = 14,
+            }
+        }
+    ]]
+
+    notification_type = {
+        award_unlock = 132  -- "LOG_0132"
+    },
+    --[[ For reference:
+        namespace app::ChatDef {
+            enum LOG_ID {
+                ... (over 200 entries)
             }
         }
     ]]

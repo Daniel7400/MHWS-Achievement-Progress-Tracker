@@ -163,9 +163,22 @@ sdk.constants = {
 --- @param pre_function? function [OPTIONAL] The function to execute before the method is hooked.
 --- @param post_function? function [OPTIONAL] The function to execute after the method is hooked.
 function sdk.add_hook(type_name, method_name, pre_function, post_function)
+    assert(not string.is_null_or_whitespace(type_name), "The provided 'type_name' cannot be nil or whitespace.")
+    assert(not string.is_null_or_whitespace(method_name), "The provided 'method_name' cannot be nil or whitespace.")
     assert(pre_function or post_function, "Either the provided 'pre_function' or 'post_function' must not be nil.")
 
-    sdk.hook(sdk.find_type_definition(type_name):get_method(method_name), pre_function, post_function)
+    -- Get the method definition for the provided type name and method name.
+    local method_definition = sdk.find_type_definition(type_name):get_method(method_name)
+
+    -- Check if there was NO method definition found.
+    if not method_definition then
+        -- If yes, then throw a hard error saying the hook could not be created.
+        error(string.format("\n\nHook could NOT be created. No method definition found for: '%s.%s'\n",
+            type_name, method_name))
+    end
+
+    -- Create an sdk hook using the found method definition and provided pre + post functions.
+    sdk.hook(method_definition, pre_function, post_function)
 end
 
 ---
@@ -424,6 +437,27 @@ function sdk.get_pseudo_bitset_value(pseudo_bitset, enum_type_name, id_as_key)
 
     -- Return the result of the get bitset value function using the created bitset wrapper.
     return sdk.get_bitset_value(bitset_wrapper, enum_type_name, id_as_key)
+end
+
+---
+--- Creates an `ace.cGUIMessageInfo` managed object containing the provided message text.
+---
+---@param message_text string The text to create as an `ace.cGUIMessageInfo` managed object.
+---
+---@return userdata gui_message The created `ace.cGUIMessageInfo` managed object.
+function sdk.create_gui_message(message_text)
+    -- Create a new instance of a gui message info (`ace.cGUIMessageInfo`) managed object.
+    local gui_message = sdk.create_instance("ace.cGUIMessageInfo"):add_ref()
+    if not gui_message then
+        -- Throw an error if it was not created properly.
+        error("`ace.cGUIMessageInfo` failed to be created.")
+    end
+
+    -- Call the set message info function on the gui message and use the provided message text as the parameter.
+    gui_message:call("setMessageInfo(System.String)", message_text)
+
+    -- Return the gui message (`ace.cGUIMessageInfo`) managed object.
+    return gui_message
 end
 
 local function vector_tostring(vector, vector_type, indent_level)

@@ -6,10 +6,10 @@
 		"button": {
 			"reset_config": "Redefinir configuração",
 			"top_left": "Canto superior esquerdo",
-            "top_right": "Canto superior direito",
-            "middle": "Meio",
-            "bottom_left": "Inferior esquerdo",
-            "bottom_right": "Canto inferior direito"
+			"top_right": "Canto superior direito",
+			"middle": "Meio",
+			"bottom_left": "Inferior esquerdo",
+			"bottom_right": "Canto inferior direito"
 		},
 		"checkbox": {
 			"enabled": "Habilitado",
@@ -17,7 +17,8 @@
 			"show_completed_achievements": "Mostrar conquistas concluídas",
 			"show_images": "Mostrar imagens de conquistas",
 			"display_progress_as_percentage": "Exibir o progresso como porcentagem",
-			"center_align_text": "Alinhamento central do texto do rastreador"
+			"center_align_text": "Alinhamento central do texto do rastreador",
+			"show_progress_notifications": "Mostrar notificações de progresso no jogo"
 		},
 		"color_picker": {
 			"box_background": "Fundo da caixa",

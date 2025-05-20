@@ -210,6 +210,13 @@ function ui_manager.init_module()
                         config_manager.config.current.display.center_align_text)
                     tracking_changed = tracking_changed or changed
                     config_changed = config_changed or changed
+
+                    -- Create a checkbox that a user can use to enable/disable whether progress for achievement trackers will be displayed in-game using the notification system or not.
+                    changed, config_manager.config.current.display.show_progress_notifications = imgui.checkbox(
+                        language_manager.language.current.ui.checkbox.show_progress_notifications,
+                        config_manager.config.current.display.show_progress_notifications)
+                    tracking_changed = tracking_changed or changed
+                    config_changed = config_changed or changed
                     imgui.new_line()
 
                     -- Create a new tree node for all settings relating to the color selections.
@@ -347,8 +354,8 @@ function ui_manager.init_module()
                             end
 
                             -- Create a new tree node to list any missing entries the current tracker may have. This is done by checking if the current achievement tracker
-                            -- is enabled AND NOT complete AND has collection params defined AND has missing.
-                            if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
+                            -- is NOT complete AND has collection params defined AND has missing entries.
+                            if not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
                                 and #achievement_tracker.collection_params.missing > 0 and imgui.tree_node(string.format(language_manager.language.current.ui.header.missing, achievement_tracker.name)) then
 
                                 -- If yes, then iterate over each missing entry.
@@ -400,6 +407,10 @@ function ui_manager.init_module()
 
             -- Pop the font that was pushed earlier to return to the last used (default) REFramework font.
             imgui.pop_font()
+
+            -- Add a horizontal line separator and new line to space out any mods that come after this one.
+            imgui.separator()
+            imgui.new_line()
         end
 
         -- Check if the language was reset or the option was changed.

@@ -37,6 +37,9 @@ local config_manager = {
                 -- The option that controls whether the text that will display in the tracker will be centered or not. Does not effect the progress bar text. Defaults to false.
                 center_align_text = false,
 
+                -- The option that controls whether progress on achievement trackers will be displayed using the in-game notifications system.
+                show_progress_notifications = true,
+
                 -- The color options for the achievement trackers.
                 color = {
                     -- The option that controls the background color of the progress tracker box.

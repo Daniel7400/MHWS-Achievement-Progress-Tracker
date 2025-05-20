@@ -2,6 +2,7 @@
 local constants = require("Achievement_Progress_Tracker.constants")
 local achievementtracker = require("Achievement_Progress_Tracker.classes.achievement_tracker")
 local sdk_manager = require("Achievement_Progress_Tracker.sdk_manager")
+local config_manager = require("Achievement_Progress_Tracker.config_manager")
 local language_manager = require("Achievement_Progress_Tracker.language_manager")
 local draw_manager = require("Achievement_Progress_Tracker.draw_manager")
 -- END IMPORTS
@@ -1007,6 +1008,12 @@ local tracking_manager = {
                         local award_name_guid = sdk.constants.game_function.get_award_name_guid:call(nil, award_id)
                         local award_name = sdk.get_localized_text(award_name_guid, language_manager.language.current.associated_in_game_language_option)
 
+                        -- Check if the found award name is null (nil) or whitespace.
+                        if string.is_null_or_whitespace(award_name) then
+                            -- If yes, then just set the award name as the english name.
+                            award_name = sdk.get_localized_text(award_name_guid, sdk.constants.enum.game_language_option.English)
+                        end
+
                         -- Check if the current award fixed id is found in the collection of acquired awards fixed ids.
                         if acquired_awards_fixed_ids[award_fixed_id] then
                             -- If yes, then insert the award name into the found collection.
@@ -1035,13 +1042,20 @@ local tracking_manager = {
 ---@param achievement_tracker achievementtracker The achievement tracker to update the value for.
 ---@param update_source userdata The source used to get the update value from.
 ---@param skip_draw_manager_update? boolean [OPTIONAL] The flag used to determine if the tracker should skip the call into the draw manager to update its values. Defaults to false (doing the draw manager updates).
+---@param is_for_initialization? boolean [OPTIONAL] The flag used to determine if this function is being called for the initialization of the tracking manager. Defaults to false.
 ---
 ---@return boolean tracker_value_changed The flag that represents whether the value of the provided achievement tracker changed or not.
-local function update_tracker_value(achievement_tracker, update_source, skip_draw_manager_update)
+local function update_tracker_value(achievement_tracker, update_source, skip_draw_manager_update, is_for_initialization)
     -- Check if the provided skip draw manager update flag is null (nil).
     if skip_draw_manager_update == nil then
         -- If yes, then set it to false.
         skip_draw_manager_update = false
+    end
+
+    -- Check if the provided is for initialization flag is null (nil).
+    if is_for_initialization == nil then
+        -- If yes, then set it to false.
+        is_for_initialization = false
     end
 
     -- Store the current value of the provided achievement tracker as the previous value.
@@ -1086,15 +1100,24 @@ local function update_tracker_value(achievement_tracker, update_source, skip_dra
     -- Determine if the tracker value changed by comparing if the previous value and new current are NOT equal.
     local tracker_value_changed = previous_value ~= achievement_tracker.current
 
-    -- Check if the newly updated current value for the provided achievement tracker is greater than or equal to the amount.
-    if achievement_tracker.current >= achievement_tracker.amount then
-        -- If yes, then set the award obtained flag on the provided achievementtracker as true.
-        achievement_tracker.award_obtained = true
-
-    -- Else if, check if the provided achievementtracker has the award obtained flag as true (but doesn't meet the current vs amount requirement).
-    elseif achievement_tracker.award_obtained then
+    -- Check if the provided achievement tracker has the award obtained flag as true.
+    if achievement_tracker.award_obtained then
         -- If yes, then set the current value for the provided achievement tracker as the amount to make the progress bar show as complete.
         achievement_tracker.current = achievement_tracker.amount
+
+    -- Else if, check if the newly updated current value for the provided achievement tracker is greater than or equal to the amount.
+    elseif achievement_tracker.current >= achievement_tracker.amount then
+        -- If yes, then set the award obtained flag on the provided achievement tracker as true.
+        achievement_tracker.award_obtained = true
+
+        -- Call the send completion notification function on the sdk manager for the provided achievement tracker.
+        sdk_manager.send_completion_notification(achievement_tracker)
+    
+    -- Else if, check the provided is for initialization flag is false (we don't want to do this everytime the script starts/resets) AND the tracker value
+    -- changed AND the show progress notifications config option is true.
+    elseif not is_for_initialization and tracker_value_changed and config_manager.config.current.display.show_progress_notifications then
+        -- If yes, then call the send progress notification function on the sdk manager for the provided achievement tracker and previous value.
+        sdk_manager.send_progress_notification(achievement_tracker, previous_value)
     end
 
     -- Check if the provided achievement tracker should be displayed and the skip draw manager update flag is NOT true (is false).
@@ -1118,7 +1141,7 @@ function tracking_manager.update_tracker(achievement_tracker, user_save_data)
     -- Check if the provided achievement tracker is NOT already completed.
     if not achievement_tracker:is_complete() then
 
-        -- Initialize the update source.
+        -- If yes, then declare the update source, defaulting to nil.
         local update_source = nil
 
         -- Check if the update source on the provided achievement tracker is the mission activator.
@@ -1184,19 +1207,27 @@ end
 ---@param camp_data userdata The camp data to acquire update values from.
 ---@param hunter_profile userdata The hunter profile to acquire update values from.
 ---@param mission_activator userdata The mission activator to acquire update values from.
-function tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator)
+---@param is_for_initialization? boolean [OPTIONAL] The flag used to determine if this function is being called for the initialization of the tracking manager. Defaults to false.
+function tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator, is_for_initialization)
+    -- Declare a variable to store the collection of acquired awards fixed ids (if needed), defaults to an empty table.
+    local acquired_awards_fixed_ids = {}
+
+    -- Check if the provided is for initialization flag is true.
+    if is_for_initialization == true then
+        -- If yes, then get the collection of already acquired award/medal fixed ids.
+        acquired_awards_fixed_ids = sdk_manager.get_acquired_award_fixed_ids(hunter_profile)
+    end
+
     -- Call the reset values function on the draw manager.
     draw_manager.reset_values()
 
     -- Create a flag to track whether all tracked achievements are completed or not. Default to true.
     local all_completed = true
 
-    -- Get the collection of already acquired award/medal fixed ids.
-    local acquired_awards_fixed_ids = sdk_manager.get_acquired_award_fixed_ids(hunter_profile)
-
     -- Iterate over each achievement tracker.
     for _, achievement_tracker in ipairs(tracking_manager.achievements) do
-        -- Check if the current achievement tracker has already been acquired as an in-game award/medal but NOT marked as such.
+        -- Check if the award fixed for the current achievement tracker DOES EXIST in the collection of acquired awards fixed ids AND the current
+        -- tracker is NOT already marked as having its award obtained.
         if acquired_awards_fixed_ids[achievement_tracker.game_award_fixed_id] and not achievement_tracker.award_obtained then
             -- If yes, then set the award obtained flag on the current achievement tracker as true.
             achievement_tracker.award_obtained = true
@@ -1244,7 +1275,7 @@ function tracking_manager.update_values(basic_data, item_data, equipment_data, c
         end
 
         -- Call the update tracker value for the current achievement tracker and update source.
-        update_tracker_value(achievement_tracker, update_source)
+        update_tracker_value(achievement_tracker, update_source, false, is_for_initialization)
 
         -- Update the all completed flag as the and between itself and the is complete function of the current achievement tracker.
         all_completed = all_completed and achievement_tracker:is_complete()
@@ -1304,15 +1335,23 @@ function tracking_manager.update_language()
 end
 
 ---
---- Initializes the tracking manager module.
+--- Reset the tracking manager is initialized flag and achievement trackers.
 ---
-function tracking_manager.init_module()
+function tracking_manager.reset()
+    -- Set the is initialized flag to false.
+    tracking_manager.is_initialized = false
+
     -- Iterate over each achievement tracker.
     for _, achievement_tracker in ipairs(tracking_manager.achievements) do
         -- Reset the changeable values for the current achievement tracker (needed when loading a different character).
         achievement_tracker:reset()
     end
-    
+end
+
+---
+--- Initializes the tracking manager module.
+---
+function tracking_manager.init_module()
     -- Get the user data data.
     local user_save_data = sdk_manager.get_user_save_data()
 
@@ -1340,7 +1379,7 @@ function tracking_manager.init_module()
     -- Check if the basic data, item data, equipment data, camp data, hunter profile, enemy report, and mission activator were found.
     if basic_data and item_data and equipment_data and camp_data and hunter_profile and enemy_report and mission_activator then
         -- If yes, then call the update values on the tracking manager.
-        tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator)
+        tracking_manager.update_values(basic_data, item_data, equipment_data, camp_data, hunter_profile, enemy_report, mission_activator, true)
     else
         return
     end

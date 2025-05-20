@@ -18,9 +18,10 @@
             "enabled": "有効",
             "render_horizontally": "トラッカーを水平に表示する",
             "show_completed_achievements": "達成した実績を表示",
-			"show_images": "Show Achievement Images",
-			"display_progress_as_percentage": "Display Progress as Percentage",
-			"center_align_text": "Center Align Tracker Text"
+            "show_images": "勲章アイコンを表示",
+            "display_progress_as_percentage": "進捗状況をパーセントで表示",
+            "center_align_text": "トラッカーテキストの中央揃え",
+            "show_progress_notifications": "ゲーム内の進捗状況通知を表示"
         },
         "color_picker": {
             "box_background": "枠の色",
@@ -38,7 +39,7 @@
         },
         "dropdown": {
             "size": {
-				"tiny": "Tiny",
+                "tiny": "極小",
                 "small": "小",
                 "medium": "中",
                 "large": "大"
@@ -51,12 +52,12 @@
             "settings": "設定",
             "tracking": "トラッカー",
             "missing": "足りないもの:%s",
-			"base_game": "Base Game"
+            "base_game": "ベースゲーム"
         },
         "misc": {
             "current": "現在",
             "select_achievements": "表示する実績を選択",
-			"completed": "- COMPLETED"
+            "completed": "- 達成しました"
         },
         "selector": {
             "alignment": "表示位置"
@@ -141,25 +142,25 @@
             "name": "モンスター博士",
             "description": "多くの大型モンスターを狩猟した証"
         },
-		"mini_crown_collector": {
-			"name": "ミニチュアコレクタークラウン",
-			"description": "狩猟記録に記録されるモンスター10頭以上に最小冠をつけた証"
-		},
-		"mini_crown_master": {
-			"name": "ミニチュアマスタークラウン",
-			"description": "狩猟記録に記録される多くのモンスターに最小冠をつけた証"
-		},
-		"giant_crown_collector": {
-			"name": "ビッグコレクタークラウン",
-			"description": "狩猟記録に記録されるモンスター10頭以上に金冠をつけた証"
-		},
-		"giant_crown_master": {
-			"name": "ビッグマスタークラウン",
-			"description": "狩猟記録に記録される多くのモンスターに金冠をつけた証"
-		},
-		"eastward_wings": {
-			"name": "東西を繋ぐ鳥",
-			"description": "すべての勲章を獲得した証"
-		}
+        "mini_crown_collector": {
+            "name": "ミニチュアコレクタークラウン",
+            "description": "狩猟記録に記録されるモンスター10頭以上に最小冠をつけた証"
+        },
+        "mini_crown_master": {
+            "name": "ミニチュアマスタークラウン",
+            "description": "狩猟記録に記録される多くのモンスターに最小冠をつけた証"
+        },
+        "giant_crown_collector": {
+            "name": "ビッグコレクタークラウン",
+            "description": "狩猟記録に記録されるモンスター10頭以上に金冠をつけた証"
+        },
+        "giant_crown_master": {
+            "name": "ビッグマスタークラウン",
+            "description": "狩猟記録に記録される多くのモンスターに金冠をつけた証"
+        },
+        "eastward_wings": {
+            "name": "東西を繋ぐ鳥",
+            "description": "すべての勲章を獲得した証"
+        }
     }
 }

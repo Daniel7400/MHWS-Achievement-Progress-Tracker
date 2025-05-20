@@ -9,10 +9,10 @@
 		"button": {
 			"reset_config": "Επαναφορά διαμόρφωσης",
 			"top_left": "Πάνω αριστερά",
-            "top_right": "Επάνω δεξιά",
-            "middle": "Μέση",
-            "bottom_left": "Κάτω αριστερά",
-            "bottom_right": "Κάτω δεξιά"
+			"top_right": "Επάνω δεξιά",
+			"middle": "Μέση",
+			"bottom_left": "Κάτω αριστερά",
+			"bottom_right": "Κάτω δεξιά"
 		},
 		"checkbox": {
 			"enabled": "Ενεργοποιήθηκε",
@@ -20,7 +20,8 @@
 			"show_completed_achievements": "Εμφάνιση Ολοκληρωμένων Επιτευγμάτων",
 			"show_images": "Εμφάνιση εικόνων επιτευγμάτων",
 			"display_progress_as_percentage": "Εμφάνιση προόδου ως ποσοστό",
-			"center_align_text": "Κείμενο παρακολούθησης στοίχισης στο κέντρο"
+			"center_align_text": "Κείμενο παρακολούθησης στοίχισης στο κέντρο",
+			"show_progress_notifications": "Εμφάνιση ειδοποιήσεων προόδου στο παιχνίδι"
 		},
 		"color_picker": {
 			"box_background": "Φόντο κουτιού",

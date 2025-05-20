@@ -8,10 +8,10 @@
 		"button": {
 			"reset_config": "รีเซ็ตการกำหนดค่า",
 			"top_left": "บนซ้าย",
-            "top_right": "ขวาบน",
-            "middle": "กลาง",
-            "bottom_left": "ล่างซ้าย",
-            "bottom_right": "ล่างขวา"
+			"top_right": "ขวาบน",
+			"middle": "กลาง",
+			"bottom_left": "ล่างซ้าย",
+			"bottom_right": "ล่างขวา"
 		},
 		"checkbox": {
 			"enabled": "เปิดใช้งานแล้ว",
@@ -19,7 +19,8 @@
 			"show_completed_achievements": "แสดงความสำเร็จที่เสร็จสมบูรณ์",
 			"show_images": "แสดงภาพความสำเร็จ",
 			"display_progress_as_percentage": "แสดงความคืบหน้าเป็นเปอร์เซ็นต์",
-			"center_align_text": "ติดตามการจัดตำแหน่งข้อความให้ตรงกลาง"
+			"center_align_text": "ติดตามการจัดตำแหน่งข้อความให้ตรงกลาง",
+			"show_progress_notifications": "แสดงการแจ้งเตือนความคืบหน้าในเกม"
 		},
 		"color_picker": {
 			"box_background": "พื้นหลังกล่อง",
