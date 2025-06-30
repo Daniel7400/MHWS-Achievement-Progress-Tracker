@@ -7,11 +7,11 @@ if not d2d then
 end
 
 --- IMPORTS
-require("Achievement_Progress_Tracker.extensions.imgui_extensions")
-require("Achievement_Progress_Tracker.extensions.math_extensions")
-require("Achievement_Progress_Tracker.extensions.sdk_extensions")
 require("Achievement_Progress_Tracker.extensions.string_extensions")
+require("Achievement_Progress_Tracker.extensions.math_extensions")
 require("Achievement_Progress_Tracker.extensions.table_extensions")
+require("Achievement_Progress_Tracker.extensions.imgui_extensions")
+require("Achievement_Progress_Tracker.extensions.sdk_extensions")
 local sdk_manager = require("Achievement_Progress_Tracker.sdk_manager")
 local config_manager = require("Achievement_Progress_Tracker.config_manager")
 local language_manager = require("Achievement_Progress_Tracker.language_manager")

@@ -62,22 +62,79 @@ function sdk.enum_to_table(type_name, value_as_key, should_cache)
     return enum_table
 end
 
+---
+--- Returns the method definition for the provided type name and method name. If none is found an error is thrown.
+---
+---@param type_name string The name of the type to check for the provided `method_name`.
+---@param method_name string The name of the method to hook into.
+---@param error_message_prefix? string [OPTIONAL] The prefix to add to the no method definition found error message. If not nil or whitespace it will automatically append a space to the end. Defaults to an empty string (no prefix).
+---
+---@return userdata method_definition The userdata that represents the `REMethodDefinition` for the provided type name and method name.
+function sdk.get_method(type_name, method_name, error_message_prefix)
+    assert(not string.is_null_or_whitespace(type_name), "The provided 'type_name' cannot be nil or whitespace.")
+    assert(not string.is_null_or_whitespace(method_name), "The provided 'method_name' cannot be nil or whitespace.")
+
+    -- Check if the provided error message prefix is null (nil) or whitespace.
+    if string.is_null_or_whitespace(error_message_prefix) then
+        -- If yes, then set the error message prefix to an empty string (no prefix).
+        error_message_prefix = ""
+    
+    -- Else, the error message has content.
+    else
+        -- Append a space to the provided error message prefix to help separate it from the default error message.
+        error_message_prefix = string.format("%s ", error_message_prefix)
+    end
+
+    -- Get the method definition for the provided type name and method name.
+    local method_definition = sdk.find_type_definition(type_name):get_method(method_name)
+
+    -- Check if there was NO method definition found.
+    if not method_definition then
+        -- If yes, then throw a hard error saying the method definition could not be found.
+        error(string.format("\n\n%sNo method definition found for: '%s.%s'\n",
+            error_message_prefix, type_name, method_name))
+    end
+
+    -- Return the found method definition for the provided type name and method name.
+    return method_definition
+end
+
+---
+--- Adds a hook into the method described by the provided method name on the type described by the provided type name.
+--- The provided pre function will execute before the hooked method does, and the post function executes after.
+---
+--- @param type_name string The name of the type to check for the provided `method_name`.
+--- @param method_name string The name of the method to hook into.
+--- @param pre_function? function [OPTIONAL] The function to execute before the method is hooked.
+--- @param post_function? function [OPTIONAL] The function to execute after the method is hooked.
+function sdk.add_hook(type_name, method_name, pre_function, post_function)
+    assert(not string.is_null_or_whitespace(type_name), "The provided 'type_name' cannot be nil or whitespace.")
+    assert(not string.is_null_or_whitespace(method_name), "The provided 'method_name' cannot be nil or whitespace.")
+    assert(pre_function or post_function, "Either the provided 'pre_function' or 'post_function' must not be nil.")
+
+    -- Get the method definition for the provided type name and method name.
+    local method_definition = sdk.get_method(type_name, method_name, "Hook could NOT be created.")
+
+    -- Create an sdk hook using the found method definition and provided pre + post functions.
+    sdk.hook(method_definition, pre_function, post_function)
+end
+
 --- Constants used within `sdk` functions.
 sdk.constants = {
     spacing = "    ",
     game_function = {
-        get_mandrake_value = sdk.find_type_definition("via.rds.Mandrake"):get_method("op_Implicit(via.rds.Mandrake)"),
-        get_message = sdk.find_type_definition("via.gui.message"):get_method("get(System.Guid)"),
-        get_message_with_lang = sdk.find_type_definition("via.gui.message"):get_method("get(System.Guid, via.Language)"),
-        get_weapon_rarity = sdk.find_type_definition("app.WeaponDef"):get_method("Rare(app.WeaponDef.TYPE, System.Int32)"),
-        get_weapon_data = sdk.find_type_definition("app.WeaponDef"):get_method("Data(app.WeaponDef.TYPE, System.Int32)"),
-        is_artian_weapon = sdk.find_type_definition("app.ArtianUtil"):get_method("isArtianWeapon(app.user_data.WeaponData.cData)"),
-        get_armor_rarity = sdk.find_type_definition("app.ArmorDef"):get_method("Rare(app.ArmorDef.SERIES)"),
-        get_item_name_guid = sdk.find_type_definition("app.ItemDef"):get_method("Name(app.ItemDef.ID)"),
-        get_enemy_name_guid = sdk.find_type_definition("app.EnemyDef"):get_method("EnemyName(app.EnemyDef.ID)"),
-        get_award_name_guid = sdk.find_type_definition("app.HunterProfileDef"):get_method("Name(app.HunterProfileDef.MEDAL_ID)"),
-        get_monster_min_size_record_func = sdk.find_type_definition("app.EnemyReportUtil"):get_method("getMinSize(app.EnemyDef.ID)"),
-        get_monster_max_size_record_func = sdk.find_type_definition("app.EnemyReportUtil"):get_method("getMaxSize(app.EnemyDef.ID)")
+        get_mandrake_value = sdk.get_method("via.rds.Mandrake", "op_Implicit(via.rds.Mandrake)"),
+        get_message = sdk.get_method("via.gui.message", "get(System.Guid)"),
+        get_message_with_lang = sdk.get_method("via.gui.message", "get(System.Guid, via.Language)"),
+        get_weapon_rarity = sdk.get_method("app.WeaponDef", "Rare(app.WeaponDef.TYPE, System.Int32)"),
+        get_weapon_data = sdk.get_method("app.WeaponDef", "Data(app.WeaponDef.TYPE, System.Int32)"),
+        is_artian_weapon = sdk.get_method("app.ArtianUtil", "isArtianWeapon(app.user_data.WeaponData.cData)"),
+        get_armor_rarity = sdk.get_method("app.ArmorDef", "Rare(app.ArmorDef.SERIES)"),
+        get_item_name_guid = sdk.get_method("app.ItemDef", "Name(app.ItemDef.ID)"),
+        get_enemy_name_guid = sdk.get_method("app.EnemyDef", "EnemyName(app.EnemyDef.ID)"),
+        get_award_name_guid = sdk.get_method("app.HunterProfileDef", "Name(app.HunterProfileDef.MEDAL_ID)"),
+        get_monster_min_size_record_func = sdk.get_method("app.EnemyReportUtil", "getMinSize(app.EnemyDef.ID)"),
+        get_monster_max_size_record_func = sdk.get_method("app.EnemyReportUtil", "getMaxSize(app.EnemyDef.ID)")
     },
     game_number_types = {
         "System.Byte",
@@ -153,33 +210,6 @@ sdk.constants = {
         }
     }
 }
-
----
---- Adds a hook into the method described by the provided method name on the type described by the provided type name.
---- The provided pre function will execute before the hooked method does, and the post function executes after.
----
---- @param type_name string The name of the type to check for the provided `method_name`.
---- @param method_name string The name of the method to hook into.
---- @param pre_function? function [OPTIONAL] The function to execute before the method is hooked.
---- @param post_function? function [OPTIONAL] The function to execute after the method is hooked.
-function sdk.add_hook(type_name, method_name, pre_function, post_function)
-    assert(not string.is_null_or_whitespace(type_name), "The provided 'type_name' cannot be nil or whitespace.")
-    assert(not string.is_null_or_whitespace(method_name), "The provided 'method_name' cannot be nil or whitespace.")
-    assert(pre_function or post_function, "Either the provided 'pre_function' or 'post_function' must not be nil.")
-
-    -- Get the method definition for the provided type name and method name.
-    local method_definition = sdk.find_type_definition(type_name):get_method(method_name)
-
-    -- Check if there was NO method definition found.
-    if not method_definition then
-        -- If yes, then throw a hard error saying the hook could not be created.
-        error(string.format("\n\nHook could NOT be created. No method definition found for: '%s.%s'\n",
-            type_name, method_name))
-    end
-
-    -- Create an sdk hook using the found method definition and provided pre + post functions.
-    sdk.hook(method_definition, pre_function, post_function)
-end
 
 ---
 --- Gets the localized text for the provided language resource guid, if the guid is not found an empty string is returned.
