@@ -519,7 +519,7 @@ function sdk_manager.init_module()
         return retval
     end)
 
-    sdk.add_hook(constants.type_name.equip_param, "addEquipBoxWeapon(app.user_data.WeaponData.cData)", nil, function(retval)
+    sdk.add_hook(constants.type_name.equip_param, "addEquipBoxWeapon(app.user_data.WeaponData.cData, app.EquipDef.WeaponRecipeInfo)", nil, function(retval)
         -- Attempt to update then check if the tracker for the `Power Is Everything` achievement was updated.
         if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.power_is_everything]) then
             -- If yes, then force the draw manager to reset and update its values.
@@ -530,7 +530,7 @@ function sdk_manager.init_module()
         return retval
     end)
 
-    sdk.add_hook(constants.type_name.equip_param, "upgradeEquipBoxWeapon(app.EquipDef.EquipWorkInfo, app.user_data.WeaponData.cData)", nil, function(retval)
+    sdk.add_hook(constants.type_name.equip_param, "upgradeEquipBoxWeapon(app.EquipDef.EquipWorkInfo, app.user_data.WeaponData.cData, app.EquipDef.WeaponRecipeInfo)", nil, function(retval)
         -- Attempt to update then check if the tracker for the `Power Is Everything` achievement was updated.
         if tracking_manager.update_tracker(tracking_manager.achievements[constants.achievement.power_is_everything]) then
             -- If yes, then force the draw manager to reset and update its values.
