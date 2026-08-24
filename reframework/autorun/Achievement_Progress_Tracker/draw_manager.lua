@@ -293,12 +293,12 @@ function draw_manager.init_module()
         end
 
         -- Iterate over each achievement tracker.
-        for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+        for _, tracker in ipairs(tracking_manager.achievements) do
             -- Build the path to the achievement image for the current achievement tracker.
-            local full_image_path = string.format("%s\\%s", constants.directory_path, achievement_tracker.image_path)
+            local full_image_path = string.format("%s\\%s", constants.directory_path, tracker.image_path)
 
             -- Load the image and store it in the images table using the image path as the key.
-            draw_manager.images[achievement_tracker.image_path] = d2d.Image.new(full_image_path)
+            draw_manager.images[tracker.image_path] = d2d.Image.new(full_image_path)
         end
     end,
     function()
@@ -357,9 +357,9 @@ function draw_manager.init_module()
                 local current_combined_width = 0
 
                 -- Iterate over each achievement tracker.
-                for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+                for _, tracker in ipairs(tracking_manager.achievements) do
                     -- Check if the current achievement tracker should be displayed.
-                    if achievement_tracker:should_display() then
+                    if tracker:should_display() then
                         -- Calculate the local x and y for the current achievement tracker.
                         local local_x = x + padding
                         local local_y = y + padding + (tracker_height + padding) * (display_number - 1)
@@ -372,7 +372,7 @@ function draw_manager.init_module()
                             -- If yes, then recalculate the tracker width using its internal content display width.
                             tracker_width = math.ceil(
                                 padding + image_plus_padding_width + --[[ Inner Padding + Image Width with Padding (if any) ]]
-                                math.ceil(achievement_tracker.content_display_width) + --[[ Width of the content to be displayed ]]
+                                math.ceil(tracker.content_display_width) + --[[ Width of the content to be displayed ]]
                                 padding) --[[ Inner Padding ]]
 
                             -- Recalculate the local x and y to account for horizontal rendering mode.
@@ -383,7 +383,7 @@ function draw_manager.init_module()
                             current_combined_width = current_combined_width + tracker_width + padding
 
                             -- Set the progress bar width as the content display width for the current achievement tracker.
-                            progress_bar_width = math.ceil(achievement_tracker.content_display_width)
+                            progress_bar_width = math.ceil(tracker.content_display_width)
                         end
 
                         -- Draw the achievement tracker background.
@@ -397,7 +397,7 @@ function draw_manager.init_module()
                         -- Check if the show images flag on the config is true.
                         if config_manager.config.current.display.show_images then
                             -- If yes, then draw the achievement image.
-                            d2d.image(draw_manager.images[achievement_tracker.image_path],
+                            d2d.image(draw_manager.images[tracker.image_path],
                                 local_x + padding,
                                 local_y + padding,
                                 image_width, image_height)
@@ -412,7 +412,7 @@ function draw_manager.init_module()
                         -- Check if the center align text flag on the config is true.
                         if config_manager.config.current.display.center_align_text then
                             -- If yes, then get the width of the current achievement name text.
-                            local name_text_width, _ = draw_manager.font:measure(achievement_tracker.name)
+                            local name_text_width, _ = draw_manager.font:measure(tracker.name)
 
                             -- Update the name x center align offset to the centered origin of the progress bar width and name text width.
                             name_x_center_align_offset, _ = math.get_centered_origin(progress_bar_width, 1,
@@ -420,7 +420,7 @@ function draw_manager.init_module()
                         end
 
                         -- Draw the name of the current achievement using the default font.
-                        d2d.text(draw_manager.font, achievement_tracker.name,
+                        d2d.text(draw_manager.font, tracker.name,
                             local_x + x_offest + name_x_center_align_offset,
                             local_y + padding - 2,
                             config_manager.config.current.display.color.tracker_name_text)
@@ -442,7 +442,7 @@ function draw_manager.init_module()
                             -- Check if the center align text flag on the config is true.
                             if config_manager.config.current.display.center_align_text then
                                 -- If yes, then get the width of the current achievement description text.
-                                local description_text_width, _ = draw_manager.fonts.description:measure(achievement_tracker.description)
+                                local description_text_width, _ = draw_manager.fonts.description:measure(tracker.description)
 
                                 -- Update the name x center align offset to the centered origin of the progress bar width and description text width.
                                 description_x_center_align_offset, _ = math.get_centered_origin(progress_bar_width, 1,
@@ -450,14 +450,14 @@ function draw_manager.init_module()
                             end
 
                             -- Draw the description text of the current achievement using the description font.
-                            d2d.text(draw_manager.fonts.description, achievement_tracker.description,
+                            d2d.text(draw_manager.fonts.description, tracker.description,
                                 local_x + x_offest + description_x_center_align_offset,
                                 local_y + padding - 2 + description_text_y_padding,
                                 config_manager.config.current.display.color.tracker_description_text)
                         end
 
                         -- Draw the progress bar of the current achievement tracker.
-                        d2d.progress_bar(achievement_tracker.current, achievement_tracker.amount,
+                        d2d.progress_bar(tracker.current, tracker.amount,
                             draw_manager.font,
                             local_x + x_offest,
                             local_y + tracker_height - padding - progress_bar_height,
@@ -502,21 +502,21 @@ end
 ---
 --- Update the values stored on the draw manager (amount to display and longest text width) using the provided the provided achievement data.
 ---
----@param achievement_tracker achievement_tracker The achievement tracker to update the draw values for.
-function draw_manager.update_values(achievement_tracker)
+---@param tracker achievement_tracker The achievement tracker to update the draw values for.
+function draw_manager.update_values(tracker)
     -- Increment the amount to display by 1.
     draw_manager.values.amount_to_display = draw_manager.values.amount_to_display + 1
 
     -- Get the width of the name of the provided achievement tracker.
-    local name_text_width, _ = draw_manager.font:measure(achievement_tracker.name)
+    local name_text_width, _ = draw_manager.font:measure(tracker.name)
 
     -- Set the progress bar text as the completed text.
     local progress_bar_text = language_manager.language.current.tracker.completed
 
     -- Check if the provided achievement is NOT marked as complete.
-    if not achievement_tracker:is_complete() then
+    if not tracker:is_complete() then
         -- If yes, then get the progress string of the tracker.
-        progress_bar_text = achievement_tracker:get_progress_string()
+        progress_bar_text = tracker:get_progress_string()
     end
 
     -- Get the width of the progres bar text generated for the provided achievement tracker.
@@ -528,7 +528,7 @@ function draw_manager.update_values(achievement_tracker)
     -- Check if the include description flag for the current size is true.
     if draw_constants.size[config_manager.config.current.display.size].include_description then
         -- If yes, then get the width of the provided achievement description.
-        description_text_width, _ = draw_manager.fonts.description:measure(achievement_tracker.description)
+        description_text_width, _ = draw_manager.fonts.description:measure(tracker.description)
     end
 
     -- Find the longest width as the max between the various calculated widths and minimum width for the current size.
@@ -542,15 +542,15 @@ function draw_manager.update_values(achievement_tracker)
     end
 
     -- Set the content display length for the provided achievement tracker as the longest text width.
-    achievement_tracker.content_display_width = longest_text_width
+    tracker.content_display_width = longest_text_width
 
     -- Increase the horizontal combined width stored on the draw manager by the calculated content display width for the current achievement tracker.
-    draw_manager.values.horizontal_combined_width = math.ceil(draw_manager.values.horizontal_combined_width + achievement_tracker.content_display_width)
+    draw_manager.values.horizontal_combined_width = math.ceil(draw_manager.values.horizontal_combined_width + tracker.content_display_width)
 
     -- Check if the content display with is greater than the stored longest text width.
-    if achievement_tracker.content_display_width > draw_manager.values.longest_text_width then
+    if tracker.content_display_width > draw_manager.values.longest_text_width then
         -- If yes, then update the longest text width to the calculated description text width.
-        draw_manager.values.longest_text_width = achievement_tracker.content_display_width
+        draw_manager.values.longest_text_width = tracker.content_display_width
     end
 end
 

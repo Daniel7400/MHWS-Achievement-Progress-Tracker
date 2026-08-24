@@ -929,7 +929,7 @@ for achievement_id, tracker in ipairs(tracking_manager.achievements) do
 end
 
 ---
---- Update the value of the provided `achievement_tracker` with the provided `update_source`.
+--- Update the value of the provided `tracker_to_update` with the provided `update_source`.
 ---
 ---@param tracker_to_update achievement_tracker The achievement tracker to update the value for.
 ---@param update_source userdata The source used to get the update value from.
@@ -1117,49 +1117,49 @@ function tracking_manager.update_values(basic_data, item_data, equipment_data, c
     local all_completed = true
 
     -- Iterate over each achievement tracker.
-    for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+    for _, tracker in ipairs(tracking_manager.achievements) do
         -- Check if the award fixed for the current achievement tracker DOES EXIST in the collection of acquired awards fixed ids AND the current
         -- tracker is NOT already marked as having its award obtained.
-        if acquired_awards_fixed_ids[achievement_tracker.game_award_fixed_id] and not achievement_tracker.award_obtained then
+        if acquired_awards_fixed_ids[tracker.game_award_fixed_id] and not tracker.award_obtained then
             -- If yes, then set the award obtained flag on the current achievement tracker as true.
-            achievement_tracker.award_obtained = true
+            tracker.award_obtained = true
         end
 
         -- Set the update source as nil by default.
         local update_source = nil
 
         -- Check if the update source on the current achievement tracker is the user basic data.
-        if achievement_tracker.update_params.source == constants.update_source.basic_data then
+        if tracker.update_params.source == constants.update_source.basic_data then
             -- If yes, then set the update source as the provided user basic data.
             update_source = basic_data
 
         -- Else if, check if the update source on the current achievement tracker is the item data.
-        elseif achievement_tracker.update_params.source == constants.update_source.item_data then
+        elseif tracker.update_params.source == constants.update_source.item_data then
             -- If yes, then set the update source as the provided item data.
             update_source = item_data
 
         -- Else if, check if the update source on the current achievement tracker is the equipment data.
-        elseif achievement_tracker.update_params.source == constants.update_source.equipment_data then
+        elseif tracker.update_params.source == constants.update_source.equipment_data then
             -- If yes, then set the update source as the provided equipment data.
             update_source = equipment_data
 
         -- Else if, check if the update source on the current achievement tracker is the camp data.
-        elseif achievement_tracker.update_params.source == constants.update_source.camp_data then
+        elseif tracker.update_params.source == constants.update_source.camp_data then
             -- If yes, then set the update source as the provided camp data.
             update_source = camp_data
 
         -- Else if, check if the update source on the current achievement tracker is the hunter profile.
-        elseif achievement_tracker.update_params.source == constants.update_source.hunter_profile then
+        elseif tracker.update_params.source == constants.update_source.hunter_profile then
             -- If yes, then set the update source as the provided hunter profile.
             update_source = hunter_profile
 
         -- Else if, check if the update source on the current achievement tracker is the enemy report.
-        elseif achievement_tracker.update_params.source == constants.update_source.enemy_report then
+        elseif tracker.update_params.source == constants.update_source.enemy_report then
             -- If yes, then set the update source as the provided enemy report.
             update_source = enemy_report
 
         -- Else if, check if the update source on the current achievement tracker is the mission activator.
-        elseif achievement_tracker.update_params.source == constants.update_source.mission_activator then
+        elseif tracker.update_params.source == constants.update_source.mission_activator then
             -- If yes, then set the update source as the provided mission activator.
             update_source = mission_activator
         else
@@ -1167,10 +1167,10 @@ function tracking_manager.update_values(basic_data, item_data, equipment_data, c
         end
 
         -- Call the update tracker value for the current achievement tracker and update source.
-        update_tracker_value(achievement_tracker, update_source, false, is_for_initialization)
+        update_tracker_value(tracker, update_source, false, is_for_initialization)
 
         -- Update the all completed flag as the and between itself and the is complete function of the current achievement tracker.
-        all_completed = all_completed and achievement_tracker:is_complete()
+        all_completed = all_completed and tracker:is_complete()
     end
 
     -- Set the all completed flag on the draw manager as the local all completed flag.
@@ -1185,11 +1185,11 @@ function tracking_manager.force_draw_manager_values_reset_and_update()
     draw_manager.reset_values()
 
     -- Iterate over each achievement tracker.
-    for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+    for _, tracker in ipairs(tracking_manager.achievements) do
         -- Check if the current achievement tracker should be displayed.
-        if achievement_tracker:should_display() then
+        if tracker:should_display() then
             -- If yes, then call the update values function on the draw manager for current achievement tracker.
-            draw_manager.update_values(achievement_tracker)
+            draw_manager.update_values(tracker)
         end
     end
 end
@@ -1203,24 +1203,24 @@ function tracking_manager.update_language()
     draw_manager.reset_values()
 
     -- Iterate over each achievement tracker.
-    for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+    for _, tracker in ipairs(tracking_manager.achievements) do
         -- Set the name and description of the provided achievement tracker as the values set on the current language.
-        achievement_tracker.name = language_manager.language.current.achievement[achievement_tracker.key].name
-        achievement_tracker.description = language_manager.language.current.achievement[achievement_tracker.key].description
+        tracker.name = language_manager.language.current.achievement[tracker.key].name
+        tracker.description = language_manager.language.current.achievement[tracker.key].description
 
         -- Check if the is initialized flag on the tracking manager is true, because otherwise there will be no values to update yet.
         if tracking_manager.is_initialized then
             -- If yes, then check if the provided achievement tracker is enabled AND NOT complete AND has collection params defined AND has missing.
-            if achievement_tracker:is_enabled() and not achievement_tracker:is_complete() and achievement_tracker.collection_params ~= nil
-                and #achievement_tracker.collection_params.missing > 0 then
+            if tracker:is_enabled() and not tracker:is_complete() and tracker.collection_params ~= nil
+                and #tracker.collection_params.missing > 0 then
                 -- If yes, then update the tracker so it calls its additional processing function and update the missing entries text.
-                tracking_manager.update_tracker(achievement_tracker)
+                tracking_manager.update_tracker(tracker)
             end
 
             -- Check if the provided achievement tracker should be displayed.
-            if achievement_tracker:should_display() then
+            if tracker:should_display() then
                 -- If yes, then call the update values function on the draw manager.
-                draw_manager.update_values(achievement_tracker)
+                draw_manager.update_values(tracker)
             end
         end
     end
@@ -1234,9 +1234,9 @@ function tracking_manager.reset()
     tracking_manager.is_initialized = false
 
     -- Iterate over each achievement tracker.
-    for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+    for _, tracker in ipairs(tracking_manager.achievements) do
         -- Reset the changeable values for the current achievement tracker (needed when loading a different character).
-        achievement_tracker:reset()
+        tracker:reset()
     end
 end
 

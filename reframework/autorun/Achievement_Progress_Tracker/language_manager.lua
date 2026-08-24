@@ -146,10 +146,10 @@ function language_manager.init_module()
     local tracking_manager = require("Achievement_Progress_Tracker.tracking_manager")
 
     -- Iterate over each achievement tracker.
-    for _, achievement_tracker in ipairs(tracking_manager.achievements) do
+    for _, tracker in ipairs(tracking_manager.achievements) do
         -- Update the language for the achievement tracker.
-        achievement_tracker.name = language_manager.language.current.achievement[achievement_tracker.key].name
-        achievement_tracker.description = language_manager.language.current.achievement[achievement_tracker.key].description
+        tracker.name = language_manager.language.current.achievement[tracker.key].name
+        tracker.description = language_manager.language.current.achievement[tracker.key].description
     end
 end
 

@@ -257,8 +257,8 @@ end
 ---
 --- Send a notification using the in-game chat notification system to show that the provided achievement tracker has been completed.
 ---
----@param achievement_tracker achievement_tracker The achievement tracker to send the completion notification for.
-function sdk_manager.send_completion_notification(achievement_tracker)
+---@param tracker achievement_tracker The achievement tracker to send the completion notification for.
+function sdk_manager.send_completion_notification(tracker)
     -- KNOWN ISSUE: In `Thai` and `Vietnamese` the text will either all display as boxes, or only partially.
 
     -- Check if the chat manager on the sdk manager is NOT already loaded/valid.
@@ -270,14 +270,14 @@ function sdk_manager.send_completion_notification(achievement_tracker)
     -- Check if the chat manager is still valid.
     if sdk_manager.chat_manager then
         -- If yes, then get the name of the award from the provided achievement tracker.
-        local award_name = language_manager.language.current.achievement[achievement_tracker.key].name
+        local award_name = language_manager.language.current.achievement[tracker.key].name
 
         -- Create the body text for the notification using the award name and the tracker completed text.
         local body_text = sdk.create_gui_message(string.format("%s - %s", award_name, language_manager.language.current.tracker.completed))
 
         -- Call the add system text with title log function on the chat manager do display the notification.
         sdk_manager.chat_manager:call("addSystemTextWithTitleLog(app.ChatDef.LOG_ID, ace.cGUIMessageInfo, ace.cGUIMessageInfo, System.Int32, System.Int32, System.Boolean)",
-            sdk.cache.enum.log_id.AWARD_UNLOCK, notification_header_text, body_text, achievement_tracker.game_award_id, 0, false)
+            sdk.cache.enum.log_id.AWARD_UNLOCK, notification_header_text, body_text, tracker.game_award_id, 0, false)
     else
         -- Log an error that this function was called and the chat manager could not be accessed.
         log.error(string.format("[%s] - Failed to get the `app.ChatManager` managed object.", constants.mod_name))
@@ -287,9 +287,9 @@ end
 ---
 --- Send a notification using the in-game chat notification system to show that the provided achievement tracker has had some progress.
 ---
----@param achievement_tracker achievement_tracker The achievement tracker to send the completion notification for.
+---@param tracker achievement_tracker The achievement tracker to send the completion notification for.
 ---@param previous_value number The previous progress value of the provided achievement tracker.
-function sdk_manager.send_progress_notification(achievement_tracker, previous_value)
+function sdk_manager.send_progress_notification(tracker, previous_value)
     -- KNOWN ISSUE: In `Thai` and `Vietnamese` the text will either all display as boxes, or only partially.
 
     -- Check if the chat manager on the sdk manager is NOT already loaded/valid.
@@ -301,21 +301,21 @@ function sdk_manager.send_progress_notification(achievement_tracker, previous_va
     -- Check if the chat manager is still valid.
     if sdk_manager.chat_manager then
         -- If yes, then get the name of the award from the provided achievement tracker.
-        local award_name = language_manager.language.current.achievement[achievement_tracker.key].name
+        local award_name = language_manager.language.current.achievement[tracker.key].name
 
         -- Create the percentage text for the old (previous) value and the current value of the provided achievement tracker.
-        local old_percentage_text = achievement_tracker:get_percentage_progress_string(previous_value)
-        local new_percentage_text = achievement_tracker:get_percentage_progress_string()
+        local old_percentage_text = tracker:get_percentage_progress_string(previous_value)
+        local new_percentage_text = tracker:get_percentage_progress_string()
 
         -- Create the body text for the notification using the award name, previous value, tracker target value, old percentage text, current tracker value,
         -- tracker target value, and new percentage text.
-        local body_text = sdk.create_gui_message(string.format("%s\n%s/%s (%s) → %s/%s (%s)", award_name, previous_value, achievement_tracker.amount, old_percentage_text,
-            achievement_tracker.current, achievement_tracker.amount, new_percentage_text
+        local body_text = sdk.create_gui_message(string.format("%s\n%s/%s (%s) → %s/%s (%s)", award_name, previous_value, tracker.amount, old_percentage_text,
+            tracker.current, tracker.amount, new_percentage_text
         ))
 
         -- Call the add system text with title log function on the chat manager do display the notification.
         sdk_manager.chat_manager:call("addSystemTextWithTitleLog(app.ChatDef.LOG_ID, ace.cGUIMessageInfo, ace.cGUIMessageInfo, System.Int32, System.Int32, System.Boolean)",
-            sdk.cache.enum.log_id.AWARD_UNLOCK, notification_header_text, body_text, achievement_tracker.game_award_id, 0, false)
+            sdk.cache.enum.log_id.AWARD_UNLOCK, notification_header_text, body_text, tracker.game_award_id, 0, false)
     else
         -- Log an error that this function was called and the chat manager could not be accessed.
         log.error(string.format("[%s] - Failed to get the `app.ChatManager` managed object.", constants.mod_name))
