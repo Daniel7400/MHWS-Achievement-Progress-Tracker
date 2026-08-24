@@ -13,7 +13,10 @@
 			"top_right": "右上方",
 			"middle": "中間",
 			"bottom_left": "左下方",
-			"bottom_right": "右下方"
+			"bottom_right": "右下方",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "啟用",
@@ -53,7 +56,9 @@
 			"settings": "設定",
 			"tracking": "追蹤",
 			"missing": "未獲得：%s",
-			"base_game": "本體"
+			"base_game": "本體",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "當前的",

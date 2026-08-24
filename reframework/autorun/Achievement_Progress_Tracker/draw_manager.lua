@@ -8,23 +8,29 @@ local language_manager = require("Achievement_Progress_Tracker.language_manager"
 --- The manager for all things related to drawing on the screen.
 local draw_manager = {
     -- The font used by d2d to display the text.
+    ---@type userdata
     font = nil,
 
     -- The fonts used by d2d to display text.
     fonts = {
         -- The font used to display all text besides the description text.
+        ---@type userdata
         default = nil,
 
         -- The font used to display all text besides the description text, tiny size.
+        ---@type userdata
         tiny_default = nil,
 
         -- The font used to display the description text for achievement trackers.
+        ---@type userdata
         description = nil,
 
         -- The font used to display the header text in the congrats modal.
+        ---@type userdata
         congrats_header = nil,
 
         -- The font used to display the message text in the congrats modal.
+        ---@type userdata
         congrats_message = nil
     },
 
@@ -286,10 +292,10 @@ function draw_manager.init_module()
             draw_manager.font = draw_manager.fonts.default
         end
 
-        -- Iterate over each achievement tracker,
+        -- Iterate over each achievement tracker.
         for _, achievement_tracker in ipairs(tracking_manager.achievements) do
             -- Build the path to the achievement image for the current achievement tracker.
-            local full_image_path = string.format("%s/%s", constants.directory_path, achievement_tracker.image_path)
+            local full_image_path = string.format("%s\\%s", constants.directory_path, achievement_tracker.image_path)
 
             -- Load the image and store it in the images table using the image path as the key.
             draw_manager.images[achievement_tracker.image_path] = d2d.Image.new(full_image_path)
@@ -496,7 +502,7 @@ end
 ---
 --- Update the values stored on the draw manager (amount to display and longest text width) using the provided the provided achievement data.
 ---
----@param achievement_tracker achievementtracker The achievement tracker to update the draw values for.
+---@param achievement_tracker achievement_tracker The achievement tracker to update the draw values for.
 function draw_manager.update_values(achievement_tracker)
     -- Increment the amount to display by 1.
     draw_manager.values.amount_to_display = draw_manager.values.amount_to_display + 1
@@ -509,14 +515,8 @@ function draw_manager.update_values(achievement_tracker)
 
     -- Check if the provided achievement is NOT marked as complete.
     if not achievement_tracker:is_complete() then
-        -- If yes, then check if the display progress as percentage flag on the config is true.
-        if config_manager.config.current.display.display_progress_as_percentage then
-            -- If yes, then set the progress bar text as the percentage value.
-            progress_bar_text = string.format("%.2f%%", (achievement_tracker.current / achievement_tracker.amount) * 100)
-        else
-            -- Build the text that will display in the progress bar.
-            progress_bar_text = string.format("%i / %i", achievement_tracker.current, achievement_tracker.amount)
-        end
+        -- If yes, then get the progress string of the tracker.
+        progress_bar_text = achievement_tracker:get_progress_string()
     end
 
     -- Get the width of the progres bar text generated for the provided achievement tracker.

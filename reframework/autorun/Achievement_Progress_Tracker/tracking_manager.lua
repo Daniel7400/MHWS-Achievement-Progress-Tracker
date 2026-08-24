@@ -1,6 +1,7 @@
 -- IMPORTS
+local resource_type = require("Achievement_Progress_Tracker.enums.resource_type")
 local constants = require("Achievement_Progress_Tracker.constants")
-local achievementtracker = require("Achievement_Progress_Tracker.classes.achievement_tracker")
+local achievement_tracker = require("Achievement_Progress_Tracker.classes.achievement_tracker")
 local sdk_manager = require("Achievement_Progress_Tracker.sdk_manager")
 local config_manager = require("Achievement_Progress_Tracker.config_manager")
 local language_manager = require("Achievement_Progress_Tracker.language_manager")
@@ -28,12 +29,12 @@ local function get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, get
         -- Iterate over each created weapon id.
         for _, weapon_id in ipairs(created_weapon_ids) do
             -- Get the rarity of the current weapon id (have to add by once since the rarity returned is one less for some reason).
-            local weapon_rarity = sdk.constants.game_function.get_weapon_rarity:call(nil, weapon_type_enum, weapon_id) + 1
+            local weapon_rarity = sdk.cache.game_function.get_weapon_rarity:call(nil, weapon_type_enum, weapon_id) + 1
             -- Check if the rarity is greater than or equal to 7.
             if weapon_rarity >= 7 then
                 -- If yes, then get the weapon data for the current weapoin id and determine if its an artian weapon.
-                local weapon_data = sdk.constants.game_function.get_weapon_data:call(nil, weapon_type_enum, weapon_id)
-                local is_artian = sdk.constants.game_function.is_artian_weapon:call(nil, weapon_data)
+                local weapon_data = sdk.cache.game_function.get_weapon_data:call(nil, weapon_type_enum, weapon_id)
+                local is_artian = sdk.cache.game_function.is_artian_weapon:call(nil, weapon_data)
 
                 -- Check if the is artian flag is NOT true (false).
                 if not is_artian then
@@ -68,7 +69,7 @@ local function get_armor_crafted_rarity_7_or_higher_count(armor_create_data, get
         -- Iterate over each created armor series id.
         for _, armor_series_id in ipairs(created_armor_series_ids) do
             -- Get the rarity of the current armor series id (have to add by once since the rarity returned is one less for some reason).
-            local armor_part_rarity = sdk.constants.game_function.get_armor_rarity:call(nil, armor_series_id) + 1
+            local armor_part_rarity = sdk.cache.game_function.get_armor_rarity:call(nil, armor_series_id) + 1
 
             -- Check if the rarity is greater than or equal to 7.
             if armor_part_rarity >= 7 then
@@ -84,10 +85,10 @@ end
 
 --- The manager for all things related to achievement tracking.
 local tracking_manager = {
-    -- The table of achievements being tracked by the tracking manager.
+    -- The table of ALL achievements being tracked by the tracking manager.
     achievements = {
-        [constants.achievement.a_true_hunter] = achievementtracker:new(constants.achievement.a_true_hunter,
-            constants.game_award_fixed_id.a_true_hunter,
+        [constants.achievement.a_true_hunter] = achievement_tracker:new(constants.achievement.a_true_hunter,
+            sdk.cache.enum.award_fixed_id.a_true_hunter,
             language_manager.language.default.achievement.a_true_hunter.name,
             language_manager.language.default.achievement.a_true_hunter.description,
             "ee560f5141c63b678c2a817e950bc9d453228d90.jpg",
@@ -120,8 +121,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.hunters_united_forever] = achievementtracker:new(constants.achievement.hunters_united_forever,
-            constants.game_award_fixed_id.hunters_united_forever,
+        [constants.achievement.hunters_united_forever] = achievement_tracker:new(constants.achievement.hunters_united_forever,
+            sdk.cache.enum.award_fixed_id.hunters_united_forever,
             language_manager.language.default.achievement.hunters_united_forever.name,
             language_manager.language.default.achievement.hunters_united_forever.description,
             "c22a0cec096d9a007161db3b3ecd5bc06600b1c6.jpg",
@@ -139,7 +140,7 @@ local tracking_manager = {
                 end
 
                 -- Get the count of completed multiplayer quests.
-                local result = tonumber(counters[constants.counter.multiplayer_quest]:call("ToString"))
+                local result = tonumber(counters[sdk.cache.enum.count_type_fixed.MULTIPLAYER_QUEST]:call("ToString"))
 
                 -- Check if the resulting number is nil.
                 if result == nil then
@@ -151,8 +152,8 @@ local tracking_manager = {
                 return result
             end),
 
-        [constants.achievement.someone_worth_following] = achievementtracker:new(constants.achievement.someone_worth_following,
-            constants.game_award_fixed_id.someone_worth_following,
+        [constants.achievement.someone_worth_following] = achievement_tracker:new(constants.achievement.someone_worth_following,
+            sdk.cache.enum.award_fixed_id.someone_worth_following,
             language_manager.language.default.achievement.someone_worth_following.name,
             language_manager.language.default.achievement.someone_worth_following.description,
             "c3823eeb0df771379c01db04da7bec6fb01af7a7.jpg",
@@ -170,7 +171,7 @@ local tracking_manager = {
                 end
 
                 -- Get the count of completed quests with an accompanying palico.
-                local result = tonumber(counters[constants.counter.palico_accompanied_quest]:call("ToString"))
+                local result = tonumber(counters[sdk.cache.enum.count_type_fixed.PALICO_ACCOMPANIED_QUEST]:call("ToString"))
 
                 -- Check if the resulting number is nil.
                 if result == nil then
@@ -182,8 +183,8 @@ local tracking_manager = {
                 return result
             end),
 
-        [constants.achievement.capture_pro] = achievementtracker:new(constants.achievement.capture_pro,
-            constants.game_award_fixed_id.capture_pro,
+        [constants.achievement.capture_pro] = achievement_tracker:new(constants.achievement.capture_pro,
+            sdk.cache.enum.award_fixed_id.capture_pro,
             language_manager.language.default.achievement.capture_pro.name,
             language_manager.language.default.achievement.capture_pro.description,
             "cd4e28ed9ae42fe93d2e30c7fac88f6fd85c61f6.jpg",
@@ -209,7 +210,7 @@ local tracking_manager = {
                     local boss_state = boss:get_field("EnemyState")
 
                     -- Check if the boss state does NOT equal the `NONE` (0) report state.
-                    if boss_state ~= constants.enemy_report_state.NONE then
+                    if boss_state ~= sdk.cache.enum.enemy_report_state.NONE then
                         -- If yes, then increment the sum by the return value of calling the get capture num function on the current boss.
                         sum = sum + boss:call("getCaptureNum")
                     end
@@ -219,8 +220,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.monster_slayer] = achievementtracker:new(constants.achievement.monster_slayer,
-            constants.game_award_fixed_id.monster_slayer,
+        [constants.achievement.monster_slayer] = achievement_tracker:new(constants.achievement.monster_slayer,
+            sdk.cache.enum.award_fixed_id.monster_slayer,
             language_manager.language.default.achievement.monster_slayer.name,
             language_manager.language.default.achievement.monster_slayer.description,
             "10fdc7f671bae8b203d76d728d2ce2d0506fd4cf.jpg",
@@ -246,7 +247,7 @@ local tracking_manager = {
                     local boss_state = boss:get_field("EnemyState")
 
                     -- Check if the boss state does NOT equal the `NONE` (0) report state.
-                    if boss_state ~= constants.enemy_report_state.NONE then
+                    if boss_state ~= sdk.cache.enum.enemy_report_state.NONE then
                         -- If yes, then increment the sum by the return value of calling the get hunting num function on the current boss.
                         sum = sum + boss:call("getHuntingNum")
                     end
@@ -256,8 +257,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.seasoned_hunter] = achievementtracker:new(constants.achievement.seasoned_hunter,
-            constants.game_award_fixed_id.seasoned_hunter,
+        [constants.achievement.seasoned_hunter] = achievement_tracker:new(constants.achievement.seasoned_hunter,
+            sdk.cache.enum.award_fixed_id.seasoned_hunter,
             language_manager.language.default.achievement.seasoned_hunter.name,
             language_manager.language.default.achievement.seasoned_hunter.description,
             "bbf15074c8d8d6e21cab3ccbebb62fc43f33b50f.jpg",
@@ -275,7 +276,7 @@ local tracking_manager = {
                 end
 
                 -- Get the count of hunted tempered monsters.
-                local result = tonumber(counters[constants.counter.tempered_monster]:call("ToString"))
+                local result = tonumber(counters[sdk.cache.enum.count_type_fixed.TEMPERED_MONSTER]:call("ToString"))
 
                 -- Check if the resulting number is nil.
                 if result == nil then
@@ -287,8 +288,8 @@ local tracking_manager = {
                 return result
             end),
 
-        [constants.achievement.top_of_the_food_chain] = achievementtracker:new(constants.achievement.top_of_the_food_chain,
-            constants.game_award_fixed_id.top_of_the_food_chain,
+        [constants.achievement.top_of_the_food_chain] = achievement_tracker:new(constants.achievement.top_of_the_food_chain,
+            sdk.cache.enum.award_fixed_id.top_of_the_food_chain,
             language_manager.language.default.achievement.top_of_the_food_chain.name,
             language_manager.language.default.achievement.top_of_the_food_chain.description,
             "ba000c3c6d49e99493bc49a64478bd53c043743c.jpg",
@@ -314,7 +315,7 @@ local tracking_manager = {
                     local fixed_id = boss:get_field("FixedId")
 
                     -- Check if the fixed id for the current boss is that of an apex predator.
-                    if constants.apex_predator[fixed_id] then
+                    if constants.reference.apex_predator[fixed_id] then
                         -- If yes, then increment the sum by the return value of calling the get hunting num function on the current boss.
                         sum = sum + boss:call("getHuntingNum")
                     end
@@ -324,8 +325,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.east_to_west] = achievementtracker:new(constants.achievement.east_to_west,
-            constants.game_award_fixed_id.east_to_west,
+        [constants.achievement.east_to_west] = achievement_tracker:new(constants.achievement.east_to_west,
+            sdk.cache.enum.award_fixed_id.east_to_west,
             language_manager.language.default.achievement.east_to_west.name,
             language_manager.language.default.achievement.east_to_west.description,
             "2cdfdb7492d15bcc0918d1cee247e95e7a9273b0.jpg",
@@ -334,7 +335,7 @@ local tracking_manager = {
             constants.acquisition_method.call,
             "getAchievedSideMissionIDList",
             ---@param completed_side_mission_id_list userdata
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(completed_side_mission_id_list, tracker_self)
                 -- Check if the provided completed side mission id list is NOT valid.
@@ -356,8 +357,8 @@ local tracking_manager = {
                 return completed_side_mission_id_list:get_size()
             end),
 
-        [constants.achievement.a_fish_ionado] = achievementtracker:new(constants.achievement.a_fish_ionado,
-            constants.game_award_fixed_id.a_fish_ionado,
+        [constants.achievement.a_fish_ionado] = achievement_tracker:new(constants.achievement.a_fish_ionado,
+            sdk.cache.enum.award_fixed_id.a_fish_ionado,
             language_manager.language.default.achievement.a_fish_ionado.name,
             language_manager.language.default.achievement.a_fish_ionado.description,
             "bce9d2d9ec6ab11405634a04ecd0d2a0f6147466.jpg",
@@ -383,7 +384,7 @@ local tracking_manager = {
                     local fixed_id = fish:get_field("FixedId")
 
                     -- Check if the fixed id for the current fish is that of a whopper.
-                    if constants.whopper[fixed_id] then
+                    if constants.reference.whopper[fixed_id] then
                         -- If yes, then increment the sum by the return value of calling the get capture num function on the current fish.
                         sum = sum + fish:call("getCaptureNum")
                     end
@@ -393,8 +394,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.campmaster] = achievementtracker:new(constants.achievement.campmaster,
-            constants.game_award_fixed_id.campmaster,
+        [constants.achievement.campmaster] = achievement_tracker:new(constants.achievement.campmaster,
+            sdk.cache.enum.award_fixed_id.campmaster,
             language_manager.language.default.achievement.campmaster.name,
             language_manager.language.default.achievement.campmaster.description,
             "fedb517d9fc971e72138b220de9df59e049e63b6.jpg",
@@ -430,8 +431,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.bourgeois_hunter] = achievementtracker:new(constants.achievement.bourgeois_hunter,
-            constants.game_award_fixed_id.bourgeois_hunter,
+        [constants.achievement.bourgeois_hunter] = achievement_tracker:new(constants.achievement.bourgeois_hunter,
+            sdk.cache.enum.award_fixed_id.bourgeois_hunter,
             language_manager.language.default.achievement.bourgeois_hunter.name,
             language_manager.language.default.achievement.bourgeois_hunter.description,
             "b7056102c53d59596a8797081cc7c31a39304d51.jpg",
@@ -440,8 +441,8 @@ local tracking_manager = {
             constants.acquisition_method.call,
             "getMoney"),
 
-        [constants.achievement.gossip_hunter] = achievementtracker:new(constants.achievement.gossip_hunter,
-            constants.game_award_fixed_id.gossip_hunter,
+        [constants.achievement.gossip_hunter] = achievement_tracker:new(constants.achievement.gossip_hunter,
+            sdk.cache.enum.award_fixed_id.gossip_hunter,
             language_manager.language.default.achievement.gossip_hunter.name,
             language_manager.language.default.achievement.gossip_hunter.description,
             "6ea636fdce68821645862756f6917bd3099a7233.jpg",
@@ -450,8 +451,8 @@ local tracking_manager = {
             constants.acquisition_method.call,
             "getViewOtherProfileCount"),
 
-        [constants.achievement.impregnable_defense] = achievementtracker:new(constants.achievement.impregnable_defense,
-            constants.game_award_fixed_id.impregnable_defense,
+        [constants.achievement.impregnable_defense] = achievement_tracker:new(constants.achievement.impregnable_defense,
+            sdk.cache.enum.award_fixed_id.impregnable_defense,
             language_manager.language.default.achievement.impregnable_defense.name,
             language_manager.language.default.achievement.impregnable_defense.description,
             "86dac2d987165a8815edaaefecd00edb053bf973.jpg",
@@ -523,8 +524,8 @@ local tracking_manager = {
                 return sum
             end),
 
-        [constants.achievement.power_is_everything] = achievementtracker:new(constants.achievement.power_is_everything,
-            constants.game_award_fixed_id.power_is_everything,
+        [constants.achievement.power_is_everything] = achievement_tracker:new(constants.achievement.power_is_everything,
+            sdk.cache.enum.award_fixed_id.power_is_everything,
             language_manager.language.default.achievement.power_is_everything.name,
             language_manager.language.default.achievement.power_is_everything.description,
             "e2a8d70bfd30df982e7766eb39f3e3d2032a9679.jpg",
@@ -545,53 +546,53 @@ local tracking_manager = {
                 local sum = 0
 
                 -- Increment the sum by the count of crafted greatswords of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_LongSwordCreateBit", constants.weapon_type.GREAT_SWORD)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_LongSwordCreateBit", sdk.cache.enum.weapon_type.GREAT_SWORD)
 
                 -- Increment the sum by the count of crafted sword and shields of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_ShortSwordCreateBit", constants.weapon_type.SWORD_AND_SHIELD)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_ShortSwordCreateBit", sdk.cache.enum.weapon_type.SWORD_AND_SHIELD)
 
                 -- Increment the sum by the count of crafted dual blades of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_TwinSwordCreateBit", constants.weapon_type.DUAL_BLADES)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_TwinSwordCreateBit", sdk.cache.enum.weapon_type.DUAL_BLADES)
 
                 -- Increment the sum by the count of crafted longswords of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_TachiCreateBit", constants.weapon_type.LONG_SWORD)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_TachiCreateBit", sdk.cache.enum.weapon_type.LONG_SWORD)
 
                 -- Increment the sum by the count of crafted hammers of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_HammerCreateBit", constants.weapon_type.HAMMER)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_HammerCreateBit", sdk.cache.enum.weapon_type.HAMMER)
 
                 -- Increment the sum by the count of crafted hunting horns of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_WhistleCreateBit", constants.weapon_type.HUNTING_HORN)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_WhistleCreateBit", sdk.cache.enum.weapon_type.HUNTING_HORN)
 
                 -- Increment the sum by the count of crafted lances of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_LanceCreateBit", constants.weapon_type.LANCE)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_LanceCreateBit", sdk.cache.enum.weapon_type.LANCE)
 
                 -- Increment the sum by the count of crafted gun lances of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_GunLanceCreateBit", constants.weapon_type.GUN_LANCE)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_GunLanceCreateBit", sdk.cache.enum.weapon_type.GUN_LANCE)
 
                 -- Increment the sum by the count of crafted switch axes of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_SlashAxeCreateBit", constants.weapon_type.SWITCH_AXE)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_SlashAxeCreateBit", sdk.cache.enum.weapon_type.SWITCH_AXE)
 
                 -- Increment the sum by the count of crafted charge blades of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_ChargeAxeCreateBit", constants.weapon_type.CHARGE_BLADE)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_ChargeAxeCreateBit", sdk.cache.enum.weapon_type.CHARGE_BLADE)
 
                 -- Increment the sum by the count of crafted insect glaives of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_RodCreateBit", constants.weapon_type.INSECT_GLAIVE)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_RodCreateBit", sdk.cache.enum.weapon_type.INSECT_GLAIVE)
 
                 -- Increment the sum by the count of crafted bows of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_BowCreateBit", constants.weapon_type.BOW)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_BowCreateBit", sdk.cache.enum.weapon_type.BOW)
 
                 -- Increment the sum by the count of crafted heavy bowguns of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_HeavyBowgunCreateBit", constants.weapon_type.HEAVY_BOWGUN)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_HeavyBowgunCreateBit", sdk.cache.enum.weapon_type.HEAVY_BOWGUN)
 
                 -- Increment the sum by the count of crafted light bowguns of rarity 7 or higher, if any.
-                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_LightBowgunCreateBit", constants.weapon_type.LIGHT_BOWGUN)
+                sum = sum + get_weapon_crafted_rarity_7_or_higher_count(weapon_flag_data, "get_LightBowgunCreateBit", sdk.cache.enum.weapon_type.LIGHT_BOWGUN)
 
                 -- Return the sum.
                 return sum
             end),
 
-        [constants.achievement.explorer_of_the_eastlands] = achievementtracker:new_with_collection(constants.achievement.explorer_of_the_eastlands,
-            constants.game_award_fixed_id.explorer_of_the_eastlands,
+        [constants.achievement.explorer_of_the_eastlands] = achievement_tracker:new_with_collection(constants.achievement.explorer_of_the_eastlands,
+            sdk.cache.enum.award_fixed_id.explorer_of_the_eastlands,
             language_manager.language.default.achievement.explorer_of_the_eastlands.name,
             language_manager.language.default.achievement.explorer_of_the_eastlands.description,
             "0f18f43711c4e9da3613d86de9db805bf9441f58.jpg",
@@ -600,7 +601,7 @@ local tracking_manager = {
             constants.acquisition_method.call,
             "get_ItemFoundFlag",
             ---@param item_found_bitset userdata
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(item_found_bitset, tracker_self)
                 -- Check if the provided item found bitset count is NOT valid.
@@ -609,55 +610,37 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Get the collection of found item fixed ids contained in the provided item found bitset.
                 local found_item_fixed_ids = sdk.get_bitset_value(item_found_bitset, nil, true)
 
                 -- Iterate over each special item.
-                for special_item_fixed_id, _ in pairs(constants.special_item) do
-                    -- Get the corresponding item id for the current special item fixed id.
-                    local item_id = constants.item_id[constants.item_id_fixed[special_item_fixed_id]]
+                for special_item_fixed_id, _ in pairs(constants.reference.special_item) do
+                    -- Get the corresponding item id and item name for the current special item fixed id.
+                    local item_id = sdk.get_id_from_fixed(resource_type.Item, special_item_fixed_id)
+                    local item_name = sdk.get_name(resource_type.Item, item_id, language_manager.language.current.associated_in_game_language_option)
 
-                    -- Get the item name guid then use that to get the actual name string for the item id.
-                    local item_name_guid = sdk.constants.game_function.get_item_name_guid:call(nil, item_id)
-                    local item_name = sdk.get_localized_text(item_name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                    -- Check if the found item name is null (nil) or whitespace.
-                    if string.is_null_or_whitespace(item_name) then
-                        -- If yes, then just set the item name as the english name.
-                        item_name = sdk.get_localized_text(item_name_guid, sdk.constants.enum.game_language_option.English)
-                    end
-
-                    -- Check if the current special item fixed id exists in the collection of found item fixed ids from the provided bitset.
-                    if found_item_fixed_ids[special_item_fixed_id] then
-                        -- If yes, then insert the item name into the found collection.
-                        table.insert(tracker_self.collection_params.found, item_name)
-                    else
-                        -- Insert the item name into the missing collection.
-                        table.insert(tracker_self.collection_params.missing, item_name)
-                    end
+                    tracker_self:add_collection_entry(found_item_fixed_ids[special_item_fixed_id], item_name)
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.special_item
+            constants.reference.special_item
         ),
 
-        [constants.achievement.monster_phd] = achievementtracker:new_with_collection(constants.achievement.monster_phd,
-            constants.game_award_fixed_id.monster_phd,
+        [constants.achievement.monster_phd] = achievement_tracker:new_with_collection(constants.achievement.monster_phd,
+            sdk.cache.enum.award_fixed_id.monster_phd,
             language_manager.language.default.achievement.monster_phd.name,
             language_manager.language.default.achievement.monster_phd.description,
             "19a29baf3cc204ecbba1b03bbd417fc095a8121e.jpg",
-            table.length(constants.base_monster), 0,
+            table.length(constants.reference.base_monster), 0,
             constants.update_source.enemy_report,
             constants.acquisition_method.call,
             "get_Boss",
             ---@param boss_report table
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(boss_report, tracker_self)
                 -- Check if the provided boss report is NOT valid.
@@ -666,9 +649,7 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Iterate over each boss report entry.
                 for _, boss in pairs(boss_report) do
@@ -676,39 +657,23 @@ local tracking_manager = {
                     local fixed_id = boss:get_field("FixedId")
 
                     -- Check if the current boss fixed id exists in base monster collection.
-                    if constants.base_monster[fixed_id] then
-                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
-                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
+                    if constants.reference.base_monster[fixed_id] then
+                        -- If yes, then get the corresponding boss (enemy) id and item name for the current boss (enemy) fixed id.
+                        local id = sdk.get_id_from_fixed(resource_type.Enemy, fixed_id)
+                        local name = sdk.get_name(resource_type.Enemy, id, language_manager.language.current.associated_in_game_language_option)
 
-                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
-                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
-                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                        -- Check if the found item name is null (nil) or whitespace.
-                        if string.is_null_or_whitespace(name) then
-                            -- If yes, then just set the boss (enemy) name as the english name.
-                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
-                        end
-
-                        -- Check if the total hunting number is greater than 0.
-                        if boss:call("getHuntingNum") > 0 then
-                            -- If yes, then insert the boss (enemy) name into the found collection.
-                            table.insert(tracker_self.collection_params.found, name)
-                        else
-                            -- Insert the boss (enemy) name into the missing collection.
-                            table.insert(tracker_self.collection_params.missing, name)
-                        end
+                        tracker_self:add_collection_entry(boss:call("getHuntingNum") > 0, name)
                     end
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.base_monster
+            constants.reference.base_monster
         ),
 
-        [constants.achievement.mini_crown_collector] = achievementtracker:new_with_collection(constants.achievement.mini_crown_collector,
-            constants.game_award_fixed_id.mini_crown_collector,
+        [constants.achievement.mini_crown_collector] = achievement_tracker:new_with_collection(constants.achievement.mini_crown_collector,
+            sdk.cache.enum.award_fixed_id.mini_crown_collector,
             language_manager.language.default.achievement.mini_crown_collector.name,
             language_manager.language.default.achievement.mini_crown_collector.description,
             "c3b6b63d98ed79d376c8533a090477e763674c56.jpg",
@@ -717,7 +682,7 @@ local tracking_manager = {
             constants.acquisition_method.call,
             "get_Boss",
             ---@param boss_report table
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(boss_report, tracker_self)
                 -- Check if the provided boss report is NOT valid.
@@ -726,9 +691,7 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Iterate over each boss report entry.
                 for _, boss in pairs(boss_report) do
@@ -736,54 +699,38 @@ local tracking_manager = {
                     local fixed_id = boss:get_field("FixedId")
 
                     -- Get the crown data, if any, for the fixed id for the current boss (enemy).
-                    local crown_data = constants.crown_target[fixed_id]
+                    local crown_data = constants.reference.crown_target[fixed_id]
 
                     -- Check if the crown data is NOT null (nil).
                     if crown_data ~= nil then
-                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
-                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
-
-                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
-                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
-                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                        -- Check if the found item name is null (nil) or whitespace.
-                        if string.is_null_or_whitespace(name) then
-                            -- If yes, then just set the boss (enemy) name as the english name.
-                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
-                        end
+                        -- If yes, then get the corresponding boss (enemy) id and item name for the current boss (enemy) fixed id.
+                        local id = sdk.get_id_from_fixed(resource_type.Enemy, fixed_id)
+                        local name = sdk.get_name(resource_type.Enemy, id, language_manager.language.current.associated_in_game_language_option)
 
                         -- Get the minimum hunted size for the current boss (enemy) id.
-                        local min_hunted_size = sdk.constants.game_function.get_monster_min_size_record_func:call(nil, id)
+                        local min_hunted_size = sdk.cache.game_function.get_monster_min_size_record:call(nil, id)
 
-                        -- Check if the minimum hunted size is less than or equal to the mini size on the crown data.
-                        if min_hunted_size <= crown_data.mini_size then
-                            -- If yes, then insert the boss (enemy) name into the found collection.
-                            table.insert(tracker_self.collection_params.found, name)
-                        else
-                            -- Insert the boss (enemy) name into the missing collection.
-                            table.insert(tracker_self.collection_params.missing, name)
-                        end
+                        tracker_self:add_collection_entry(min_hunted_size <= crown_data.mini_size, name)
                     end
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.crown_target
+            constants.reference.crown_target
         ),
 
-        [constants.achievement.mini_crown_master] = achievementtracker:new_with_collection(constants.achievement.mini_crown_master,
-            constants.game_award_fixed_id.mini_crown_master,
+        [constants.achievement.mini_crown_master] = achievement_tracker:new_with_collection(constants.achievement.mini_crown_master,
+            sdk.cache.enum.award_fixed_id.mini_crown_master,
             language_manager.language.default.achievement.mini_crown_master.name,
             language_manager.language.default.achievement.mini_crown_master.description,
             "e7da4f45efb6e089c2c4da9219d2029c16fa9fd2.jpg",
-            table.length(constants.crown_target), 0,
+            table.length(constants.reference.crown_target), 0,
             constants.update_source.enemy_report,
             constants.acquisition_method.call,
             "get_Boss",
             ---@param boss_report table
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(boss_report, tracker_self)
                 -- Check if the provided boss report is NOT valid.
@@ -792,9 +739,7 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Iterate over each boss report entry.
                 for _, boss in pairs(boss_report) do
@@ -802,45 +747,29 @@ local tracking_manager = {
                     local fixed_id = boss:get_field("FixedId")
 
                     -- Get the crown data, if any, for the fixed id for the current boss (enemy).
-                    local crown_data = constants.crown_target[fixed_id]
+                    local crown_data = constants.reference.base_crown_target[fixed_id]
 
                     -- Check if the crown data is NOT null (nil).
                     if crown_data ~= nil then
-                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
-                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
-
-                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
-                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
-                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                        -- Check if the found item name is null (nil) or whitespace.
-                        if string.is_null_or_whitespace(name) then
-                            -- If yes, then just set the boss (enemy) name as the english name.
-                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
-                        end
+                        -- If yes, then get the corresponding boss (enemy) id and item name for the current boss (enemy) fixed id.
+                        local id = sdk.get_id_from_fixed(resource_type.Enemy, fixed_id)
+                        local name = sdk.get_name(resource_type.Enemy, id, language_manager.language.current.associated_in_game_language_option)
 
                         -- Get the minimum hunted size for the current boss (enemy) id.
-                        local min_hunted_size = sdk.constants.game_function.get_monster_min_size_record_func:call(nil, id)
+                        local min_hunted_size = sdk.cache.game_function.get_monster_min_size_record:call(nil, id)
 
-                        -- Check if the minimum hunted size is less than or equal to the mini size on the crown data.
-                        if min_hunted_size <= crown_data.mini_size then
-                            -- If yes, then insert the boss (enemy) name into the found collection.
-                            table.insert(tracker_self.collection_params.found, name)
-                        else
-                            -- Insert the boss (enemy) name into the missing collection.
-                            table.insert(tracker_self.collection_params.missing, name)
-                        end
+                        tracker_self:add_collection_entry(min_hunted_size <= crown_data.mini_size, name)
                     end
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.crown_target
+            constants.reference.base_crown_target
         ),
 
-        [constants.achievement.giant_crown_collector] = achievementtracker:new_with_collection(constants.achievement.giant_crown_collector,
-            constants.game_award_fixed_id.giant_crown_collector,
+        [constants.achievement.giant_crown_collector] = achievement_tracker:new_with_collection(constants.achievement.giant_crown_collector,
+            sdk.cache.enum.award_fixed_id.giant_crown_collector,
             language_manager.language.default.achievement.giant_crown_collector.name,
             language_manager.language.default.achievement.giant_crown_collector.description,
             "4892108fcf89dec2e32ab155629ab1621c7ecc0d.jpg",
@@ -849,7 +778,7 @@ local tracking_manager = {
             constants.acquisition_method.call,
             "get_Boss",
             ---@param boss_report table
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(boss_report, tracker_self)
                 -- Check if the provided boss report is NOT valid.
@@ -858,9 +787,7 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Iterate over each boss report entry.
                 for _, boss in pairs(boss_report) do
@@ -868,54 +795,38 @@ local tracking_manager = {
                     local fixed_id = boss:get_field("FixedId")
 
                     -- Get the crown data, if any, for the fixed id for the current boss (enemy).
-                    local crown_data = constants.crown_target[fixed_id]
+                    local crown_data = constants.reference.crown_target[fixed_id]
 
                     -- Check if the crown data is NOT null (nil).
                     if crown_data ~= nil then
-                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
-                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
-
-                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
-                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
-                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                        -- Check if the found item name is null (nil) or whitespace.
-                        if string.is_null_or_whitespace(name) then
-                            -- If yes, then just set the boss (enemy) name as the english name.
-                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
-                        end
+                        -- If yes, then get the corresponding boss (enemy) id and item name for the current boss (enemy) fixed id.
+                        local id = sdk.get_id_from_fixed(resource_type.Enemy, fixed_id)
+                        local name = sdk.get_name(resource_type.Enemy, id, language_manager.language.current.associated_in_game_language_option)
 
                         -- Get the maximum hunted size for the current boss (enemy) id.
-                        local max_hunted_size = sdk.constants.game_function.get_monster_max_size_record_func:call(nil, id)
+                        local max_hunted_size = sdk.cache.game_function.get_monster_max_size_record:call(nil, id)
 
-                        -- Check if the maximum hunted size is greater than or equal to the gold size on the crown data.
-                        if max_hunted_size >= crown_data.gold_size then
-                            -- If yes, then insert the boss (enemy) name into the found collection.
-                            table.insert(tracker_self.collection_params.found, name)
-                        else
-                            -- Insert the boss (enemy) name into the missing collection.
-                            table.insert(tracker_self.collection_params.missing, name)
-                        end
+                        tracker_self:add_collection_entry(max_hunted_size >= crown_data.gold_size, name)
                     end
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.crown_target
+            constants.reference.crown_target
         ),
 
-        [constants.achievement.giant_crown_master] = achievementtracker:new_with_collection(constants.achievement.giant_crown_master,
-            constants.game_award_fixed_id.giant_crown_master,
+        [constants.achievement.giant_crown_master] = achievement_tracker:new_with_collection(constants.achievement.giant_crown_master,
+            sdk.cache.enum.award_fixed_id.giant_crown_master,
             language_manager.language.default.achievement.giant_crown_master.name,
             language_manager.language.default.achievement.giant_crown_master.description,
             "1e9e0612ec6b1e5d5bc155a30c99cb6a578cef5e.jpg",
-            table.length(constants.crown_target), 0,
+            table.length(constants.reference.crown_target), 0,
             constants.update_source.enemy_report,
             constants.acquisition_method.call,
             "get_Boss",
             ---@param boss_report table
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(boss_report, tracker_self)
                 -- Check if the provided boss report is NOT valid.
@@ -924,9 +835,7 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Iterate over each boss report entry.
                 for _, boss in pairs(boss_report) do
@@ -934,54 +843,38 @@ local tracking_manager = {
                     local fixed_id = boss:get_field("FixedId")
 
                     -- Get the crown data, if any, for the fixed id for the current boss (enemy).
-                    local crown_data = constants.crown_target[fixed_id]
+                    local crown_data = constants.reference.base_crown_target[fixed_id]
 
                     -- Check if the crown data is NOT null (nil).
                     if crown_data ~= nil then
-                        -- If yes, then get the corresponding boss (enemy) id for the current boss (enemy) fixed id.
-                        local id = constants.enemy_def_id[constants.enemy_def_id_fixed[fixed_id]]
-
-                        -- Get the boss (enemy) name guid then use that to get the actual name string for the boss (enemy).
-                        local name_guid = sdk.constants.game_function.get_enemy_name_guid:call(nil, id)
-                        local name = sdk.get_localized_text(name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                        -- Check if the found item name is null (nil) or whitespace.
-                        if string.is_null_or_whitespace(name) then
-                            -- If yes, then just set the boss (enemy) name as the english name.
-                            name = sdk.get_localized_text(name_guid, sdk.constants.enum.game_language_option.English)
-                        end
+                        -- If yes, then get the corresponding boss (enemy) id and item name for the current boss (enemy) fixed id.
+                        local id = sdk.get_id_from_fixed(resource_type.Enemy, fixed_id)
+                        local name = sdk.get_name(resource_type.Enemy, id, language_manager.language.current.associated_in_game_language_option)
 
                         -- Get the maximum hunted size for the current boss (enemy) id.
-                        local max_hunted_size = sdk.constants.game_function.get_monster_max_size_record_func:call(nil, id)
+                        local max_hunted_size = sdk.cache.game_function.get_monster_max_size_record:call(nil, id)
 
-                        -- Check if the maximum hunted size is greater than or equal to the gold size on the crown data.
-                        if max_hunted_size >= crown_data.gold_size then
-                            -- If yes, then insert the boss (enemy) name into the found collection.
-                            table.insert(tracker_self.collection_params.found, name)
-                        else
-                            -- Insert the boss (enemy) name into the missing collection.
-                            table.insert(tracker_self.collection_params.missing, name)
-                        end
+                        tracker_self:add_collection_entry(max_hunted_size >= crown_data.gold_size, name)
                     end
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.crown_target
+            constants.reference.base_crown_target
         ),
 
-        [constants.achievement.eastward_wings] = achievementtracker:new_with_collection(constants.achievement.eastward_wings,
-            constants.game_award_fixed_id.eastward_wings,
+        [constants.achievement.eastward_wings] = achievement_tracker:new_with_collection(constants.achievement.eastward_wings,
+            sdk.cache.enum.award_fixed_id.eastward_wings,
             language_manager.language.default.achievement.eastward_wings.name,
             language_manager.language.default.achievement.eastward_wings.description,
             "57afb97b918edcbbc6827d844e5da32c6c94b95b.jpg",
-            table.length(constants.base_award) - 1, 0,
+            table.length(constants.reference.base_award) - 1, 0,
             constants.update_source.hunter_profile,
             constants.acquisition_method.call,
             "get_Medal",
             ---@param acquired_awards_bitset userdata
-            ---@param tracker_self achievementtracker
+            ---@param tracker_self achievement_tracker
             ---@return number
             function(acquired_awards_bitset, tracker_self)
                 -- Check if the provided acquired awards bitset is NOT valid.
@@ -990,62 +883,61 @@ local tracking_manager = {
                     return 0
                 end
 
-                -- Reset the contents of the found and missing tables on the collection params.
-                tracker_self.collection_params.found = {}
-                tracker_self.collection_params.missing = {}
+                tracker_self:clear_collection_params()
 
                 -- Get the collection of already acquired award/medal fixed ids.
                 local acquired_awards_fixed_ids = sdk.get_bitset_value(acquired_awards_bitset, nil, true)
 
                 -- Iterate over each acquired award id.
-                for award_fixed_id, _ in pairs(constants.base_award) do
+                for award_fixed_id, _ in pairs(constants.reference.base_award) do
                     -- Check if the current award fixed id is NOT the one for the `Eastward Wings` award (since that is what this tracker is for).
-                    if award_fixed_id ~= constants.game_award_fixed_id.eastward_wings then
-                        -- If yes, then get the corresponding award id for the award fixed id.
-                        local award_id = constants.award_id[constants.award_id_fixed[award_fixed_id]]
+                    if award_fixed_id ~= sdk.cache.enum.award_fixed_id.eastward_wings then
+                        -- If yes, then get the corresponding award id and name for the award fixed id.
+                        local award_id = sdk.get_id_from_fixed(resource_type.Award, award_fixed_id)
+                        local award_name = sdk.get_name(resource_type.Award, award_id, language_manager.language.current.associated_in_game_language_option)
 
-                        -- Get the award name guid then use that to get the actual name string for the award.
-                        local award_name_guid = sdk.constants.game_function.get_award_name_guid:call(nil, award_id)
-                        local award_name = sdk.get_localized_text(award_name_guid, language_manager.language.current.associated_in_game_language_option)
-
-                        -- Check if the found award name is null (nil) or whitespace.
-                        if string.is_null_or_whitespace(award_name) then
-                            -- If yes, then just set the award name as the english name.
-                            award_name = sdk.get_localized_text(award_name_guid, sdk.constants.enum.game_language_option.English)
-                        end
-
-                        -- Check if the current award fixed id is found in the collection of acquired awards fixed ids.
-                        if acquired_awards_fixed_ids[award_fixed_id] then
-                            -- If yes, then insert the award name into the found collection.
-                            table.insert(tracker_self.collection_params.found, award_name)
-                        else
-                            -- Insert the award name into the missing collection.
-                            table.insert(tracker_self.collection_params.missing, award_name)
-                        end
+                        tracker_self:add_collection_entry(acquired_awards_fixed_ids[award_fixed_id], award_name)
                     end
                 end
 
                 -- Return the length of the found collection.
                 return #tracker_self.collection_params.found
             end,
-            constants.base_award
+            constants.reference.base_award
         )
     },
+
+    -- The table of base game achievements being tracked by the tracking manager.
+    ---@type table<number, achievement_tracker>
+    base_achievements = {},
+
+    -- The table of Ascendance DLC achievements being tracked by the tracking manager.
+    ---@type table<number, achievement_tracker>
+    ascendance_achievements = {},
 
     -- The flag used to determine if the tracking manager initialized or not yet.
     is_initialized = false
 }
 
+-- Iterate over each achievement tracker in the tracking manager and split into the proper base game or Ascendance achievement trackers table.
+for achievement_id, tracker in ipairs(tracking_manager.achievements) do
+    if constants.base_achievement[achievement_id] then
+        tracking_manager.base_achievements[achievement_id] = tracker
+    else
+        tracking_manager.ascendance_achievements[achievement_id] = tracker
+    end
+end
+
 ---
 --- Update the value of the provided `achievement_tracker` with the provided `update_source`.
 ---
----@param achievement_tracker achievementtracker The achievement tracker to update the value for.
+---@param tracker_to_update achievement_tracker The achievement tracker to update the value for.
 ---@param update_source userdata The source used to get the update value from.
 ---@param skip_draw_manager_update? boolean [OPTIONAL] The flag used to determine if the tracker should skip the call into the draw manager to update its values. Defaults to false (doing the draw manager updates).
 ---@param is_for_initialization? boolean [OPTIONAL] The flag used to determine if this function is being called for the initialization of the tracking manager. Defaults to false.
 ---
 ---@return boolean tracker_value_changed The flag that represents whether the value of the provided achievement tracker changed or not.
-local function update_tracker_value(achievement_tracker, update_source, skip_draw_manager_update, is_for_initialization)
+local function update_tracker_value(tracker_to_update, update_source, skip_draw_manager_update, is_for_initialization)
     -- Check if the provided skip draw manager update flag is null (nil).
     if skip_draw_manager_update == nil then
         -- If yes, then set it to false.
@@ -1059,71 +951,71 @@ local function update_tracker_value(achievement_tracker, update_source, skip_dra
     end
 
     -- Store the current value of the provided achievement tracker as the previous value.
-    local previous_value = achievement_tracker.current
+    local previous_value = tracker_to_update.current
 
     -- Create a variable to store the acquired value. Default to 0.
     local acquired_value = 0
 
      -- Check if the acquisition method on the provided achievement tracker is get field.
-    if achievement_tracker.update_params.acquisition_method == constants.acquisition_method.get_field then
+    if tracker_to_update.update_params.acquisition_method == constants.acquisition_method.get_field then
         -- If yes, then set the acquired value with the result of calling get field on the provided update source.
-        acquired_value = update_source:get_field(achievement_tracker.update_params.name)
+        acquired_value = update_source:get_field(tracker_to_update.update_params.name)
 
     -- Else if, check if the acquisition method on the provided achievement tracker is call.
-    elseif achievement_tracker.update_params.acquisition_method == constants.acquisition_method.call then
+    elseif tracker_to_update.update_params.acquisition_method == constants.acquisition_method.call then
         -- If yes, then set the acquired value with the result of calling call on the provided update source.
-        acquired_value = update_source:call(achievement_tracker.update_params.name)
+        acquired_value = update_source:call(tracker_to_update.update_params.name)
 
     -- Else if, check if the acquisition method on the provided achievement tracker is pass in AND it doesn't have an additional processing function.
-    elseif achievement_tracker.update_params.acquisition_method == constants.acquisition_method.pass_in and
-            achievement_tracker.update_params.additional_processing == nil then
-        error(string.format("The tracker for the '%s' achievement is setup to use the 'pass_in' acquisition method but does NOT have an additional processing function which is required.", achievement_tracker.name))
+    elseif tracker_to_update.update_params.acquisition_method == constants.acquisition_method.pass_in and
+            tracker_to_update.update_params.additional_processing == nil then
+        error(string.format("The tracker for the '%s' achievement is setup to use the 'pass_in' acquisition method but does NOT have an additional processing function which is required.", tracker_to_update.name))
     end
 
     -- If yes, check if the additional processing function on the provided achievement tracker is nil.
-    if achievement_tracker.update_params.additional_processing == nil then
+    if tracker_to_update.update_params.additional_processing == nil then
         -- If yes, then set the current value on the provided achievement tracker as previously acquired value.
-        achievement_tracker.current = acquired_value
+        tracker_to_update.current = acquired_value
     else
         -- Check if the acquisition method on the provided achievement tracker is pass in.
-        if achievement_tracker.update_params.acquisition_method == constants.acquisition_method.pass_in then
+        if tracker_to_update.update_params.acquisition_method == constants.acquisition_method.pass_in then
             -- If yes, then set the current value on the provided achievement tracker as the result of the additional_processing
             -- function after passing in the update source and the tracker itself.
-            achievement_tracker.current = achievement_tracker.update_params.additional_processing(update_source, achievement_tracker)
+            tracker_to_update.current = tracker_to_update.update_params.additional_processing(update_source, tracker_to_update)
         else
             -- Set the current value on the provided achievement tracker as the result of the additional processing function after
             -- passing in the acquired value (obtained above) and the tracker itself.
-            achievement_tracker.current = achievement_tracker.update_params.additional_processing(acquired_value, achievement_tracker)
+            tracker_to_update.current = tracker_to_update.update_params.additional_processing(acquired_value, tracker_to_update)
         end
     end
 
     -- Determine if the tracker value changed by comparing if the previous value and new current are NOT equal.
-    local tracker_value_changed = previous_value ~= achievement_tracker.current
+    local tracker_value_changed = previous_value ~= tracker_to_update.current
 
     -- Check if the provided achievement tracker has the award obtained flag as true.
-    if achievement_tracker.award_obtained then
+    if tracker_to_update.award_obtained then
         -- If yes, then set the current value for the provided achievement tracker as the amount to make the progress bar show as complete.
-        achievement_tracker.current = achievement_tracker.amount
+        tracker_to_update.current = tracker_to_update.amount
 
     -- Else if, check if the newly updated current value for the provided achievement tracker is greater than or equal to the amount.
-    elseif achievement_tracker.current >= achievement_tracker.amount then
+    elseif tracker_to_update.current >= tracker_to_update.amount then
         -- If yes, then set the award obtained flag on the provided achievement tracker as true.
-        achievement_tracker.award_obtained = true
+        tracker_to_update.award_obtained = true
 
         -- Call the send completion notification function on the sdk manager for the provided achievement tracker.
-        sdk_manager.send_completion_notification(achievement_tracker)
-    
+        sdk_manager.send_completion_notification(tracker_to_update)
+
     -- Else if, check the provided is for initialization flag is false (we don't want to do this everytime the script starts/resets) AND the tracker value
     -- changed AND the show progress notifications config option is true.
     elseif not is_for_initialization and tracker_value_changed and config_manager.config.current.display.show_progress_notifications then
         -- If yes, then call the send progress notification function on the sdk manager for the provided achievement tracker and previous value.
-        sdk_manager.send_progress_notification(achievement_tracker, previous_value)
+        sdk_manager.send_progress_notification(tracker_to_update, previous_value)
     end
 
     -- Check if the provided achievement tracker should be displayed and the skip draw manager update flag is NOT true (is false).
-    if achievement_tracker:should_display() and not skip_draw_manager_update then
+    if tracker_to_update:should_display() and not skip_draw_manager_update then
         -- If yes, then call the update values function on the draw manager.
-        draw_manager.update_values(achievement_tracker)
+        draw_manager.update_values(tracker_to_update)
     end
 
     -- Return the tracker value changed flag.
@@ -1133,19 +1025,19 @@ end
 ---
 --- Update the value of the provided `achievement_tracker`.
 ---
----@param achievement_tracker achievementtracker The achievement tracker to update the value for.
+---@param tracker_to_update achievement_tracker The achievement tracker to update the value for.
 ---@param user_save_data? userdata [OPTIONAL] The user save data to use when updating the value of the achievement tracker. If not provided or nil (and needed) it will be automatically obtained from the sdk manager. Defaults to nil.
 ---
 ---@return boolean is_updated 
-function tracking_manager.update_tracker(achievement_tracker, user_save_data)
+function tracking_manager.update_tracker(tracker_to_update, user_save_data)
     -- Check if the provided achievement tracker is NOT already completed.
-    if not achievement_tracker:is_complete() then
+    if not tracker_to_update:is_complete() then
 
         -- If yes, then declare the update source, defaulting to nil.
         local update_source = nil
 
         -- Check if the update source on the provided achievement tracker is the mission activator.
-        if achievement_tracker.update_params.source == constants.update_source.mission_activator then
+        if tracker_to_update.update_params.source == constants.update_source.mission_activator then
             -- If yes, then set the update source as the result of calling the get mission activator function on the sdk manager.
             update_source = sdk_manager.get_mission_activator()
         else
@@ -1156,32 +1048,32 @@ function tracking_manager.update_tracker(achievement_tracker, user_save_data)
             end
 
             -- Check if the update source on the provided achievement tracker is the user basic data.
-            if achievement_tracker.update_params.source == constants.update_source.basic_data then
+            if tracker_to_update.update_params.source == constants.update_source.basic_data then
                 -- If yes, then set the update source as the result of calling the get basic data function on the sdk manager.
                 update_source = sdk_manager.get_basic_data(user_save_data)
 
             -- Else if, check if the update source on the provided achievement tracker is the item data.
-            elseif achievement_tracker.update_params.source == constants.update_source.item_data then
+            elseif tracker_to_update.update_params.source == constants.update_source.item_data then
                 -- If yes, then set the update source as the result of calling the get item data function on the sdk manager.
                 update_source = sdk_manager.get_item_data(user_save_data)
 
             -- Else if, check if the update source on the provided achievement tracker is the equipment data.
-            elseif achievement_tracker.update_params.source == constants.update_source.equipment_data then
+            elseif tracker_to_update.update_params.source == constants.update_source.equipment_data then
                 -- If yes, then set the update source as the result of calling the get equipment data function on the sdk manager.
                 update_source = sdk_manager.get_equipment_data(user_save_data)
 
             -- Else if, check if the update source on the provided achievement tracker is the camp data.
-            elseif achievement_tracker.update_params.source == constants.update_source.camp_data then
+            elseif tracker_to_update.update_params.source == constants.update_source.camp_data then
                 -- If yes, then set the update source as the result of calling the get camp data function on the sdk manager.
                 update_source = sdk_manager.get_camp_data(user_save_data)
 
             -- Else if, check if the update source on the provided achievement tracker is the hunter profile.
-            elseif achievement_tracker.update_params.source == constants.update_source.hunter_profile then
+            elseif tracker_to_update.update_params.source == constants.update_source.hunter_profile then
                 -- If yes, then set the update source as the result of calling the get hunter profile data function on the sdk manager.
                 update_source = sdk_manager.get_hunter_profile(user_save_data)
 
             -- Else if, check if the update source on the provided achievement tracker is the enemy report.
-            elseif achievement_tracker.update_params.source == constants.update_source.enemy_report then
+            elseif tracker_to_update.update_params.source == constants.update_source.enemy_report then
                 -- If yes, then set the update source as the result of calling the get enemy report function on the sdk manager.
                 update_source = sdk_manager.get_enemy_report(user_save_data)
             end
@@ -1190,7 +1082,7 @@ function tracking_manager.update_tracker(achievement_tracker, user_save_data)
         -- Check if an update source was successfully found.
         if update_source then
             -- If yes, then return the result of calling the internal update tracker value function passing the provided achievement tracker and found update source.
-            return update_tracker_value(achievement_tracker, update_source, true)
+            return update_tracker_value(tracker_to_update, update_source, true)
         end
     end
 

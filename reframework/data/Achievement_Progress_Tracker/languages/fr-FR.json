@@ -9,7 +9,10 @@
 			"top_right": "En haut à droite",
 			"middle": "Centré",
 			"bottom_left": "En bas à gauche",
-			"bottom_right": "En bas à droite"
+			"bottom_right": "En bas à droite",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "Activé",
@@ -49,7 +52,9 @@
 			"settings": "Paramètres",
 			"tracking": "Distinctions à suivre",
 			"missing": "Manquant pour: %s",
-			"base_game": "Jeu de Base"
+			"base_game": "Jeu de Base",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "Actuelle",

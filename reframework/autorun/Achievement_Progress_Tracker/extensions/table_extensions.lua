@@ -1,12 +1,13 @@
+---@generic T : table
 ---
 --- Returns the recursively cloned table, detecting cyclic references.
 ---
----@param list table The table to be cloned.
----@param history table The table that keeps track of tables that have already been cloned to detect cyclic references.
+---@param list T The table to be cloned.
+---@param history T The table that keeps track of tables that have already been cloned to detect cyclic references.
 ---
 ---@private
 ---
----@return table
+---@return T list The cloned (deep copied) instance of the provided list.
 local function clone_core(list, history)
     -- Assert the provided list is of type table.
     assert(type(list) == "table", "The provided 'list' must be a table.")
@@ -63,24 +64,26 @@ local function clone_core(list, history)
     return clone
 end
 
+---@generic T : table
 ---
 --- Returns a clone (deep copy) of the provided table.
 ---
----@param list table The table to be cloned.
+---@param list T The table to be cloned.
 ---
----@return table
+---@return T list The cloned (deep copied) instance of the provided list.
 function table.clone(list)
     -- Return the result of the private internal clone core function with an empty history.
     return clone_core(list, {})
 end
 
+---@generic T : table
 ---
 --- Returns a table that is the result of merging all provided tables. The first table is used as a reference/schema such that only
 --- keys that match into the first table are considered when merging, otherwise they are ignored.
 ---
----@param ... table The tables to merge.
+---@param ... T The tables to merge.
 ---
----@return table
+---@return T merged_table The matched merged table.
 function table.matched_merge(...)
     -- Pack the provided values into a collection of tables.
     local tables = { ... }
@@ -130,13 +133,15 @@ function table.matched_merge(...)
     return result
 end
 
+---@generic K
+---@generic V
 ---
 --- Returns the first key (or index) in the table that matches the provided value. If no key is found, `nil` is returned.
 ---
----@param list table The table to search for the key.
----@param value_to_find any The value to match against to find the associated key.
+---@param list table<K, V> The table to search for the key.
+---@param value_to_find V The value to match against to find the associated key.
 ---
----@return any|nil
+---@return K|nil
 function table.find_key(list, value_to_find)
     -- Assert the provided value for list is a table.
     assert(type(list) == "table", "The provided 'list' must be a table.")

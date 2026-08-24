@@ -11,7 +11,10 @@
 			"top_right": "ขวาบน",
 			"middle": "กลาง",
 			"bottom_left": "ล่างซ้าย",
-			"bottom_right": "ล่างขวา"
+			"bottom_right": "ล่างขวา",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "เปิดใช้งานแล้ว",
@@ -51,7 +54,9 @@
 			"settings": "การตั้งค่า",
 			"tracking": "การติดตาม",
 			"missing": "หายไปสําหรับ %s",
-			"base_game": "เกมฐาน"
+			"base_game": "เกมฐาน",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "ปัจจุบัน",

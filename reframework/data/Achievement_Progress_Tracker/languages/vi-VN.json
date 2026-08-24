@@ -9,7 +9,10 @@
 			"top_right": "Trên cùng bên phải",
 			"middle": "Ở giữa",
 			"bottom_left": "Dưới cùng bên trái",
-			"bottom_right": "Góc phải ở phía dưới"
+			"bottom_right": "Góc phải ở phía dưới",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "Đã bật",
@@ -49,7 +52,9 @@
 			"settings": "Cài đặt",
 			"tracking": "Theo dõi",
 			"missing": "Thiếu cho %s",
-			"base_game": "Trò chơi cơ bản"
+			"base_game": "Trò chơi cơ bản",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "Hiện hành",

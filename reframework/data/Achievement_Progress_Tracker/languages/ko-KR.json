@@ -12,7 +12,10 @@
 			"top_right": "오른쪽 위",
 			"middle": "가운데",
 			"bottom_left": "왼쪽 아래",
-			"bottom_right": "오른쪽 아래"
+			"bottom_right": "오른쪽 아래",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "활성화됨",
@@ -52,7 +55,9 @@
 			"settings": "설정",
 			"tracking": "추적",
 			"missing": "달성하지 못 한 항목: %s",
-			"base_game": "기본 게임"
+			"base_game": "기본 게임",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "현재의",

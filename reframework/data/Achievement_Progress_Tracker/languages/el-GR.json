@@ -12,7 +12,10 @@
 			"top_right": "Επάνω δεξιά",
 			"middle": "Μέση",
 			"bottom_left": "Κάτω αριστερά",
-			"bottom_right": "Κάτω δεξιά"
+			"bottom_right": "Κάτω δεξιά",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "Ενεργοποιήθηκε",
@@ -52,7 +55,9 @@
 			"settings": "Ρυθμίσεις",
 			"tracking": "Παρακολούθηση",
 			"missing": "Λείπει για %s",
-			"base_game": "Βασικό παιχνίδι"
+			"base_game": "Βασικό παιχνίδι",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "Ρεύμα",
