@@ -9,7 +9,10 @@
 			"top_right": "Top Right",
 			"middle": "Middle",
 			"bottom_left": "Bottom Left",
-			"bottom_right": "Bottom Right"
+			"bottom_right": "Bottom Right",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "Enabled",
@@ -49,7 +52,9 @@
 			"settings": "Settings",
 			"tracking": "Tracking",
 			"missing": "Missing for: %s",
-			"base_game": "Base Game"
+			"base_game": "Base Game",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "Current",
@@ -158,6 +163,14 @@
 		"eastward_wings": {
 			"name": "Eastward Wings",
 			"description": "Obtained all other awards."
+		},
+		"ascendance_test_1": {
+			"name": "Ascendance Test Achievement#1",
+			"description": "The first test achievement for the Ascendance DLC."
+		},
+		"ascendance_test_2": {
+			"name": "Ascendance Test Achievement#1",
+			"description": "The first test achievement for the Ascendance DLC."
 		}
 	}
 }

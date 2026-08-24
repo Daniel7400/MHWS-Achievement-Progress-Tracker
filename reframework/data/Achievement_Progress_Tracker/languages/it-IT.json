@@ -9,7 +9,10 @@
 			"top_right": "In Alto a Destra",
 			"middle": "Al Centro",
 			"bottom_left": "In Basso a Sinistra",
-			"bottom_right": "In Basso a Destra"
+			"bottom_right": "In Basso a Destra",
+			"dump_award_data": "Dump Award (Achievement) Data",
+			"dump_monster_data": "Dump Monster Data",
+			"dump_user_save_data": "Dump User Save Data"
 		},
 		"checkbox": {
 			"enabled": "Abilitato",
@@ -49,7 +52,9 @@
 			"settings": "Impostazioni",
 			"tracking": "Monitoraggio",
 			"missing": "%s Mancante:",
-			"base_game": "Gioco base"
+			"base_game": "Gioco base",
+			"ascendance_dlc": "Ascendance",
+			"debug": "Debug"
 		},
 		"misc": {
 			"current": "Attuale",

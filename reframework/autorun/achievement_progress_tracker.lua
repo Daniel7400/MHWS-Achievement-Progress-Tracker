@@ -12,6 +12,11 @@ require("Achievement_Progress_Tracker.extensions.math_extensions")
 require("Achievement_Progress_Tracker.extensions.table_extensions")
 require("Achievement_Progress_Tracker.extensions.imgui_extensions")
 require("Achievement_Progress_Tracker.extensions.sdk_extensions")
+--- END IMPORTS
+
+sdk.populate_constants_reference_values()
+
+--- IMPORTS
 local sdk_manager = require("Achievement_Progress_Tracker.sdk_manager")
 local config_manager = require("Achievement_Progress_Tracker.config_manager")
 local language_manager = require("Achievement_Progress_Tracker.language_manager")
@@ -27,6 +32,10 @@ language_manager.init_module()
 draw_manager.init_module()
 ui_manager.init_module()
 --- END MODULE INIT
+
+if config_manager.config.current.debug_enabled then
+    sdk.populate_debug_info()
+end
 
 re.on_frame(function()
     -- Check if the enabled flag on the config is NOT true (meaning the user marked it as disabled).
